@@ -72,41 +72,45 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <div id="contact">
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Us</h2>
-            <p className="text-xl text-gray-600 mb-8">Ready to get started? Contact us for a free estimate.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700"
-              >
-                <a href="tel:(323) 863-8146">
-                  Call (323) 863-8146
-                </a>
-              </Button>
-              <div className="flex flex-col items-center">
-                <Button
-                  onClick={openBooking}
-                  variant="outline"
-                  size="lg"
-                  className="border-blue-600 text-blue-600 hover:bg-gray-50"
-                  aria-haspopup="dialog"
-                  aria-controls="hcp-booking"
-                  data-analytics="hcp-book"
-                >
-                  Book Online
-                </Button>
-                <div className="text-xs text-gray-500 mt-2 text-center">
-                  By booking, you agree to our <Link href="/terms" className="text-blue-600 hover:text-blue-700 underline">Terms & Conditions</Link> and <Link href="/privacy" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</Link>.
-                </div>
-              </div>
-            </div>
+      {/* Contact CTA */}
+      <section aria-labelledby="contact-heading" className="py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 id="contact-heading" className="text-2xl font-semibold tracking-tight text-gray-900">
+            Contact Us
+          </h2>
+          <p className="mt-2 text-gray-600">
+            Ready to get started? Contact us for a free estimate.
+          </p>
+
+          {/* BUTTON ROW */}
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              <a href="tel:(323) 863-8146">Call (323) 863-8146</a>
+            </Button>
+
+            <Button
+              onClick={openBooking}
+              variant="outline"
+              size="lg"
+              className="border-blue-600 text-blue-600 hover:bg-gray-50"
+              aria-haspopup="dialog"
+              aria-controls="hcp-booking"
+              data-analytics="hcp-book"
+            >
+              Book Online
+            </Button>
           </div>
-        </section>
-      </div>
+
+          {/* LEGAL LINE */}
+          <p className="mt-3 text-xs text-gray-500">
+            By booking, you agree to our <a className="underline" href="/terms">Terms &amp; Conditions</a> and <a className="underline" href="/privacy">Privacy Policy</a>.
+          </p>
+        </div>
+      </section>
     </SiteLayout>
   );
 }
