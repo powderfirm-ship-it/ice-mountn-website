@@ -26,6 +26,7 @@ npm run dev
    - Left side: Text content (headlines, CTAs, trust badges)
    - Right side: Rounded image card with hero-1.webp
    - No layout shifts or loading delays
+   - Fixed aspect ratio (4:5) container prevents CLS
 
 #### **Carousel Hydration Test**
 1. Wait 1-2 seconds after page load
@@ -33,6 +34,7 @@ npm run dev
    - Navigation arrows (left/right) become visible on hover
    - Dot indicators appear at bottom of image
    - Smooth transitions between images
+   - No layout shifts during hydration
 
 #### **Carousel Navigation Test**
 1. **Arrow Navigation**:
@@ -68,8 +70,8 @@ npm run dev
 1. Go to Network tab
 2. Filter by "Img"
 3. **Expected**: 
-   - Hero-1.webp loads with `priority` (first)
-   - Other hero images load progressively
+   - Hero-1.webp loads with `priority` and `fetchPriority="high"` (first)
+   - Other hero images load progressively (no priority)
    - Gallery images use `loading="lazy"`
 
 ### **5. Visual Design Verification**
@@ -77,7 +79,7 @@ npm run dev
 #### **Layout Consistency**
 - ✅ **Left Side**: Text content unchanged (headlines, CTAs, badges)
 - ✅ **Right Side**: Rounded card with gradient background
-- ✅ **Image Container**: Fixed aspect ratio (4:5), rounded corners
+- ✅ **Image Container**: Fixed aspect ratio (4:5), rounded corners (rounded-3xl)
 - ✅ **Floating Tools**: 🔧 and 📏 icons in correct positions
 - ✅ **Shadows**: Consistent shadow-xl on card and image
 
@@ -119,15 +121,31 @@ npm run dev
 4. ✅ Smooth transitions between images
 5. ✅ All performance optimizations preserved
 
+## **Implementation Details**
+
+### **Key Features**
+- **First Frame Image**: Always visible for LCP optimization
+- **Carousel Overlay**: Loads after hydration for interactivity
+- **Fixed Aspect Ratio**: 4:5 container prevents CLS
+- **Dynamic Import**: Client component loads with fallback
+- **Performance Preserved**: WebP, priority loading, no layout shifts
+
+### **Technical Architecture**
+- **Server Component**: Hero section remains server-rendered
+- **Client Component**: Carousel loads dynamically with `ssr: false`
+- **Fallback Strategy**: Static image shows immediately
+- **Progressive Enhancement**: Carousel functionality appears after hydration
+
 ## **Troubleshooting**
 
 ### **Carousel Not Working**
 1. Check browser console for JavaScript errors
 2. Verify Embla Carousel is properly imported
 3. Check if `useEffect` is running correctly
+4. Verify `isCarouselReady` state is being set
 
 ### **Layout Shifts**
-1. Verify aspect ratio container is working
+1. Verify aspect ratio container is working (aspect-[4/5])
 2. Check if fallback component matches carousel dimensions
 3. Ensure no conflicting CSS styles
 
@@ -139,7 +157,7 @@ npm run dev
 ## **File Changes Summary**
 
 ### **New Files Created**
-- `src/components/hero-media.tsx` - Client component with carousel
+- `src/components/hero-media.tsx` - Client component with carousel and first frame
 - `src/components/hero-media-fallback.tsx` - Static fallback image
 - `docs/TEST-HERO.md` - This test document
 
@@ -149,10 +167,18 @@ npm run dev
 
 ### **Performance Preserved**
 - ✅ WebP images maintained
-- ✅ Priority loading for hero image
+- ✅ Priority loading for hero image (first frame only)
 - ✅ Fixed aspect ratios prevent CLS
 - ✅ Dynamic imports for below-the-fold sections
 - ✅ Server component benefits maintained
+
+## **Production Testing**
+
+### **After Deploy**
+1. Test on production URL
+2. Verify carousel functionality
+3. Check Core Web Vitals
+4. Confirm no performance regression
 
 ---
 
