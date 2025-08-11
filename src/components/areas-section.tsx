@@ -1,7 +1,7 @@
 'use client';
 
 import { MapPin, GraduationCap } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openHcp } from "@/lib/hcp";
 import Link from "next/link";
 
 const areas = [
@@ -100,7 +100,7 @@ export function AreasSection() {
                   Call Now
                 </a>
                 <button
-                  onClick={openHousecallProModal}
+                  onClick={openHcp}
                   className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
                 >
                   Schedule Service

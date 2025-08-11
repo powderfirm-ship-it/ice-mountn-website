@@ -3,7 +3,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import Link from "next/link";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openHcp } from "@/lib/hcp";
+import Image from "next/image";
 
 const reviews = [
   {
@@ -76,10 +77,15 @@ export function ReviewsSection() {
 
                 <div className="border-t pt-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                      <span className="font-semibold text-blue-600">
-                        {review.name.charAt(0)}
-                      </span>
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden">
+                      <Image
+                        src={`/images/stock/review-${String(index + 1).padStart(2, '0')}.webp`}
+                        alt={`Customer review from ${review.location} - ${review.service}`}
+                        fill
+                        sizes="40px"
+                        loading="lazy"
+                        className="object-cover"
+                      />
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">{review.name}</div>
@@ -101,7 +107,7 @@ export function ReviewsSection() {
           <div className="mb-6">
             <Link
               href="/customer-reviews"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+              className="inline-flex items-center text-blue-700 hover:text-blue-800 font-medium transition-colors underline underline-offset-2"
             >
               View more reviews ➜
             </Link>
@@ -118,7 +124,7 @@ export function ReviewsSection() {
               Get Free Estimate
             </a>
             <button
-              onClick={openHousecallProModal}
+              onClick={openHcp}
               className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
             >
               Book Online

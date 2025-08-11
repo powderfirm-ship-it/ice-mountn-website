@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openHcp } from "@/lib/hcp";
 
 const faqs = [
   {
@@ -85,12 +85,12 @@ export function FAQSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:(323) 863-8146"
-                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Call Now: (323) 863-8146
               </a>
               <button
-                onClick={openHousecallProModal}
+                onClick={openHcp}
                 className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
               >
                 Get Free Quote
