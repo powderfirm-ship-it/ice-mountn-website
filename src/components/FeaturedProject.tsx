@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { Wrench, Ruler } from "lucide-react";
 
 export default function FeaturedProject() {
   return (
     <div className="relative w-full md:w-auto flex justify-center">
       <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-3 shadow-xl">
-        <div className="relative w-full max-w-[600px] aspect-[4/5] min-h-[420px] rounded-3xl overflow-hidden shadow-xl">
+        <div className="relative w-full max-w-[560px] aspect-[4/5] min-h-[480px] rounded-3xl overflow-hidden shadow-xl">
           {/* Featured Project Image */}
           <Image
             src="/images/stock/hero-1.webp"
@@ -30,13 +29,7 @@ export default function FeaturedProject() {
             </div>
           </div>
 
-          {/* Floating tools */}
-          <div className="absolute right-3 top-3 z-10 h-11 w-11 rounded-full bg-white shadow-md ring-1 ring-black/5 grid place-items-center" aria-hidden="true">
-            <Wrench className="h-5 w-5 opacity-70" />
-          </div>
-          <div className="absolute left-3 bottom-3 z-10 h-11 w-11 rounded-full bg-white shadow-md ring-1 ring-black/5 grid place-items-center" aria-hidden="true">
-            <Ruler className="h-5 w-5 opacity-70" />
-          </div>
+
         </div>
       </div>
     </div>

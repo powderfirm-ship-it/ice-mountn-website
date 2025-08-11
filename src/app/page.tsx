@@ -8,6 +8,7 @@ import { AreasSection } from "@/components/areas-section";
 import { openBooking } from "@/utils/housecall-pro";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -77,22 +78,27 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Us</h2>
             <p className="text-xl text-gray-600 mb-8">Ready to get started? Contact us for a free estimate.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:(323) 863-8146"
-                className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              <Button
+                asChild
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700"
               >
-                Call (323) 863-8146
-              </a>
+                <a href="tel:(323) 863-8146">
+                  Call (323) 863-8146
+                </a>
+              </Button>
               <div className="flex flex-col items-center">
-                <button
+                <Button
                   onClick={openBooking}
-                  className="inline-flex items-center justify-center px-8 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                  variant="outline"
+                  size="lg"
+                  className="border-blue-600 text-blue-600 hover:bg-gray-50"
                   aria-haspopup="dialog"
                   aria-controls="hcp-booking"
                   data-analytics="hcp-book"
                 >
                   Book Online
-                </button>
+                </Button>
                 <div className="text-xs text-gray-500 mt-2 text-center">
                   By booking, you agree to our <Link href="/terms" className="text-blue-600 hover:text-blue-700 underline">Terms & Conditions</Link> and <Link href="/privacy" className="text-blue-600 hover:text-blue-700 underline">Privacy Policy</Link>.
                 </div>
