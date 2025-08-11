@@ -4,7 +4,7 @@ export default function HeroMediaFallback() {
   return (
     <div className="relative w-full md:w-auto flex justify-center">
       <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-3 shadow-xl">
-        <div className="relative w-full max-w-[600px] aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
+        <div className="relative w-full max-w-[600px] aspect-[4/5] min-h-[420px] rounded-3xl overflow-hidden shadow-xl">
           <Image
             src="/images/stock/hero-1.webp"
             alt="Recent TV mounting install in Los Angeles"

@@ -8,6 +8,19 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx,js,jsx,mdx}",
+    "./components/**/*.{ts,tsx,js,jsx,mdx}",
+    "./app/**/*.{ts,tsx,js,jsx,mdx}",
+    "./src/**/*.{ts,tsx,js,jsx,mdx}"
+  ],
+  safelist: [
+    "aspect-[4/5]",
+    "max-w-[600px]",
+    "rounded-3xl",
+    "overflow-hidden",
+    "shadow-xl",
+    "object-cover",
+    "min-h-[420px]"
   ],
   theme: {
   	extend: {
