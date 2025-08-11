@@ -465,7 +465,7 @@ export function USCPageClient() {
                 <Button 
                   variant="outline" 
                   asChild
-                  className="border-white text-white hover:bg-red-700 hover:text-white font-semibold px-8 py-4"
+                  className="bg-transparent text-white border-white hover:bg-white/10 hover:text-white focus-visible:ring-white/70 font-semibold px-8 py-4"
                 >
                   <a href="tel:(323) 863-8146" aria-label="Call USC TV mounting service at (323) 863-8146">
                     Call (323) 863-8146

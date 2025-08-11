@@ -482,7 +482,7 @@ export function UCLAPageClient() {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-blue-600 text-white border-white hover:bg-blue-700 hover:text-white font-semibold px-8 py-4"
+                className="bg-transparent text-white border-white hover:bg-white/10 hover:text-white focus-visible:ring-white/70 font-semibold px-8 py-4"
                 asChild
               >
                 <a href="tel:(323) 863-8146">
