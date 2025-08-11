@@ -15,12 +15,12 @@ export default {
   ],
   safelist: [
     "aspect-[4/5]",
+    "min-h-[420px]",
     "max-w-[600px]",
     "rounded-3xl",
     "overflow-hidden",
     "shadow-xl",
-    "object-cover",
-    "min-h-[420px]"
+    "object-cover"
   ],
   theme: {
   	extend: {

@@ -1,14 +1,8 @@
-import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Phone } from "lucide-react";
 import { openHcp } from "@/lib/hcp";
-import HeroMediaFallback from "./hero-media-fallback";
-
-const HeroMedia = dynamic(() => import("./hero-media"), {
-  ssr: false,
-  loading: () => <HeroMediaFallback />,
-});
+import FeaturedProject from "./FeaturedProject";
 
 export function HeroSection() {
   const handleBookOnline = openHcp;
@@ -91,8 +85,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Hero Media - Dynamic Import with Fallback */}
-          <HeroMedia />
+          {/* Featured Project Hero */}
+          <FeaturedProject />
         </div>
       </div>
     </section>

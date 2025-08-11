@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import Link from "next/link";
 import { openHcp } from "@/lib/hcp";
-import Image from "next/image";
+import AvatarInitials from "./AvatarInitials";
 
 const reviews = [
   {
@@ -77,16 +77,7 @@ export function ReviewsSection() {
 
                 <div className="border-t pt-4">
                   <div className="flex items-center space-x-3">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                      <Image
-                        src={`/images/stock/review-${String(index + 1).padStart(2, '0')}.webp`}
-                        alt={`Customer review from ${review.location} - ${review.service}`}
-                        fill
-                        sizes="40px"
-                        loading="lazy"
-                        className="object-cover"
-                      />
-                    </div>
+                    <AvatarInitials name={review.name} size={40} />
                     <div>
                       <div className="font-semibold text-gray-900">{review.name}</div>
                       <div className="text-sm text-gray-600">{review.location}</div>
