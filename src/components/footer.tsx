@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-gray-200">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -23,7 +23,7 @@ export function Footer() {
               </div>
               <div>
                 <h3 className="font-bold text-lg">Ice Mount'n</h3>
-                <p className="text-xs text-gray-400">Elite TV & Home Audio Installations</p>
+                <p className="text-xs text-gray-300">Elite TV & Home Audio Installations</p>
               </div>
             </div>
 
@@ -111,7 +111,7 @@ export function Footer() {
             <div className="flex space-x-4 mb-4 md:mb-0">
               <a 
                 href="https://facebook.com/icemountn" 
-                className="text-gray-400 hover:text-blue-400 transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit Ice Mount'n on Facebook (opens in a new tab)"
@@ -122,7 +122,7 @@ export function Footer() {
               </a>
               <a 
                 href="https://instagram.com/icemountn" 
-                className="text-gray-400 hover:text-blue-400 transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit Ice Mount'n on Instagram (opens in a new tab)"
@@ -134,12 +134,12 @@ export function Footer() {
             </div>
 
             <div className="text-center md:text-right">
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-300">
                 © 2025 Ice Mount'n. All rights reserved.
               </p>
               <div className="flex items-center justify-center md:justify-end space-x-2 mt-1">
-                <span className="text-xs text-gray-500">Powered by</span>
-                <a href="https://housecallpro.com" className="text-xs text-blue-400 hover:text-blue-300">
+                <span className="text-xs text-gray-300">Powered by</span>
+                <a href="https://housecallpro.com" className="text-xs text-gray-200 hover:text-white underline underline-offset-2">
                   Housecall Pro
                 </a>
               </div>

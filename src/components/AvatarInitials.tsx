@@ -4,12 +4,12 @@ interface AvatarInitialsProps {
 }
 
 const PALETTE = [
-  "bg-blue-600",
-  "bg-emerald-600", 
-  "bg-rose-600",
-  "bg-amber-600",
-  "bg-violet-600",
-  "bg-cyan-600"
+  "bg-blue-700",
+  "bg-emerald-700", 
+  "bg-rose-700",
+  "bg-amber-700",
+  "bg-violet-700",
+  "bg-cyan-700"
 ];
 
 export default function AvatarInitials({ name, size = 40 }: AvatarInitialsProps) {
