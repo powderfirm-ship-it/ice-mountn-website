@@ -14,7 +14,9 @@ const nextConfig = {
   },
   allowedDevOrigins: ["*.preview.same-app.com"],
   images: {
-    unoptimized: true,
+    formats: ['image/webp'],
+    deviceSizes: [360, 420, 640, 750, 828, 1080],
+    imageSizes: [256, 384, 560],
     domains: [
       "source.unsplash.com",
       "images.unsplash.com",

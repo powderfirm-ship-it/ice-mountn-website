@@ -4,16 +4,18 @@ export default function FeaturedProject() {
   return (
     <div className="relative w-full md:w-auto flex justify-center">
       <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-3 shadow-xl">
-        <div className="relative w-full max-w-[560px] aspect-[4/5] min-h-[480px] rounded-3xl overflow-hidden shadow-xl">
+        <div className="relative w-full max-w-[560px] aspect-[4/5] min-h-[480px] rounded-3xl overflow-hidden shadow-lg">
           {/* Featured Project Image */}
           <Image
             src="/images/stock/hero-1.webp"
-            alt="Featured TV mounting project in a Los Angeles living room"
+            alt="Featured living room TV mounting project"
             fill
             priority
             fetchPriority="high"
-            sizes="(max-width: 1024px) 90vw, 600px"
+            quality={62}
+            sizes="(max-width: 480px) 92vw, (max-width: 768px) 88vw, 560px"
             className="object-cover"
+            decoding="async"
           />
 
           {/* Top-left Badge */}
