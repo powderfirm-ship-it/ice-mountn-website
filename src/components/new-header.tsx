@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { openBooking } from "@/utils/housecall-pro";
 
 // Navigation data
@@ -95,14 +96,14 @@ export function NewHeader() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
               <div className="w-11 h-9 flex items-center justify-center">
-                <img
-                  src="https://ugc.same-assets.com/Onbu0mW7YRwn21SfyRUUEI4-QbLjh4M-.png"
+                <Image
+                  src="/images/brand/ice-mountn-tv-mounting-logo.webp"
                   alt="Ice Mount'n Logo"
+                  width={44}
+                  height={36}
                   className="w-11 h-9 object-contain"
                   style={{ maxHeight: '48px' }}
-                  onError={(e) => {
-                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCA0NCAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDQiIGhlaWdodD0iMzYiIHJ4PSI0IiBmaWxsPSIjMTE5MUZGIi8+CiAgPHRleHQgeD0iMjIiIHk9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjciIGZvbnQtd2VpZ2h0PSJib2xkIj5MT0dPPC90ZXh0PgogIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIzOCIgaGVpZ2h0PSIzMCIgcng9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==';
-                  }}
+                  priority
                 />
               </div>
               <div>
@@ -164,14 +165,14 @@ export function NewHeader() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
               <div className="w-10 h-8 flex items-center justify-center">
-                <img
-                  src="https://ugc.same-assets.com/Onbu0mW7YRwn21SfyRUUEI4-QbLjh4M-.png"
+                <Image
+                  src="/images/brand/ice-mountn-tv-mounting-logo.webp"
                   alt="Ice Mount'n Logo"
+                  width={40}
+                  height={32}
                   className="w-10 h-8 object-contain"
                   style={{ maxHeight: '48px' }}
-                  onError={(e) => {
-                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCA0MCAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMzIiIHJ4PSIzIiBmaWxsPSIjMTE5MUZGIi8+CiAgPHRleHQgeD0iMjAiIHk9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjYiIGZvbnQtd2VpZ2h0PSJib2xkIj5MT0dPPC90ZXh0PgogIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIzNCIgaGVpZ2h0PSIyNiIgcng9IjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41Ci8+Cjwvc3ZnPg==';
-                  }}
+                  priority
                 />
               </div>
               <div>
@@ -209,13 +210,13 @@ export function NewHeader() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <img
-                src="https://ugc.same-assets.com/O6-mhhw9ENglHvOSLP_R5yNao_1cfEBe.png"
+              <Image
+                src="/images/brand/ice-mountn-tv-mounting-logo.webp"
                 alt="Ice Mount'n Logo"
+                width={40}
+                height={32}
                 className="w-10 h-8 object-contain max-h-10"
-                onError={(e) => {
-                  e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCA0MCAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iMzIiIHJ4PSIzIiBmaWxsPSIjMTE5MUZGIi8+CiAgPHRleHQgeD0iMjAiIHk9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjYiIGZvbnQtd2VpZ2h0PSJib2xkIj5MT0dPPC90ZXh0PgogIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIzNCIgaGVpZ2h0PSIyNiIgcng9IjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==';
-                }}
+                priority
               />
             </Link>
 

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ice Mount'n FAQ - TV Mounting Questions Answered",
     description: "Find answers to common questions about our professional TV mounting services in Los Angeles. Same-day installation available.",
-    images: ["/images/ice-mountn-logo.png"],
+            images: ["/images/brand/ice-mountn-tv-mounting-logo.webp"],
   },
 };
 

@@ -52,8 +52,8 @@ export function SchemaMarkup() {
       "Su 08:00-20:00"
     ],
     "priceRange": "$$",
-    "image": "https://icemountn.com/images/ice-mountn-logo.png",
-    "logo": "https://icemountn.com/images/ice-mountn-logo.png",
+            "image": "https://icemountn.com/images/brand/ice-mountn-tv-mounting-logo.webp",
+        "logo": "https://icemountn.com/images/brand/ice-mountn-tv-mounting-logo.webp",
     "sameAs": [
       "https://www.facebook.com/icemountn",
       "https://www.instagram.com/icemountn"

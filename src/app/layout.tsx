@@ -79,6 +79,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${openSans.variable}`}>
       <head>
+        {/* Preload LCP image for better performance */}
+        <link
+          rel="preload"
+          href="/images/stock/hero-1.webp"
+          as="image"
+          type="image/webp"
+        />
         {/* JSON-LD Schema Markup for SEO */}
         <SchemaMarkup />
       </head>

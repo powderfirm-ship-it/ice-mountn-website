@@ -1,7 +1,8 @@
 'use client';
 
+import { Facebook, Instagram, Mail, Phone, Clock } from "lucide-react";
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -12,13 +13,12 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 flex items-center justify-center">
-                <img
-                  src="https://ugc.same-assets.com/tiwYma9EKHAsEWqTnd_WNEK3Wcz1B2Kd.png"
+                <Image
+                  src="/images/brand/ice-mountn-tv-mounting-logo.webp"
                   alt="Ice Mount'n Logo"
-                  className="w-8 h-6 object-contain"
-                  onError={(e) => {
-                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAzMiAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHJ4PSIzIiBmaWxsPSIjMTE5MUZGIi8+CiAgPHRleHQgeD0iMTYiIHk9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjYiIGZvbnQtd2VpZ2h0PSJib2xkIj5MT0dPPC90ZXh0PgogIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIyNiIgaGVpZ2h0PSIxOCIgcng9IjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==';
-                  }}
+                  width={32}
+                  height={24}
+                  priority
                 />
               </div>
               <div>

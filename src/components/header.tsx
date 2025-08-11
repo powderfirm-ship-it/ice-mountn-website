@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { openBooking } from "@/utils/housecall-pro";
 
 const navigation = [
@@ -28,13 +29,13 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-12 h-10 flex items-center justify-center">
-              <img
-                src="https://ugc.same-assets.com/jeZzeC1Cj0C6URhskevCxGDDGetRFWkZ.png"
+              <Image
+                src="/images/brand/ice-mountn-tv-mounting-logo.webp"
                 alt="Ice Mount'n Logo"
+                width={48}
+                height={40}
                 className="w-12 h-10 object-contain"
-                onError={(e) => {
-                  e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0OCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDgiIGhlaWdodD0iNDAiIHJ4PSI0IiBmaWxsPSIjMTE5MUZGIi8+CiAgPHRleHQgeD0iMjQiIHk9IjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSJib2xkIj5MT0dPPC90ZXh0PgogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSI0MCIgaGVpZ2h0PSIzMiIgcng9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==';
-                }}
+                priority
               />
             </div>
             <div>
