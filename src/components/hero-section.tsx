@@ -1,8 +1,14 @@
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Phone } from "lucide-react";
 import { openHcp } from "@/lib/hcp";
-import Image from "next/image";
+import HeroMediaFallback from "./hero-media-fallback";
+
+const HeroMedia = dynamic(() => import("./hero-media"), {
+  ssr: false,
+  loading: () => <HeroMediaFallback />,
+});
 
 export function HeroSection() {
   const handleBookOnline = openHcp;
@@ -85,31 +91,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Single Hero Image - Fixed Aspect Ratio */}
-          <div className="relative w-full md:w-auto flex justify-center">
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl p-3 shadow-xl">
-              <div className="relative w-full max-w-[480px] aspect-[16/9] rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/images/stock/hero-1.webp"
-                  alt="Professional TV mounting service in Los Angeles - 65-inch TV wall-mounted above fireplace in Westwood apartment"
-                  fill
-                  priority
-                  fetchPriority="high"
-                  sizes="(max-width: 768px) 100vw, 480px"
-                  quality={70}
-                  className="object-cover rounded-lg"
-                />
-              </div>
-
-              {/* Floating tools */}
-              <div className="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg">
-                <div className="text-2xl">🔧</div>
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-white p-3 rounded-full shadow-lg">
-                <div className="text-2xl">📏</div>
-              </div>
-            </div>
-          </div>
+          {/* Hero Media - Dynamic Import with Fallback */}
+          <HeroMedia />
         </div>
       </div>
     </section>

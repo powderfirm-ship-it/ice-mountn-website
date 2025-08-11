@@ -5,7 +5,7 @@ import { HeroSection } from "@/components/hero-section";
 import { ServicesGrid } from "@/components/services-grid";
 import { ReviewsSection } from "@/components/reviews-section";
 import { AreasSection } from "@/components/areas-section";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openHcp } from "@/lib/hcp";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,11 +30,11 @@ export default function Home() {
             <div className="max-w-4xl mx-auto [column-count:1] md:[column-count:2] lg:[column-count:3] gap-6 [column-gap:1.5rem]">
               {[
                 {
-                  src: "/images/stock/gallery-01.jpg",
+                  src: "/images/stock/gallery-01.webp",
                   alt: "55-inch TV mounted on drywall, wire concealment, Hollywood"
                 },
                 {
-                  src: "/images/stock/gallery-02.jpg",
+                  src: "/images/stock/gallery-02.webp",
                   alt: "Over-fireplace TV mount with mantel clearance, Pasadena"
                 },
                 {
@@ -42,7 +42,7 @@ export default function Home() {
                   alt: "TV with floating shelf install, Culver City"
                 },
                 {
-                  src: "/images/stock/gallery-04.jpg",
+                  src: "/images/stock/gallery-04.webp",
                   alt: "75-inch TV mount with tilt bracket, Downtown LA"
                 },
                 {
@@ -50,7 +50,7 @@ export default function Home() {
                   alt: "Bedroom TV wall mount with in-wall cable pass-through, Venice"
                 },
                 {
-                  src: "/images/stock/gallery-06.jpg",
+                  src: "/images/stock/gallery-06.webp",
                   alt: "Slim mount installation in condo living room, Koreatown"
                 }
               ].map((img, idx) => (
@@ -85,8 +85,8 @@ export default function Home() {
               </a>
               <div className="flex flex-col items-center">
                 <button
-                  onClick={openHousecallProModal}
-                  className="inline-flex items-center justify-center px-8 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                  onClick={openHcp}
+                  className="inline-flex items-center justify-center px-8 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   Book Online
                 </button>
