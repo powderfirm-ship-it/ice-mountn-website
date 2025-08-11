@@ -7,12 +7,11 @@ export default function HeroMediaFallback() {
         <div className="relative w-full max-w-[600px] aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
           <Image
             src="/images/stock/hero-1.webp"
-            alt="Professional TV mounting service in Los Angeles - 65-inch TV wall-mounted above fireplace in Westwood apartment"
+            alt="Recent TV mounting install in Los Angeles"
             fill
             priority
             fetchPriority="high"
             sizes="(max-width: 1024px) 90vw, 600px"
-            quality={70}
             className="object-cover"
           />
 

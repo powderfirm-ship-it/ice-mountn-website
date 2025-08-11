@@ -12,25 +12,29 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
+// Use existing images from /images/stock/
+const IMAGES = [
+  "/images/stock/hero-1.webp",
+  "/images/stock/hero-2.webp", 
+  "/images/stock/hero-3.webp",
+  "/images/stock/gallery-01.webp",
+  "/images/stock/gallery-02.webp",
+  "/images/stock/gallery-03.webp"
+];
+
+const IMAGE_ALTS = [
+  "Professional TV mounting service in Los Angeles - 65-inch TV wall-mounted above fireplace in Westwood apartment",
+  "Stud-mounted TV with concealed cables in Santa Monica living room",
+  "Soundbar and TV mounted on accent wall in Beverly Hills home",
+  "55-inch TV mounted on drywall with wire concealment in Hollywood",
+  "Over-fireplace TV mount with mantel clearance in Pasadena",
+  "TV with floating shelf install in Culver City"
+];
+
 export default function HeroMedia() {
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState(0);
   const [isCarouselReady, setIsCarouselReady] = useState(false);
-
-  const images = [
-    {
-      src: "/images/stock/hero-1.webp",
-      alt: "Professional TV mounting service in Los Angeles - 65-inch TV wall-mounted above fireplace in Westwood apartment"
-    },
-    {
-      src: "/images/stock/hero-2.webp",
-      alt: "Stud-mounted TV with concealed cables in Santa Monica living room"
-    },
-    {
-      src: "/images/stock/hero-3.webp",
-      alt: "Soundbar and TV mounted on accent wall in Beverly Hills home"
-    },
-  ];
 
   useEffect(() => {
     if (!api) return;
@@ -56,8 +60,8 @@ export default function HeroMedia() {
         <div className="relative w-full max-w-[600px] aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
           {/* First Frame Image - Always Visible for LCP */}
           <Image
-            src="/images/stock/hero-1.webp"
-            alt="Professional TV mounting service in Los Angeles - 65-inch TV wall-mounted above fireplace in Westwood apartment"
+            src={IMAGES[0]}
+            alt={IMAGE_ALTS[0]}
             fill
             priority
             fetchPriority="high"
@@ -77,12 +81,12 @@ export default function HeroMedia() {
               }}
             >
               <CarouselContent className="h-full">
-                {images.map((image, index) => (
+                {IMAGES.map((imageSrc, index) => (
                   <CarouselItem key={index} className="h-full">
                     <div className="relative w-full h-full">
                       <Image
-                        src={image.src}
-                        alt={image.alt}
+                        src={imageSrc}
+                        alt={IMAGE_ALTS[index]}
                         fill
                         sizes="(max-width: 1024px) 90vw, 600px"
                         quality={70}
@@ -112,7 +116,7 @@ export default function HeroMedia() {
 
               {/* Dots Indicator */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                {images.map((_, index) => (
+                {IMAGES.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}
