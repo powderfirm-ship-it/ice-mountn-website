@@ -182,13 +182,12 @@ export function UCLAPageClient() {
               <GraduationCap className="h-4 w-4 mr-1" />
               UCLA Campus Area
             </Badge>
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               UCLA TV Mounting
+              <span className="block text-blue-600">& Student Installation</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Professional TV mounting for UCLA students in dorms, apartments, and graduate housing near campus.
-              Our RA-approved, renter-friendly installation service provides damage-free mounting that protects
-              your security deposit and complies with UCLA housing regulations.
+              Professional TV mounting for UCLA students in dorms, apartments, and graduate housing near campus. Our RA-approved, renter-friendly installation service provides damage-free mounting that protects your security deposit and complies with UCLA housing regulations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -212,18 +211,22 @@ export function UCLAPageClient() {
               </Button>
             </div>
 
-            <div className="flex items-center justify-center space-x-6 text-sm text-gray-600">
-              <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-1" />
-                Same-day available
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div>
+                <div className="text-2xl font-bold text-blue-600 mb-1">$50</div>
+                <div className="text-sm text-gray-600">Starting Price</div>
               </div>
-              <div className="flex items-center">
-                <Shield className="h-4 w-4 mr-1" />
-                RA-approved methods
+              <div>
+                <div className="text-2xl font-bold text-blue-600 mb-1">Same Day</div>
+                <div className="text-sm text-gray-600">Service Available</div>
               </div>
-              <div className="flex items-center">
-                <Home className="h-4 w-4 mr-1" />
-                Renter-friendly
+              <div>
+                <div className="text-2xl font-bold text-blue-600 mb-1">RA-approved</div>
+                <div className="text-sm text-gray-600">Methods</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-blue-600 mb-1">UCLA Area</div>
+                <div className="text-sm text-gray-600">Specialists</div>
               </div>
             </div>
           </div>

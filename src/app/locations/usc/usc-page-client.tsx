@@ -183,7 +183,7 @@ export function USCPageClient() {
 
       {/* Hero Section */}
       <main>
-        <section className="py-20 bg-gradient-to-br from-red-50 to-white">
+        <section className="py-20 bg-gradient-to-b from-rose-50 via-rose-100/70 to-rose-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <Badge className="mb-4 bg-red-100 text-red-800 border-red-200">
