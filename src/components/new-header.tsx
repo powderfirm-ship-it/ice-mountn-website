@@ -198,8 +198,13 @@ export function NewHeader() {
         <div className="container mx-auto px-4 h-full">
           <div className="flex justify-between items-center h-full">
             {/* Phone Icon */}
-            <a href="tel:+13238638146" className="text-blue-600">
-              <Phone className="h-6 w-6" />
+            <a 
+              href="tel:+13238638146" 
+              className="text-blue-600"
+              aria-label="Call Ice Mount'n at (323) 863-8146"
+            >
+              <Phone className="h-6 w-6" aria-hidden="true" />
+              <span className="sr-only">Call Ice Mount'n at (323) 863-8146</span>
             </a>
 
             {/* Logo */}
@@ -290,7 +295,9 @@ export function NewHeader() {
               <a
                 href="tel:+13238638146"
                 className="block text-center text-xl font-bold text-blue-600"
+                aria-label="Call Ice Mount'n at (323) 863-8146"
               >
+                <span className="sr-only">Call Ice Mount'n at (323) 863-8146</span>
                 (323) 863-8146
               </a>
               <Button

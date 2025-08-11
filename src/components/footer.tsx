@@ -109,11 +109,27 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-4 mb-4 md:mb-0">
-              <a href="https://facebook.com/icemountn" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Facebook className="h-5 w-5" />
+              <a 
+                href="https://facebook.com/icemountn" 
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Ice Mount'n on Facebook (opens in a new tab)"
+                title="Ice Mount'n on Facebook"
+              >
+                <Facebook className="h-5 w-5" aria-hidden="true" />
+                <span className="sr-only">Visit Ice Mount'n on Facebook</span>
               </a>
-              <a href="https://instagram.com/icemountn" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Instagram className="h-5 w-5" />
+              <a 
+                href="https://instagram.com/icemountn" 
+                className="text-gray-400 hover:text-blue-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Ice Mount'n on Instagram (opens in a new tab)"
+                title="Ice Mount'n on Instagram"
+              >
+                <Instagram className="h-5 w-5" aria-hidden="true" />
+                <span className="sr-only">Visit Ice Mount'n on Instagram</span>
               </a>
             </div>
 

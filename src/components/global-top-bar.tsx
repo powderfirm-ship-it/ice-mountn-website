@@ -11,11 +11,13 @@ export function GlobalTopBar() {
     <div className="bg-slate-900 text-white py-2 px-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Phone className="h-4 w-4" />
+          <Phone className="h-4 w-4" aria-hidden="true" />
           <a
             href="tel:(323) 863-8146"
             className="font-semibold text-lg hover:text-blue-300 transition-colors"
+            aria-label="Call Ice Mount'n at (323) 863-8146"
           >
+            <span className="sr-only">Call Ice Mount'n at (323) 863-8146</span>
             (323) 863-8146
           </a>
         </div>
