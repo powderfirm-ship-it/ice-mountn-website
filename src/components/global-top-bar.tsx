@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 export function GlobalTopBar() {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   return (
     <div className="bg-slate-900 text-white py-2 px-4 sticky top-0 z-50">
@@ -22,6 +22,9 @@ export function GlobalTopBar() {
         <Button
           onClick={handleBookOnline}
           className="bg-ice-blue hover:bg-blue-600 text-white font-medium"
+          aria-haspopup="dialog"
+          aria-controls="hcp-booking"
+          data-analytics="hcp-book"
         >
           Book Online
         </Button>

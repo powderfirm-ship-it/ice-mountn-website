@@ -1,7 +1,7 @@
 'use client';
 
 import { MapPin, GraduationCap } from "lucide-react";
-import { openHcp } from "@/lib/hcp";
+import { openBooking } from "@/utils/housecall-pro";
 import Link from "next/link";
 
 const areas = [
@@ -100,8 +100,11 @@ export function AreasSection() {
                   Call Now
                 </a>
                 <button
-                  onClick={openHcp}
+                  onClick={openBooking}
                   className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                  aria-haspopup="dialog"
+                  aria-controls="hcp-booking"
+                  data-analytics="hcp-book"
                 >
                   Schedule Service
                 </button>

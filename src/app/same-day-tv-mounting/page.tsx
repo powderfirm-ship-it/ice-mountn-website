@@ -6,10 +6,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Clock, Shield, Wrench, PhoneCall, Calendar, Home, Zap } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 export default function SameDayTVMountingPage() {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   const urgentFeatures = [
     {

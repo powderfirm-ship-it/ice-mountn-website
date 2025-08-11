@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -19,7 +19,7 @@ const navigation = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   return (
     <header className="bg-white shadow-sm border-b">
@@ -58,6 +58,9 @@ export function Header() {
               <Button
                 onClick={handleBookOnline}
                 className="bg-ice-blue hover:bg-blue-600 text-white"
+                aria-haspopup="dialog"
+                aria-controls="hcp-booking"
+                data-analytics="hcp-book"
               >
                 Book Now
               </Button>
@@ -92,6 +95,9 @@ export function Header() {
                     setIsOpen(false);
                   }}
                   className="bg-ice-blue hover:bg-blue-600 text-white w-full mt-4"
+                  aria-haspopup="dialog"
+                  aria-controls="hcp-booking"
+                  data-analytics="hcp-book"
                 >
                   Book Now
                 </Button>

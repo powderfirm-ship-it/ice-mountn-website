@@ -6,10 +6,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Star, Clock, Shield, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 export default function ServicesPage() {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   const services = [
     {

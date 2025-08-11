@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site-layout";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 import Image from "next/image";
 
 export default function CustomerReviewsPage() {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   // Aggregate Rating JSON-LD Schema
   const aggregateRatingSchema = {

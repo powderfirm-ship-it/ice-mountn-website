@@ -3,6 +3,7 @@ import { Inter, Open_Sans } from "next/font/google";
 import "./globals.css";
 import ClientBody from "./ClientBody";
 import { SchemaMarkup } from "@/components/schema-markup";
+import HcpProvider from "@/components/HcpProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -82,6 +83,7 @@ export default function RootLayout({
         <SchemaMarkup />
       </head>
       <body suppressHydrationWarning className="antialiased">
+        <HcpProvider />
         <ClientBody>{children}</ClientBody>
       </body>
     </html>

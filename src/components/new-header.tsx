@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 // Navigation data
 const services = [
@@ -75,8 +75,11 @@ export function NewHeader() {
             </span>
           </div>
           <Button
-            onClick={openHousecallProModal}
+            onClick={openBooking}
             className="bg-ice-blue hover:bg-blue-600 text-white font-medium h-8 px-4 text-sm rounded shadow"
+            aria-haspopup="dialog"
+            aria-controls="hcp-booking"
+            data-analytics="hcp-book"
           >
             Book Online
           </Button>
@@ -292,7 +295,7 @@ export function NewHeader() {
               </a>
               <Button
                 onClick={() => {
-                  openHousecallProModal();
+                  openBooking();
                   setIsMobileOpen(false);
                 }}
                 className="w-full bg-ice-blue hover:bg-blue-600 text-white font-medium py-3 text-lg rounded shadow"

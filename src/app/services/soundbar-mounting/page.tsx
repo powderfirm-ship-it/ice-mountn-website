@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Star, Clock, Shield, Volume2, PhoneCall, Speaker } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 export default function SoundbarMountingPage() {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   const processSteps = [
     {

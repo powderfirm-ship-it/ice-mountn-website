@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Phone } from "lucide-react";
-import { openHcp } from "@/lib/hcp";
+import { openBooking } from "@/utils/housecall-pro";
 import FeaturedProject from "./FeaturedProject";
 
 export function HeroSection() {
-  const handleBookOnline = openHcp;
+  const handleBookOnline = openBooking;
 
   return (
     <section className="relative bg-gradient-to-br from-blue-50 to-white py-20 lg:py-32">

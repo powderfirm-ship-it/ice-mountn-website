@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { openHcp } from "@/lib/hcp";
+import { openBooking } from "@/utils/housecall-pro";
 
 const faqs = [
   {
@@ -90,8 +90,11 @@ export function FAQSection() {
                 Call Now: (323) 863-8146
               </a>
               <button
-                onClick={openHcp}
+                onClick={openBooking}
                 className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                aria-haspopup="dialog"
+                aria-controls="hcp-booking"
+                data-analytics="hcp-book"
               >
                 Get Free Quote
               </button>

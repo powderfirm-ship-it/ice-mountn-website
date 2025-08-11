@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { locations, campusLocations } from "@/data/locations";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 export default function LocationsPage() {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   return (
     <SiteLayout>

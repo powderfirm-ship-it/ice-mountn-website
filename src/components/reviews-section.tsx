@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import Link from "next/link";
-import { openHcp } from "@/lib/hcp";
+import { openBooking } from "@/utils/housecall-pro";
 import AvatarInitials from "./AvatarInitials";
 
 const reviews = [
@@ -115,8 +115,11 @@ export function ReviewsSection() {
               Get Free Estimate
             </a>
             <button
-              onClick={openHcp}
+              onClick={openBooking}
               className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              aria-haspopup="dialog"
+              aria-controls="hcp-booking"
+              data-analytics="hcp-book"
             >
               Book Online
             </button>

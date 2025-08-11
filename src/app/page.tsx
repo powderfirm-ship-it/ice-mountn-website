@@ -5,7 +5,7 @@ import { HeroSection } from "@/components/hero-section";
 import { ServicesGrid } from "@/components/services-grid";
 import { ReviewsSection } from "@/components/reviews-section";
 import { AreasSection } from "@/components/areas-section";
-import { openHcp } from "@/lib/hcp";
+import { openBooking } from "@/utils/housecall-pro";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -85,8 +85,11 @@ export default function Home() {
               </a>
               <div className="flex flex-col items-center">
                 <button
-                  onClick={openHcp}
+                  onClick={openBooking}
                   className="inline-flex items-center justify-center px-8 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                  aria-haspopup="dialog"
+                  aria-controls="hcp-booking"
+                  data-analytics="hcp-book"
                 >
                   Book Online
                 </button>

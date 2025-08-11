@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tv, Flame, Cable, Speaker, Image } from "lucide-react";
-import { openHcp } from "@/lib/hcp";
+import { openBooking } from "@/utils/housecall-pro";
 
 const services = [
   {
@@ -94,8 +94,11 @@ export function ServicesGrid() {
               Get Free Quote
             </a>
             <button
-              onClick={openHcp}
+              onClick={openBooking}
               className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              aria-haspopup="dialog"
+              aria-controls="hcp-booking"
+              data-analytics="hcp-book"
             >
               Schedule Service
             </button>

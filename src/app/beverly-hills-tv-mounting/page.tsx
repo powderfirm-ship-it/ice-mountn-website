@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tv, Flame, Cable, Speaker, Image, Star, MapPin, Clock, Shield } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 const localServices = [
   {
@@ -52,7 +52,7 @@ const localTestimonials = [
 ];
 
 export default function BeverlyHillsTVMounting() {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   return (
     <SiteLayout>

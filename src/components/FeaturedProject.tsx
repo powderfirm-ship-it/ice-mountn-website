@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Wrench, Ruler } from "lucide-react";
 
 export default function FeaturedProject() {
   return (
@@ -30,11 +31,11 @@ export default function FeaturedProject() {
           </div>
 
           {/* Floating tools */}
-          <div className="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg">
-            <div className="text-2xl">🔧</div>
+          <div className="absolute right-3 top-3 z-10 h-11 w-11 rounded-full bg-white shadow-md ring-1 ring-black/5 grid place-items-center" aria-hidden="true">
+            <Wrench className="h-5 w-5 opacity-70" />
           </div>
-          <div className="absolute -bottom-4 -left-4 bg-white p-3 rounded-full shadow-lg">
-            <div className="text-2xl">📏</div>
+          <div className="absolute left-3 bottom-3 z-10 h-11 w-11 rounded-full bg-white shadow-md ring-1 ring-black/5 grid place-items-center" aria-hidden="true">
+            <Ruler className="h-5 w-5 opacity-70" />
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/site-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 export default function ContactPage() {
   return (
@@ -66,7 +66,7 @@ export default function ContactPage() {
                   <CardContent className="text-center">
                     <Button
                       className="bg-ice-blue hover:bg-blue-600 text-white w-full"
-                      onClick={openHousecallProModal}
+                      onClick={openBooking}
                     >
                       Schedule Service
                     </Button>

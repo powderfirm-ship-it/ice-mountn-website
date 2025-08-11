@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall, MapPin, Home, Building } from "lucide-react";
 import Link from "next/link";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+import { openBooking } from "@/utils/housecall-pro";
 
 interface CityPageClientProps {
   cityName: string;
@@ -29,7 +29,7 @@ export function CityPageClient({
   localFaqs, 
   data 
 }: CityPageClientProps) {
-  const handleBookOnline = openHousecallProModal;
+  const handleBookOnline = openBooking;
 
   return (
     <>
