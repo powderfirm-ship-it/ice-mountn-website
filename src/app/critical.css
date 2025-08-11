@@ -1,0 +1,45 @@
+/* Critical CSS for LCP text optimization */
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-gray-600 {
+  color: rgb(75 85 99);
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.text-blue-600 {
+  color: rgb(37 99 235);
+}
+
+.text-gray-900 {
+  color: rgb(17 24 39);
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+/* Use CSS variables from next/font for optimal font loading */
+:root {
+  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-open-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+}

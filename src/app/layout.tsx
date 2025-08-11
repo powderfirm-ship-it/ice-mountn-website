@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Open_Sans } from "next/font/google";
+import "./critical.css";
 import "./globals.css";
 import ClientBody from "./ClientBody";
 import { SchemaMarkup } from "@/components/schema-markup";
@@ -79,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${openSans.variable}`}>
       <head>
+
         {/* Preload LCP image for better performance */}
         <link
           rel="preload"
