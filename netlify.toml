@@ -1,0 +1,146 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# 301 Redirects for clean location URL slugs
+[[redirects]]
+  from = "/locations/santa-monica-tv-mounting"
+  to = "/locations/santa-monica"
+  status = 301
+
+[[redirects]]
+  from = "/locations/westwood-tv-mounting"
+  to = "/locations/westwood"
+  status = 301
+
+[[redirects]]
+  from = "/locations/beverly-hills-tv-mounting"
+  to = "/locations/beverly-hills"
+  status = 301
+
+[[redirects]]
+  from = "/locations/west-hollywood-tv-mounting"
+  to = "/locations/west-hollywood"
+  status = 301
+
+[[redirects]]
+  from = "/locations/hollywood-tv-mounting"
+  to = "/locations/hollywood"
+  status = 301
+
+[[redirects]]
+  from = "/locations/downtown-la-tv-mounting"
+  to = "/locations/dtla"
+  status = 301
+
+[[redirects]]
+  from = "/locations/dtla-tv-mounting"
+  to = "/locations/dtla"
+  status = 301
+
+[[redirects]]
+  from = "/locations/silver-lake-tv-mounting"
+  to = "/locations/silver-lake"
+  status = 301
+
+[[redirects]]
+  from = "/locations/echo-park-tv-mounting"
+  to = "/locations/echo-park"
+  status = 301
+
+[[redirects]]
+  from = "/locations/pasadena-tv-mounting"
+  to = "/locations/pasadena"
+  status = 301
+
+[[redirects]]
+  from = "/locations/glendale-tv-mounting"
+  to = "/locations/glendale"
+  status = 301
+
+[[redirects]]
+  from = "/locations/burbank-tv-mounting"
+  to = "/locations/burbank"
+  status = 301
+
+[[redirects]]
+  from = "/locations/studio-city-tv-mounting"
+  to = "/locations/studio-city"
+  status = 301
+
+[[redirects]]
+  from = "/locations/sherman-oaks-tv-mounting"
+  to = "/locations/sherman-oaks"
+  status = 301
+
+[[redirects]]
+  from = "/locations/brentwood-tv-mounting"
+  to = "/locations/brentwood"
+  status = 301
+
+[[redirects]]
+  from = "/locations/culver-city-tv-mounting"
+  to = "/locations/culver-city"
+  status = 301
+
+[[redirects]]
+  from = "/locations/venice-tv-mounting"
+  to = "/locations/venice"
+  status = 301
+
+[[redirects]]
+  from = "/locations/marina-del-rey-tv-mounting"
+  to = "/locations/marina-del-rey"
+  status = 301
+
+[[redirects]]
+  from = "/locations/manhattan-beach-tv-mounting"
+  to = "/locations/manhattan-beach"
+  status = 301
+
+[[redirects]]
+  from = "/locations/el-segundo-tv-mounting"
+  to = "/locations/el-segundo"
+  status = 301
+
+[[redirects]]
+  from = "/locations/inglewood-tv-mounting"
+  to = "/locations/inglewood"
+  status = 301
+
+[[redirects]]
+  from = "/locations/hawthorne-tv-mounting"
+  to = "/locations/hawthorne"
+  status = 301
+
+# Campus redirects - new format
+[[redirects]]
+  from = "/locations/ucla-tv-mounting"
+  to = "/locations/ucla"
+  status = 301
+
+[[redirects]]
+  from = "/locations/usc-tv-mounting"
+  to = "/locations/usc"
+  status = 301
+
+# Legacy page redirects
+[[redirects]]
+  from = "/reviews"
+  to = "/customer-reviews"
+  status = 301
+
+[[redirects]]
+  from = "/gallery"
+  to = "/#gallery"
+  status = 301
+
+# API routes and admin paths (disallow crawling)
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
+  status = 200
+  headers = { X-Robots-Tag = "noindex, nofollow" }

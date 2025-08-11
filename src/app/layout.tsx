@@ -1,0 +1,99 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import ClientBody from "./ClientBody";
+import Script from "next/script";
+import { SchemaMarkup } from "@/components/schema-markup";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://icemountn.com'),
+  title: {
+    template: '%s | Ice Mount\'n',
+    default: 'TV Mounting Los Angeles | Ice Mount\'n - Same Day Service'
+  },
+  description: "Professional TV mounting and home theater installation in Los Angeles. Samsung Frame specialist, over-fireplace mounting, cable concealment. Same-day service, top-rated pros. Call (323) 863-8146 for free estimate.",
+  keywords: "tv mounting los angeles, tv wall mounting service los angeles, tv installation los angeles, home theater installation, cable concealment, samsung frame installer los angeles, over fireplace tv mounting, sound bar installation",
+  authors: [{ name: "Ice Mount'n" }],
+  creator: "Ice Mount'n",
+  publisher: "Ice Mount'n",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Ice Mount'n",
+    title: "Ice Mount'n - TV Mounting & Home Theater Installation Los Angeles",
+    description: "Same-day TV mounting service across LA. Professional installation, lowest pricing, top-rated service.",
+    locale: "en_US",
+    url: "https://icemountn.com",
+    images: [
+      {
+        url: "/images/stock/hero-1.webp",
+        width: 1200,
+        height: 630,
+        alt: "Professional TV mounting service in Los Angeles"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@icemountn",
+    creator: "@icemountn",
+    title: "Ice Mount'n - TV Mounting Los Angeles",
+    description: "Same-day TV mounting service across LA. Professional installation, lowest pricing, top-rated service.",
+    images: ["/images/stock/hero-1.webp"]
+  },
+  alternates: {
+    canonical: "https://icemountn.com"
+  },
+  verification: {
+    google: "your-google-verification-code", // Replace with actual verification code
+  }
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <Script
+          crossOrigin="anonymous"
+          src="//unpkg.com/same-runtime/dist/index.global.js"
+        />
+        {/* Housecall Pro Online Booking */}
+        <Script
+          async
+          src="https://online-booking.housecallpro.com/script.js?token=b89a8095e38d4b95a43f864fca45ad5c&orgName=Ice-Mountn"
+        />
+        {/* JSON-LD Schema Markup for SEO */}
+        <SchemaMarkup />
+      </head>
+      <body suppressHydrationWarning className="antialiased">
+        <ClientBody>{children}</ClientBody>
+      </body>
+    </html>
+  );
+}

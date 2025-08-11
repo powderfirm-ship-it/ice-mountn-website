@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Specific pages to crawl
+Allow: /locations/*
+Allow: /services/*
+Allow: /customer-reviews
+Allow: /discounts
+Allow: /faq
+Allow: /contact
+Allow: /privacy
+
+Sitemap: https://icemountn.com/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1

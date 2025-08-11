@@ -1,0 +1,136 @@
+'use client';
+
+import Link from "next/link";
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
+
+export function Footer() {
+  return (
+    <footer className="bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 flex items-center justify-center">
+                <img
+                  src="https://ugc.same-assets.com/tiwYma9EKHAsEWqTnd_WNEK3Wcz1B2Kd.png"
+                  alt="Ice Mount'n Logo"
+                  className="w-8 h-6 object-contain"
+                  onError={(e) => {
+                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAzMiAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHJ4PSIzIiBmaWxsPSIjMTE5MUZGIi8+CiAgPHRleHQgeD0iMTYiIHk9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjYiIGZvbnQtd2VpZ2h0PSJib2xkIj5MT0dPPC90ZXh0PgogIDxyZWN0IHg9IjMiIHk9IjMiIHdpZHRoPSIyNiIgaGVpZ2h0PSIxOCIgcng9IjEiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==';
+                  }}
+                />
+              </div>
+              <div>
+                <h3 className="font-bold text-lg">Ice Mount'n</h3>
+                <p className="text-xs text-gray-400">Elite TV & Home Audio Installations</p>
+              </div>
+            </div>
+
+            <div className="space-y-2 text-sm">
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 text-blue-400" />
+                <a href="tel:(323) 863-8146" className="hover:text-blue-400 transition-colors">
+                  (323) 863-8146
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Mail className="h-4 w-4 text-blue-400" />
+                <a href="mailto:contact@icemountn.com" className="hover:text-blue-400 transition-colors">
+                  contact@icemountn.com
+                </a>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Clock className="h-4 w-4 text-blue-400 mt-0.5" />
+                <div className="text-xs">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                    <span>Monday</span><span>8 AM – 8 PM</span>
+                    <span>Tuesday</span><span>8 AM – 8 PM</span>
+                    <span>Wednesday</span><span>Closed</span>
+                    <span>Thursday</span><span>8 AM – 8 PM</span>
+                    <span>Friday</span><span>8 AM – 8 PM</span>
+                    <span>Saturday</span><span>8 AM – 8 PM</span>
+                    <span>Sunday</span><span>8 AM – 8 PM</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/services" className="hover:text-blue-400 transition-colors">Services</Link></li>
+              <li><Link href="/customer-reviews" className="hover:text-blue-400 transition-colors">Reviews</Link></li>
+              <li><Link href="/#areas" className="hover:text-blue-400 transition-colors">Areas We Serve</Link></li>
+              <li><Link href="/locations" className="hover:text-blue-400 transition-colors">Locations</Link></li>
+              <li><Link href="/same-day-tv-mounting" className="hover:text-blue-400 transition-colors">Same-Day Service</Link></li>
+              <li><Link href="/discounts" className="hover:text-blue-400 transition-colors">Discounts</Link></li>
+              <li><Link href="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
+              <li><Link href="/trust-and-support" className="hover:text-blue-400 transition-colors">Trust & Support</Link></li>
+              <li><Link href="/terms" className="hover:text-blue-400 transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Our Services</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/services/standard-tv-mount" className="hover:text-blue-400 transition-colors">Standard TV Mounting</Link></li>
+              <li><Link href="/services/over-fireplace-mount" className="hover:text-blue-400 transition-colors">Over-Fireplace Installation</Link></li>
+              <li><Link href="/services/cable-concealment" className="hover:text-blue-400 transition-colors">Cable Concealment</Link></li>
+              <li><Link href="/services/soundbar-mounting" className="hover:text-blue-400 transition-colors">Sound-bar Mounting</Link></li>
+              <li><Link href="/services/samsung-frame" className="hover:text-blue-400 transition-colors">Samsung Frame Specialist</Link></li>
+            </ul>
+          </div>
+
+          {/* Map */}
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Find Us</h4>
+            <div className="w-full h-48 rounded-lg overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27404345275!2d-118.6919229!3d34.0201613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ice Mount'n Service Area - Los Angeles"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Social Links & Copyright */}
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex space-x-4 mb-4 md:mb-0">
+              <a href="https://facebook.com/icemountn" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="https://instagram.com/icemountn" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
+
+            <div className="text-center md:text-right">
+              <p className="text-sm text-gray-400">
+                © 2025 Ice Mount'n. All rights reserved.
+              </p>
+              <div className="flex items-center justify-center md:justify-end space-x-2 mt-1">
+                <span className="text-xs text-gray-500">Powered by</span>
+                <a href="https://housecallpro.com" className="text-xs text-blue-400 hover:text-blue-300">
+                  Housecall Pro
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

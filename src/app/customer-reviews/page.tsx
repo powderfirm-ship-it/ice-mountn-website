@@ -1,0 +1,186 @@
+'use client';
+
+import { Button } from "@/components/ui/button";
+import { SiteLayout } from "@/components/site-layout";
+import { openHousecallProModal } from "@/utils/housecall-pro";
+import Image from "next/image";
+
+export default function CustomerReviewsPage() {
+  const handleBookOnline = openHousecallProModal;
+
+  // Aggregate Rating JSON-LD Schema
+  const aggregateRatingSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Ice Mount'n",
+    "description": "Professional TV mounting and home theater installation service in Los Angeles",
+    "url": "https://icemountn.com",
+    "telephone": "(323) 863-8146",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "150",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Sarah M."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Ice Mount'n did an amazing job mounting our 65-inch TV in our Beverly Hills apartment. Completely renter-friendly and no damage to our walls!"
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Michael K."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Same-day service in Santa Monica! Professional installation and perfect cable concealment. Highly recommend for anyone in West LA."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Jennifer L."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Excellent service for our UCLA student housing. The technician was respectful of our dorm policies and the installation looks perfect."
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/icemountn",
+      "https://www.instagram.com/icemountn",
+      "https://www.yelp.com/biz/ice-mountn"
+    ]
+  };
+
+  return (
+    <SiteLayout>
+      {/* Aggregate Rating JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(aggregateRatingSchema)
+        }}
+      />
+
+      <div className="bg-gray-50">
+        {/* Header Section */}
+        <div className="bg-white border-b">
+          <div className="container mx-auto px-4 py-12">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 text-center">
+              Ice Mount'n Customer Reviews
+            </h1>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Hero Photo */}
+            <div className="space-y-6">
+              <div className="relative">
+                <Image
+                  src="/images/stock/review-01.jpg"
+                  alt="Ice Mount'n TV mounting project showcase"
+                  width={1200}
+                  height={900}
+                  loading="lazy"
+                  className="w-full h-96 object-cover rounded-lg shadow-lg"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+              </div>
+
+              {/* SEO Paragraphs */}
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    Trusted by Los Angeles Homeowners
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    With a 4.9-star rating from over 150 satisfied customers, Ice Mount'n has established itself as Los Angeles' premier TV mounting service. Our professional installations are backed by years of experience and a commitment to excellence that shows in every review. From Beverly Hills to Santa Monica, homeowners trust us for clean, secure installations that transform their living spaces.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-sm border">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    Same-Day Service You Can Count On
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    Don't wait weeks for your TV mounting installation. Ice Mount'n offers same-day service throughout Greater Los Angeles, ensuring your entertainment setup is ready when you are. Our expert technicians arrive on time, work efficiently, and leave your space cleaner than they found it. Experience the difference that professional, prompt service makes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Reviews Embed */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="p-6 border-b bg-gray-50">
+                  <h2 className="text-2xl font-semibold text-gray-900">
+                    What Our Customers Say
+                  </h2>
+                  <p className="text-gray-600 mt-2">
+                    Read authentic reviews from real customers
+                  </p>
+                </div>
+
+                {/* Housecall Pro Reviews Embed */}
+                <div className="relative">
+                  <iframe
+                    src="https://client.housecallpro.com/reviews/Ice-Mount'n/afef05b9-206d-471c-a01c-1a5944da15f0/"
+                    width="100%"
+                    height="600"
+                    frameBorder="0"
+                    style={{ border: 'none' }}
+                    title="Ice Mount'n Customer Reviews"
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              {/* Book Online Button */}
+              <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  Ready to Experience Our 5-Star Service?
+                </h3>
+                <Button
+                  onClick={handleBookOnline}
+                  className="w-full bg-ice-blue hover:bg-blue-700 text-white font-semibold py-4 text-lg rounded-lg shadow-lg transition-all duration-200 hover:shadow-xl"
+                >
+                  Book Online - Same Day Service Available
+                </Button>
+                <p className="text-sm text-gray-600 mt-3">
+                  Or call <a href="tel:(323) 863-8146" className="text-blue-600 hover:underline font-semibold">(323) 863-8146</a> for immediate assistance
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </SiteLayout>
+  );
+}
