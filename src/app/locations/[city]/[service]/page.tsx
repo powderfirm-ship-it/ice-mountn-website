@@ -164,13 +164,7 @@ export default async function CityServicePage({
                 <span className="block text-blue-600">in {city.name}</span>
               </h1>
 
-              <p
-                className="
-                  text-base md:text-lg text-gray-600 leading-relaxed
-                  max-w-[60ch] md:max-w-[65ch]
-                  mb-6 md:mb-8
-                "
-              >
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-[60ch] md:max-w-[65ch] mb-6 md:mb-8">
                 {serviceData.description} Professional TV mounting service in {city.name}, Los Angeles.
               </p>
 
