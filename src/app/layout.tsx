@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Open_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./critical.css";
 import "./globals.css";
-import ClientBody from "./ClientBody";
+
 import { SchemaMarkup } from "@/components/schema-markup";
 import HcpProvider from "@/components/HcpProvider";
 
@@ -94,9 +94,9 @@ export default function RootLayout({
         {/* JSON-LD Schema Markup for SEO */}
         <SchemaMarkup />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} antialiased`}>
         <HcpProvider />
-        <ClientBody>{children}</ClientBody>
+        {children}
       </body>
     </html>
   );

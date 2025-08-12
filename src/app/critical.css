@@ -41,5 +41,4 @@
 /* Use CSS variables from next/font for optimal font loading */
 :root {
   --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-open-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
 }
