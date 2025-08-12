@@ -31,6 +31,12 @@ interface CityServicePageClientProps {
 export function CityServicePageClient({ city, service }: CityServicePageClientProps) {
   const serviceData = SERVICES[service];
   const handleBookOnline = openBooking;
+  
+  // Determine which image to use based on service
+  const heroImage = service === "samsung-frame" ? "/images/stock/gallery-05.webp" : "/images/stock/gallery-04.webp";
+  const heroAlt = service === "samsung-frame" 
+    ? `Samsung Frame TV professionally wall-mounted with concealed wiring in ${city.name}`
+    : `${serviceData.title} professionally wall-mounted with concealed wiring in ${city.name}`;
 
   return (
     <SiteLayout>
@@ -73,11 +79,11 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
         {/* Hero Section */}
-        <section className="relative py-20 lg:py-32">
+        <section className="relative py-16 lg:py-24">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-4xl mx-auto">
               {/* Breadcrumb */}
-              <nav className="flex justify-center mb-8 text-sm text-gray-600">
+              <nav className="flex justify-center mb-6 text-sm text-gray-600">
                 <Link href="/" className="hover:text-blue-600">Home</Link>
                 <span className="mx-2">→</span>
                 <Link href="/locations" className="hover:text-blue-600">Locations</Link>
@@ -124,13 +130,13 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
                 </Button>
               </div>
 
-              {/* See Pricing Link */}
+              {/* See Pricing Link - Updated styling to match "View more reviews →" */}
               <div className="mb-12 text-center">
                 <Link
                   href={`/services/${service}`}
-                  className="text-blue-600 hover:underline font-medium text-lg"
+                  className="inline-flex items-center text-blue-700 hover:text-blue-800 font-medium transition-colors underline underline-offset-2"
                 >
-                  See Pricing
+                  See Pricing ➜
                 </Link>
               </div>
 
@@ -170,11 +176,11 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
                 ))}
               </div>
 
-              {/* Service Image - Updated with clearer mounted-TV photo */}
+              {/* Service Image - Updated to use appropriate image based on service */}
               <div className="relative mx-auto w-full max-w-3xl rounded-2xl overflow-hidden shadow-lg mb-12">
                 <Image
-                  src="/images/stock/gallery-04.webp"
-                  alt={`${serviceData.title} professionally wall-mounted with concealed wiring in ${city.name}`}
+                  src={heroImage}
+                  alt={heroAlt}
                   width={1280}
                   height={800}
                   priority
@@ -231,21 +237,21 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="mx-auto h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                  <div className="mx-auto h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
                     <MapPin className="h-6 w-6 text-blue-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Local Expertise</h3>
                   <p className="text-gray-600">Knowledge of {city.name} building codes and requirements</p>
                 </div>
                 <div className="text-center">
-                  <div className="mx-auto h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                  <div className="mx-auto h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
                     <Star className="h-6 w-6 text-green-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Top-Rated Service</h3>
                   <p className="text-gray-600">4.9/5 customer rating in {city.name}</p>
                 </div>
                 <div className="text-center">
-                  <div className="mx-auto h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center mb-4">
+                  <div className="mx-auto h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center">
                     <Phone className="h-6 w-6 text-orange-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Same-Day Service</h3>
