@@ -9,12 +9,18 @@ import HcpProvider from "@/components/HcpProvider";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  fallback: ["ui-sans-serif", "-apple-system", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+  adjustFontFallback: true,
   variable: "--font-inter",
 });
 
 const openSans = Open_Sans({
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  fallback: ["ui-sans-serif", "-apple-system", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+  adjustFontFallback: true,
   variable: "--font-open-sans",
 });
 

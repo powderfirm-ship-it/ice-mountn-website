@@ -158,7 +158,7 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
         </section>
 
         {/* Service Details */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 1000px" }}>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
@@ -224,7 +224,7 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
         </section>
 
         {/* Location Info */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-gray-50" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 800px" }}>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-900 mb-8">
