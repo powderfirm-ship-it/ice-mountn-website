@@ -8,13 +8,15 @@ interface SiteLayoutServerProps {
 export default function SiteLayoutServer({ children }: SiteLayoutServerProps) {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Hero content renders first (server-rendered) */}
+      {/* Header at the top for sticky behavior */}
+      <NewHeader />
+      
+      {/* Main content */}
       <main className="flex-1">
         {children}
       </main>
       
-      {/* Client components render after hero */}
-      <NewHeader />
+      {/* Footer at the bottom */}
       <Footer />
     </div>
   );
