@@ -5,6 +5,9 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  compiler: {
+    removeConsole: { production: true },
+  },
   async redirects() {
     return [
       {
