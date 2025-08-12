@@ -11,15 +11,6 @@ const inter = Inter({
   weight: ["400", "600", "700"],
   display: "swap",
   preload: true,
-  variable: "--font-inter",
-});
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  display: "swap",
-  preload: true,
-  variable: "--font-open-sans",
 });
 
 export const metadata: Metadata = {
@@ -85,9 +76,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${openSans.variable}`}>
+    <html lang="en">
       <head>
-        {/* Preconnect for font fetch */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
@@ -104,7 +94,7 @@ export default function RootLayout({
         {/* JSON-LD Schema Markup for SEO */}
         <SchemaMarkup />
       </head>
-      <body suppressHydrationWarning className="antialiased">
+      <body className={inter.className}>
         <HcpProvider />
         <ClientBody>{children}</ClientBody>
       </body>
