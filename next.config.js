@@ -53,15 +53,6 @@ const nextConfig = {
         ],
       },
       {
-        source: '/favicon.ico',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
         source: '/(.*).js',
         headers: [
           {

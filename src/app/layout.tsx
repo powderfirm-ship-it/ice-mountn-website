@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Ice Mount'n" }],
   creator: "Ice Mount'n",
   publisher: "Ice Mount'n",
+  icons: {
+    icon: '/images/brand/favicon.webp',
+  },
   robots: {
     index: true,
     follow: true,
@@ -80,7 +83,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${openSans.variable}`}>
       <head>
-
+        {/* Favicon */}
+        <link rel="icon" type="image/webp" href="/images/brand/favicon.webp" />
+        
         {/* Preload LCP image for better performance */}
         <link
           rel="preload"
