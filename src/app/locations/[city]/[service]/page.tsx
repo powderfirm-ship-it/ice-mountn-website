@@ -2,7 +2,28 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CITIES } from "@/data/cities";
 import { SERVICES, type ServiceSlug } from "@/data/services";
-import { CityServicePageClient } from "./city-service-page-client";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Check, Phone, MapPin, Star } from "lucide-react";
+import { CITIES as CITIES_DATA } from "@/data/cities";
+import { SERVICES as SERVICES_DATA, type ServiceSlug as ServiceSlugType } from "@/data/services";
+import SiteLayoutServer from "@/components/site-layout-server";
+import Image from "next/image";
+import Link from "next/link";
+import HcpBookButton from "@/components/hcp-book-button";
+
+// Icon mapping function
+function getIcon(name: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightning") {
+  switch (name) {
+    case "tv": return "📺";
+    case "flame": return "🔥";
+    case "cable": return "🔌";
+    case "speaker": return "🔊";
+    case "frame": return "🖼️";
+    case "lightning": return "⚡";
+    default: return "📺";
+  }
+}
 
 // Generate static params for all city+service combinations
 export async function generateStaticParams() {
@@ -69,5 +90,226 @@ export default async function CityServicePage({
     notFound();
   }
 
-  return <CityServicePageClient city={city} service={service} />;
+  const serviceData = SERVICES[service];
+  
+  // Determine which image to use based on service
+  const heroImage = service === "samsung-frame" ? "/images/stock/gallery-05.webp" : "/images/stock/gallery-04.webp";
+  const heroAlt = service === "samsung-frame" 
+    ? `Samsung Frame TV professionally wall-mounted with concealed wiring in ${city.name}`
+    : `${serviceData.title} professionally wall-mounted with concealed wiring in ${city.name}`;
+
+  return (
+    <SiteLayoutServer>
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": `${serviceData.h1} in ${city.name}`,
+            "description": serviceData.description,
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Ice Mount'n",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": city.name,
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": city.name,
+                "containedInPlace": {
+                  "@type": "City",
+                  "name": "Los Angeles"
+                }
+              }
+            },
+            "serviceType": serviceData.title,
+            "url": `https://icemountn.com/locations/${city.slug}/${service}`,
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://icemountn.com/locations/${city.slug}/${service}`
+            }
+          })
+        }}
+      />
+
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+        {/* Hero Section - Fully Server Rendered */}
+        <section className="relative py-16 lg:py-24">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-4xl mx-auto">
+              {/* Breadcrumb */}
+              <nav className="flex justify-center mt-3 sm:mt-4 mb-6 text-sm text-gray-600">
+                <Link href="/" className="hover:text-blue-600">Home</Link>
+                <span className="mx-2">→</span>
+                <Link href="/locations" className="hover:text-blue-600">Locations</Link>
+                <span className="mx-2">→</span>
+                <Link href={`/locations/${city.slug}`} className="hover:text-blue-600">{city.name}</Link>
+                <span className="mx-2">→</span>
+                <span className="text-gray-900">{serviceData.title}</span>
+              </nav>
+
+              {/* Service Icon */}
+              <div className="mx-auto h-20 w-20 rounded-full bg-blue-100 grid place-items-center mb-6">
+                <span className="text-3xl">{getIcon(serviceData.icon)}</span>
+              </div>
+
+              {/* Headlines - Server Rendered */}
+              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                {serviceData.h1}
+                <span className="block text-blue-600">in {city.name}</span>
+              </h1>
+
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-3xl mx-auto lcp-safe">
+                {serviceData.description} Professional TV mounting service in {city.name}, Los Angeles.
+              </p>
+
+              {/* CTAs - Only HCP button is client component */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <HcpBookButton />
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-gray-300 text-gray-700 hover:bg-gray-50 text-lg px-8 py-6"
+                  asChild
+                >
+                  <a href="tel:(323) 863-8146" className="flex items-center">
+                    <Phone className="h-5 w-5 mr-2" />
+                    Call (323) 863-8146
+                  </a>
+                </Button>
+              </div>
+
+              {/* See Pricing Link */}
+              <div className="mb-12 text-center">
+                <Link
+                  href={serviceData.canonicalPath}
+                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  See Pricing <span aria-hidden="true" className="ml-1">→</span>
+                </Link>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
+                  <Star className="h-3 w-3 mr-1 fill-current" />
+                  Top-Pro Rated
+                </Badge>
+                <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-200">
+                  Same-Day Service
+                </Badge>
+                <Badge variant="secondary" className="bg-orange-100 text-orange-800 border-orange-200">
+                  $ Lowest Pricing
+                </Badge>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Details */}
+        <section className="py-20 bg-white" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 1000px" }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+                What's Included in {serviceData.title}
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                {serviceData.bullets.map((bullet, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center">
+                      <Check className="h-4 w-4 text-blue-600" />
+                    </div>
+                    <p className="text-gray-700">{bullet}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Service Image */}
+              <div className="relative mx-auto w-full max-w-3xl rounded-2xl overflow-hidden shadow-lg mb-12">
+                <Image
+                  src={heroImage}
+                  alt={heroAlt}
+                  width={1280}
+                  height={800}
+                  priority
+                  fetchPriority="high"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+
+              {/* CTA Section */}
+              <div className="text-center bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Ready to Get Started?
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Book your {serviceData.title.toLowerCase()} service in {city.name} today. 
+                  Same-day installation available throughout Los Angeles.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <HcpBookButton />
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-gray-300 text-gray-700 hover:bg-gray-50 text-lg px-8 py-6"
+                    asChild
+                  >
+                    <a href="tel:(323) 863-8146" className="flex items-center">
+                      <Phone className="h-5 w-5 mr-2" />
+                      Call (323) 863-8146
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Location Info */}
+        <section className="py-20 bg-gray-50" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 800px" }}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                TV Mounting Service in {city.name}, Los Angeles
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Professional {serviceData.title.toLowerCase()} installation with same-day service available. 
+                Licensed and insured technicians serving {city.name} and surrounding areas.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <MapPin className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Local Service</h3>
+                  <p className="text-gray-600">Serving {city.name} and surrounding Los Angeles areas</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Star className="h-8 w-8 text-green-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Top-Rated</h3>
+                  <p className="text-gray-600">4.9-star rating from 150+ satisfied customers</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Check className="h-8 w-8 text-orange-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Same-Day</h3>
+                  <p className="text-gray-600">Professional installation available today</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </SiteLayoutServer>
+  );
 }
