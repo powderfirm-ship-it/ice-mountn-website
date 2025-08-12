@@ -133,10 +133,10 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
               {/* See Pricing Link - Updated styling to match "View more reviews →" */}
               <div className="mb-12 text-center">
                 <Link
-                  href={`/services/${service}`}
-                  className="inline-flex items-center text-blue-700 hover:text-blue-800 font-medium transition-colors underline underline-offset-2"
+                  href={serviceData.canonicalPath}
+                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
                 >
-                  See Pricing ➜
+                  See Pricing <span aria-hidden="true" className="ml-1">→</span>
                 </Link>
               </div>
 
