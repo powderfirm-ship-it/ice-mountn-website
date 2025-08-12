@@ -8,19 +8,17 @@ import HcpProvider from "@/components/HcpProvider";
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
   display: "swap",
   preload: true,
-  fallback: ["ui-sans-serif", "-apple-system", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
-  adjustFontFallback: true,
   variable: "--font-inter",
 });
 
 const openSans = Open_Sans({
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
   display: "swap",
   preload: true,
-  fallback: ["ui-sans-serif", "-apple-system", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
-  adjustFontFallback: true,
   variable: "--font-open-sans",
 });
 
@@ -89,6 +87,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${openSans.variable}`}>
       <head>
+        {/* Preconnect for font fetch */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
         {/* Favicon */}
         <link rel="icon" type="image/webp" href="/images/brand/favicon.webp" />
         
