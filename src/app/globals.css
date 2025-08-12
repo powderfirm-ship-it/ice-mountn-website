@@ -90,3 +90,11 @@
     background: linear-gradient(rgba(17, 145, 255, 0.1), rgba(17, 145, 255, 0.1));
   }
 }
+
+/* Make the LCP element immediately visible even if a reveal/animation slipped through */
+.lcp-safe {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
