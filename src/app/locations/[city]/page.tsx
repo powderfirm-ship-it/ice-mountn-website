@@ -2,6 +2,7 @@ import { SiteLayout } from "@/components/site-layout";
 import { locations, getLocationBySlug, getCampusLocationBySlug } from "@/data/locations";
 import { notFound } from "next/navigation";
 import { CityPageClient } from "./city-page-client";
+import { SERVICES, type ServiceSlug } from "@/data/services";
 
 interface CityPageProps {
   params: Promise<{
@@ -24,13 +25,7 @@ export default async function CityPage({ params }: CityPageProps) {
   const isCampus = !!campus;
   const cityName = data.name;
 
-  const services = [
-    "Standard TV Wall Mounting",
-    "Over-Fireplace Installation",
-    "In-Wall Cable Concealment",
-    "Sound-bar & Speaker Mounting",
-    "Samsung Frame TV Installation"
-  ];
+  const services = Object.keys(SERVICES) as ServiceSlug[];
 
   const trustFeatures = [
     "Licensed & insured technicians",
@@ -164,6 +159,7 @@ export default async function CityPage({ params }: CityPageProps) {
       />
       <CityPageClient
         cityName={cityName}
+        citySlug={resolvedParams.city}
         isCampus={isCampus}
         services={services}
         trustFeatures={trustFeatures}

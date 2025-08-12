@@ -7,11 +7,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall, MapPin, Home, Building } from "lucide-react";
 import Link from "next/link";
 import { openBooking } from "@/utils/housecall-pro";
+import { SERVICES, type ServiceSlug } from "@/data/services";
+import { Tv, Flame, Cable, Speaker, Frame, Zap } from "lucide-react";
 
 interface CityPageClientProps {
   cityName: string;
+  citySlug: string;
   isCampus: boolean;
-  services: string[];
+  services: ServiceSlug[];
   trustFeatures: string[];
   localFaqs: Array<{ question: string; answer: string }>;
   data: {
@@ -21,8 +24,24 @@ interface CityPageClientProps {
   };
 }
 
+// Icon mapping function
+function getIcon(name: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightning") {
+  switch (name) {
+    case "tv": return Tv;
+    case "flame": return Flame;
+    case "cable": return Cable;
+    case "speaker": return Speaker;
+    case "frame": return Frame;
+    case "lightning": return Zap;
+    default: return Tv;
+  }
+}
+
+const ORDER: ServiceSlug[] = ["standard-tv", "over-fireplace", "in-wall-cable", "soundbar-speaker", "samsung-frame", "same-day"];
+
 export function CityPageClient({ 
   cityName, 
+  citySlug,
   isCampus, 
   services, 
   trustFeatures, 
@@ -80,18 +99,25 @@ export function CityPageClient({
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               TV Mounting Services in {cityName}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((service, index) => (
-                <Card key={index} className="border-gray-200 hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <div className="text-3xl mb-4">📺</div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{service}</h3>
-                    <p className="text-gray-600 text-sm">
-                      Professional installation with damage-free mounting options
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ORDER.map((slug) => {
+                const svc = SERVICES[slug];
+                const Icon = getIcon(svc.icon);
+                return (
+                  <a
+                    key={slug}
+                    href={`/locations/${citySlug}/${slug}`}
+                    className="block rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow bg-white"
+                    aria-label={`${svc.h1} in ${cityName}`}
+                  >
+                    <div className="mx-auto h-10 w-10 rounded-full bg-blue-50 grid place-items-center mb-4">
+                      <Icon className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 text-center">{svc.title}</h3>
+                    <p className="text-sm text-gray-600 text-center mt-1">Professional installation in {cityName}</p>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
