@@ -6,6 +6,7 @@ import { Check, Phone, MapPin, Star } from "lucide-react";
 import { openBooking } from "@/utils/housecall-pro";
 import { CITIES } from "@/data/cities";
 import { SERVICES, type ServiceSlug } from "@/data/services";
+import { SiteLayout } from "@/components/site-layout";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,7 +33,7 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
   const handleBookOnline = openBooking;
 
   return (
-    <>
+    <SiteLayout>
       {/* JSON-LD Schema */}
       <script
         type="application/ld+json"
@@ -102,7 +103,7 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Button
                   onClick={handleBookOnline}
                   size="lg"
@@ -121,6 +122,16 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
                     Call (323) 863-8146
                   </a>
                 </Button>
+              </div>
+
+              {/* See Pricing Link */}
+              <div className="mb-12 text-center">
+                <Link
+                  href={`/services/${service}`}
+                  className="text-blue-600 hover:underline font-medium text-lg"
+                >
+                  See Pricing
+                </Link>
               </div>
 
               {/* Trust Badges */}
@@ -159,14 +170,17 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
                 ))}
               </div>
 
-              {/* Service Image */}
-              <div className="relative w-full max-w-2xl mx-auto aspect-[16/9] rounded-2xl overflow-hidden shadow-lg mb-12">
+              {/* Service Image - Updated with clearer mounted-TV photo */}
+              <div className="relative mx-auto w-full max-w-3xl rounded-2xl overflow-hidden shadow-lg mb-12">
                 <Image
-                  src="/images/stock/hero-1.webp"
-                  alt={`${serviceData.title} service in ${city.name}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 800px"
+                  src="/images/stock/gallery-04.webp"
+                  alt={`${serviceData.title} professionally wall-mounted with concealed wiring in ${city.name}`}
+                  width={1280}
+                  height={800}
+                  priority
+                  fetchPriority="high"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="h-auto w-full object-cover"
                 />
               </div>
 
@@ -250,6 +264,6 @@ export function CityServicePageClient({ city, service }: CityServicePageClientPr
           </div>
         </section>
       </div>
-    </>
+    </SiteLayout>
   );
 }
