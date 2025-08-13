@@ -39,7 +39,7 @@ export function Header() {
               />
             </div>
             <div>
-              <h1 className="font-bold text-xl text-gray-900">Ice Mount'n</h1>
+              <h2 className="font-bold text-xl text-gray-900">Ice Mount'n</h2>
               <p className="text-xs text-gray-600">Elite TV & Home Audio Installations</p>
             </div>
           </Link>
