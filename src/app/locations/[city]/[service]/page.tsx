@@ -387,6 +387,43 @@ export default async function CityServicePage({
           </div>
         </section>
 
+        {/* Related Links */}
+        <section className="py-8 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <nav aria-label="Related links" className="mt-6">
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-600">
+                  <li>
+                    <Link className="hover:underline" href={serviceData.canonicalPath}>
+                      See full {serviceData.title.toLowerCase()} service details →
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href={`/locations/${city.slug}`}>
+                      More TV mounting in {city.name} →
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/locations">
+                      All Los Angeles service areas →
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/services">
+                      Browse all services →
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline" href="/customer-reviews">
+                      Read customer reviews →
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </section>
+
         {/* Location Info */}
         <section className="py-20 bg-gray-50" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 800px" }}>
           <div className="container mx-auto px-4">
