@@ -78,28 +78,28 @@ export default function Home() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Popular service areas</h2>
           <p className="text-gray-600 mb-6 text-center">Quick links to our most requested city + service pages in Los Angeles.</p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto">
-            <li><a href="https://icemountn-website.vercel.app/locations/beverly-hills/in-wall-cable" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in Beverly Hills</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/beverly-hills/over-fireplace" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Over-Fireplace in Beverly Hills</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/beverly-hills/same-day" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in Beverly Hills</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/beverly-hills/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in Beverly Hills</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/beverly-hills/soundbar-speaker" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in Beverly Hills</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/beverly-hills/standard-tv" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Standard TV in Beverly Hills</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/culver-city/in-wall-cable" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in Culver City</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/culver-city/over-fireplace" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Over-Fireplace in Culver City</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/culver-city/same-day" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in Culver City</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/culver-city/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in Culver City</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/culver-city/soundbar-speaker" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in Culver City</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/culver-city/standard-tv" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Standard TV in Culver City</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/santa-monica/in-wall-cable" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in Santa Monica</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/santa-monica/over-fireplace" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Over-Fireplace in Santa Monica</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/santa-monica/same-day" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in Santa Monica</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/santa-monica/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in Santa Monica</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/santa-monica/soundbar-speaker" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in Santa Monica</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/santa-monica/standard-tv" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Standard TV in Santa Monica</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/west-hollywood/in-wall-cable" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in West Hollywood</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/west-hollywood/same-day" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in West Hollywood</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/west-hollywood/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in West Hollywood</a></li>
-            <li><a href="https://icemountn-website.vercel.app/locations/west-hollywood/soundbar-speaker" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in West Hollywood</a></li>
+            <li><a href="/locations/beverly-hills/cable-concealment" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in Beverly Hills</a></li>
+            <li><a href="/locations/beverly-hills/over-fireplace-mount" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Over-Fireplace in Beverly Hills</a></li>
+            <li><a href="/locations/beverly-hills/same-day-tv-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in Beverly Hills</a></li>
+            <li><a href="/locations/beverly-hills/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in Beverly Hills</a></li>
+            <li><a href="/locations/beverly-hills/soundbar-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in Beverly Hills</a></li>
+            <li><a href="/locations/beverly-hills/standard-tv-mount" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Standard TV in Beverly Hills</a></li>
+            <li><a href="/locations/culver-city/cable-concealment" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in Culver City</a></li>
+            <li><a href="/locations/culver-city/over-fireplace-mount" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Over-Fireplace in Culver City</a></li>
+            <li><a href="/locations/culver-city/same-day-tv-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in Culver City</a></li>
+            <li><a href="/locations/culver-city/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in Culver City</a></li>
+            <li><a href="/locations/culver-city/soundbar-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in Culver City</a></li>
+            <li><a href="/locations/culver-city/standard-tv-mount" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Standard TV in Culver City</a></li>
+            <li><a href="/locations/santa-monica/cable-concealment" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in Santa Monica</a></li>
+            <li><a href="/locations/santa-monica/over-fireplace-mount" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Over-Fireplace in Santa Monica</a></li>
+            <li><a href="/locations/santa-monica/same-day-tv-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in Santa Monica</a></li>
+            <li><a href="/locations/santa-monica/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in Santa Monica</a></li>
+            <li><a href="/locations/santa-monica/soundbar-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in Santa Monica</a></li>
+            <li><a href="/locations/santa-monica/standard-tv-mount" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Standard TV in Santa Monica</a></li>
+            <li><a href="/locations/west-hollywood/cable-concealment" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">In-Wall Cable in West Hollywood</a></li>
+            <li><a href="/locations/west-hollywood/same-day-tv-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Same-Day in West Hollywood</a></li>
+            <li><a href="/locations/west-hollywood/samsung-frame" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Samsung Frame in West Hollywood</a></li>
+            <li><a href="/locations/west-hollywood/soundbar-mounting" className="text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline">Soundbar & Speaker in West Hollywood</a></li>
           </ul>
         </div>
         <script
@@ -108,28 +108,28 @@ export default function Home() {
             "@context":"https://schema.org",
             "@type":"ItemList",
             "itemListElement": [
-              { "@type":"ListItem", "position":1, "url":"https://icemountn-website.vercel.app/locations/beverly-hills/in-wall-cable" },
-              { "@type":"ListItem", "position":2, "url":"https://icemountn-website.vercel.app/locations/beverly-hills/over-fireplace" },
-              { "@type":"ListItem", "position":3, "url":"https://icemountn-website.vercel.app/locations/beverly-hills/same-day" },
-              { "@type":"ListItem", "position":4, "url":"https://icemountn-website.vercel.app/locations/beverly-hills/samsung-frame" },
-              { "@type":"ListItem", "position":5, "url":"https://icemountn-website.vercel.app/locations/beverly-hills/soundbar-speaker" },
-              { "@type":"ListItem", "position":6, "url":"https://icemountn-website.vercel.app/locations/beverly-hills/standard-tv" },
-              { "@type":"ListItem", "position":7, "url":"https://icemountn-website.vercel.app/locations/culver-city/in-wall-cable" },
-              { "@type":"ListItem", "position":8, "url":"https://icemountn-website.vercel.app/locations/culver-city/over-fireplace" },
-              { "@type":"ListItem", "position":9, "url":"https://icemountn-website.vercel.app/locations/culver-city/same-day" },
-              { "@type":"ListItem", "position":10, "url":"https://icemountn-website.vercel.app/locations/culver-city/samsung-frame" },
-              { "@type":"ListItem", "position":11, "url":"https://icemountn-website.vercel.app/locations/culver-city/soundbar-speaker" },
-              { "@type":"ListItem", "position":12, "url":"https://icemountn-website.vercel.app/locations/culver-city/standard-tv" },
-              { "@type":"ListItem", "position":13, "url":"https://icemountn-website.vercel.app/locations/santa-monica/in-wall-cable" },
-              { "@type":"ListItem", "position":14, "url":"https://icemountn-website.vercel.app/locations/santa-monica/over-fireplace" },
-              { "@type":"ListItem", "position":15, "url":"https://icemountn-website.vercel.app/locations/santa-monica/same-day" },
-              { "@type":"ListItem", "position":16, "url":"https://icemountn-website.vercel.app/locations/santa-monica/samsung-frame" },
-              { "@type":"ListItem", "position":17, "url":"https://icemountn-website.vercel.app/locations/santa-monica/soundbar-speaker" },
-              { "@type":"ListItem", "position":18, "url":"https://icemountn-website.vercel.app/locations/santa-monica/standard-tv" },
-              { "@type":"ListItem", "position":19, "url":"https://icemountn-website.vercel.app/locations/west-hollywood/in-wall-cable" },
-              { "@type":"ListItem", "position":20, "url":"https://icemountn-website.vercel.app/locations/west-hollywood/same-day" },
-              { "@type":"ListItem", "position":21, "url":"https://icemountn-website.vercel.app/locations/west-hollywood/samsung-frame" },
-              { "@type":"ListItem", "position":22, "url":"https://icemountn-website.vercel.app/locations/west-hollywood/soundbar-speaker" }
+              { "@type":"ListItem", "position":1, "url":"https://www.icemountn.com/locations/beverly-hills/cable-concealment" },
+              { "@type":"ListItem", "position":2, "url":"https://www.icemountn.com/locations/beverly-hills/over-fireplace-mount" },
+              { "@type":"ListItem", "position":3, "url":"https://www.icemountn.com/locations/beverly-hills/same-day-tv-mounting" },
+              { "@type":"ListItem", "position":4, "url":"https://www.icemountn.com/locations/beverly-hills/samsung-frame" },
+              { "@type":"ListItem", "position":5, "url":"https://www.icemountn.com/locations/beverly-hills/soundbar-mounting" },
+              { "@type":"ListItem", "position":6, "url":"https://www.icemountn.com/locations/beverly-hills/standard-tv-mount" },
+              { "@type":"ListItem", "position":7, "url":"https://www.icemountn.com/locations/culver-city/cable-concealment" },
+              { "@type":"ListItem", "position":8, "url":"https://www.icemountn.com/locations/culver-city/over-fireplace-mount" },
+              { "@type":"ListItem", "position":9, "url":"https://www.icemountn.com/locations/culver-city/same-day-tv-mounting" },
+              { "@type":"ListItem", "position":10, "url":"https://www.icemountn.com/locations/culver-city/samsung-frame" },
+              { "@type":"ListItem", "position":11, "url":"https://www.icemountn.com/locations/culver-city/soundbar-mounting" },
+              { "@type":"ListItem", "position":12, "url":"https://www.icemountn.com/locations/culver-city/standard-tv-mount" },
+              { "@type":"ListItem", "position":13, "url":"https://www.icemountn.com/locations/santa-monica/cable-concealment" },
+              { "@type":"ListItem", "position":14, "url":"https://www.icemountn.com/locations/santa-monica/over-fireplace-mount" },
+              { "@type":"ListItem", "position":15, "url":"https://www.icemountn.com/locations/santa-monica/same-day-tv-mounting" },
+              { "@type":"ListItem", "position":16, "url":"https://www.icemountn.com/locations/santa-monica/samsung-frame" },
+              { "@type":"ListItem", "position":17, "url":"https://www.icemountn.com/locations/santa-monica/soundbar-mounting" },
+              { "@type":"ListItem", "position":18, "url":"https://www.icemountn.com/locations/santa-monica/standard-tv-mount" },
+              { "@type":"ListItem", "position":19, "url":"https://www.icemountn.com/locations/west-hollywood/cable-concealment" },
+              { "@type":"ListItem", "position":20, "url":"https://www.icemountn.com/locations/west-hollywood/same-day-tv-mounting" },
+              { "@type":"ListItem", "position":21, "url":"https://www.icemountn.com/locations/west-hollywood/samsung-frame" },
+              { "@type":"ListItem", "position":22, "url":"https://www.icemountn.com/locations/west-hollywood/soundbar-mounting" }
             ]
           })}}
         />

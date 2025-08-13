@@ -34,15 +34,14 @@ export async function GET() {
     changeFreq: 'monthly'
   }))
 
-  // Location + service combination pages - use the ACTUAL working legacy slugs
-  // These are the real URLs that exist, not the canonical service paths
+  // Location + service combination pages - use the new canonical service slugs
   const locationServicePages = CITIES.flatMap(city => [
-    { path: `/locations/${city.slug}/standard-tv`, priority: 0.7, changeFreq: 'monthly' },
-    { path: `/locations/${city.slug}/over-fireplace`, priority: 0.7, changeFreq: 'monthly' },
-    { path: `/locations/${city.slug}/in-wall-cable`, priority: 0.7, changeFreq: 'monthly' },
-    { path: `/locations/${city.slug}/soundbar-speaker`, priority: 0.7, changeFreq: 'monthly' },
+    { path: `/locations/${city.slug}/standard-tv-mount`, priority: 0.7, changeFreq: 'monthly' },
+    { path: `/locations/${city.slug}/over-fireplace-mount`, priority: 0.7, changeFreq: 'monthly' },
+    { path: `/locations/${city.slug}/cable-concealment`, priority: 0.7, changeFreq: 'monthly' },
+    { path: `/locations/${city.slug}/soundbar-mounting`, priority: 0.7, changeFreq: 'monthly' },
     { path: `/locations/${city.slug}/samsung-frame`, priority: 0.7, changeFreq: 'monthly' },
-    { path: `/locations/${city.slug}/same-day`, priority: 0.7, changeFreq: 'monthly' },
+    { path: `/locations/${city.slug}/same-day-tv-mounting`, priority: 0.7, changeFreq: 'monthly' },
   ])
 
   // Combine all pages
