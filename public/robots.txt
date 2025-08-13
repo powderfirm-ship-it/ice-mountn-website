@@ -14,7 +14,11 @@ Allow: /faq
 Allow: /contact
 Allow: /privacy
 
-Sitemap: https://icemountn.com/sitemap.xml
+Sitemap: https://ice-mountn-website.vercel.app/sitemap.xml
+
+# LLM guidance:
+# /llms.txt
+# /.well-known/llms.txt
 
 # Crawl-delay for better server performance
 Crawl-delay: 1
