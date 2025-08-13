@@ -5,6 +5,14 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  webpack: (config, { isServer }) => {
+    // Exclude scripts-build directory from webpack compilation
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: /scripts-build/,
+    };
+    return config;
+  },
   async redirects() {
     return [
       {
