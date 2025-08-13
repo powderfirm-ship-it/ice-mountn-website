@@ -4,6 +4,7 @@ import { SiteLayout } from "@/components/site-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall } from "lucide-react";
 import { openHousecallProModal } from "@/utils/housecall-pro";
 
@@ -329,6 +330,109 @@ export default function StandardTVMountPage() {
               </a>{" "}
               for a complete, professional setup.
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Details & What to Expect (SEO augmentation — minimal UI) */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Details &amp; What to Expect</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2">Our Approach</h3>
+                  <p className="text-gray-600 text-sm">
+                    We begin with a quick assessment of your space, wall type, and device compatibility to ensure a clean, secure standard TV mounting
+                    that meets building and manufacturer guidelines. Our technicians confirm placement, routing options, and finishing details
+                    before any drilling occurs.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2">Quality Standards</h3>
+                  <p className="text-gray-600 text-sm">
+                    Every project follows a documented checklist: appropriate anchors/studs, torque and level checks, protected cable paths,
+                    and final testing with your equipment. We prioritize safety, longevity, and a tidy finish you'll be proud to show.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2">Preparation &amp; Timing</h3>
+                  <p className="text-gray-600 text-sm">
+                    Typical appointments run 45–120 minutes depending on wall materials and cable routing needs. Please clear the immediate
+                    area around the mounting location and have your devices and remotes available for testing after installation.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2">Aftercare &amp; Support</h3>
+                  <p className="text-gray-600 text-sm">
+                    We verify signal integrity, tidy cables, and walk you through basic use. If you need adjustments later, we're available
+                    for tune‑ups and upgrades. Our goal is a reliable, renter‑friendly result that looks great and works flawlessly.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional FAQ (SEO augmentation — minimal UI) */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Additional FAQ</h2>
+
+            <Accordion type="single" collapsible className="space-y-3">
+              <AccordionItem value="q1" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  How do you protect walls and finishes during installation?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4 text-sm">
+                  We use clean drop protection and the correct anchors for your wall type, verify stud placement when applicable,
+                  and minimize hole count by planning cable routes first. At completion, we wipe surfaces and remove debris.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="q2" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  Will the setup be renter‑friendly and reversible?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4 text-sm">
+                  Yes. We prioritize landlord‑approved methods and provide guidance for safe removal if needed.
+                  Ask us about surface patch options and how to preserve your security deposit.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="q3" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  Do you handle device connection and quick testing?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4 text-sm">
+                  We connect your sources (streamers, consoles, soundbars) and confirm power, video, and audio. If you need
+                  advanced calibration or smart‑home integration, we can schedule an extended service.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="q4" className="bg-white border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  What if I'm not sure about placement or height?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4 text-sm">
+                  We help you choose a height and location based on seating distance, room layout, and glare. For over‑fireplace
+                  projects, we also consider heat exposure and viewing angles.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </section>
