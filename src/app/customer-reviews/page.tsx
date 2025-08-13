@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site-layout";
 import { openBooking } from "@/utils/housecall-pro";
 import Image from "next/image";
+import { ReviewsSection } from "@/components/reviews-section";
 
 export default function CustomerReviewsPage() {
   const handleBookOnline = openBooking;
@@ -148,17 +149,9 @@ export default function CustomerReviewsPage() {
                   </p>
                 </div>
 
-                {/* Housecall Pro Reviews Embed */}
+                {/* Local Reviews Section */}
                 <div className="relative">
-                  <iframe
-                    src="https://client.housecallpro.com/reviews/Ice-Mount'n/afef05b9-206d-471c-a01c-1a5944da15f0/"
-                    width="100%"
-                    height="600"
-                    frameBorder="0"
-                    style={{ border: 'none' }}
-                    title="Ice Mount'n Customer Reviews"
-                    className="w-full"
-                  />
+                  <ReviewsSection />
                 </div>
               </div>
 
