@@ -9,6 +9,9 @@ import { ReviewsSection } from "@/components/reviews-section";
 export default function CustomerReviewsPage() {
   const handleBookOnline = openBooking;
 
+  // Housecall Pro reviews URL
+  const HCP_REVIEWS_URL = encodeURI("https://client.housecallpro.com/reviews/Ice-Mount'n/afef05b9-206d-471c-a01c-1a5944da15f0/");
+
   // Aggregate Rating JSON-LD Schema
   const aggregateRatingSchema = {
     "@context": "https://schema.org",
@@ -106,8 +109,8 @@ export default function CustomerReviewsPage() {
               {/* Hero Image */}
               <div className="relative">
                 <Image
-                  src="/images/reviews/hero.jpg"
-                  alt="Home theater projection in living room"
+                  src="/images/reviews/review-01.webp"
+                  alt="Happy customer review showcase"
                   priority
                   sizes="(max-width:1024px) 100vw, 50vw"
                   width={1920}
@@ -136,23 +139,6 @@ export default function CustomerReviewsPage() {
                   Don't wait weeks for your TV mounting installation. Ice Mount'n offers same-day service throughout Greater Los Angeles, ensuring your entertainment setup is ready when you are. Our expert technicians arrive on time, work efficiently, and leave your space cleaner than they found it. Experience the difference that professional, prompt service makes.
                 </p>
               </div>
-
-              {/* What Our Customers Say - Internal Review Cards */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="p-6 border-b bg-gray-50">
-                  <h2 className="text-2xl font-semibold text-gray-900">
-                    What Our Customers Say
-                  </h2>
-                  <p className="text-gray-600 mt-2">
-                    Read authentic reviews from real customers
-                  </p>
-                </div>
-
-                {/* Local Reviews Section */}
-                <div className="relative">
-                  <ReviewsSection />
-                </div>
-              </div>
             </div>
 
             {/* Right Column - Housecall Pro Reviews Iframe */}
@@ -160,7 +146,7 @@ export default function CustomerReviewsPage() {
               {/* Housecall Pro Reviews */}
               <div className="rounded-lg overflow-hidden border bg-white">
                 <iframe
-                  src="https://client.housecallpro.com/reviews/Ice-Mount%27n/afef05b9-206d-471c-a01c-1a5944da15f0/"
+                  src={HCP_REVIEWS_URL}
                   title="Ice Mount'n verified customer reviews"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -200,6 +186,39 @@ export default function CustomerReviewsPage() {
                 <p className="text-sm text-gray-600 mt-3">
                   Or call <a href="tel:(323) 863-8146" className="text-blue-600 hover:underline font-semibold">(323) 863-8146</a> for immediate assistance
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Housecall Pro Reviews Iframe - Full Width Above Customer Reviews */}
+          <div className="mt-16">
+            <div className="rounded-lg overflow-hidden border bg-white my-12">
+              <iframe
+                src={HCP_REVIEWS_URL}
+                title="Ice Mount'n verified customer reviews"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+                style={{ aspectRatio: "3 / 5", minHeight: 560, border: 0 }}
+              />
+            </div>
+          </div>
+
+          {/* What Our Customers Say - Moved to Bottom, Full Width */}
+          <div className="mt-16">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="p-6 border-b bg-gray-50">
+                <h2 className="text-2xl font-semibold text-gray-900">
+                  What Our Customers Say
+                </h2>
+                <p className="text-gray-600 mt-2">
+                  Read authentic reviews from real customers
+                </p>
+              </div>
+
+              {/* Local Reviews Section */}
+              <div className="relative">
+                <ReviewsSection />
               </div>
             </div>
           </div>
