@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { canonical, buildTitle, buildDescription } from "@/lib/seo";
+import { localBusinessJSONLD, serviceJSONLD } from "@/lib/schema";
+import { BASE } from "@/lib/urls";
+import JsonLd from "@/components/seo/JsonLd";
 import CableConcealmentClient from "./client";
 
 export const metadata: Metadata = {
@@ -26,57 +28,28 @@ export const metadata: Metadata = {
   },
 };
 
-function jsonLd() {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Cable Concealment",
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Ice Mount'n",
-      url: canonical("/"),
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Los Angeles",
-        addressRegion: "CA",
-        addressCountry: "US"
-      },
-      telephone: "+1-323-863-8146",
-    },
-    description: "Professional in-wall cable concealment with new outlet installation behind TV for a completely wire-free look.",
-    areaServed: [
-      { "@type": "City", name: "Santa Monica" },
-      { "@type": "City", name: "West Hollywood" },
-      { "@type": "City", name: "Beverly Hills" },
-      { "@type": "City", name: "Los Angeles" },
-      { "@type": "City", name: "Culver City" },
-      { "@type": "City", name: "Glendale" }
-    ],
-    offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      url: canonical("/services/cable-concealment"),
-      priceCurrency: "USD",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        name: "From $199",
-        price: "199",
-        priceCurrency: "USD"
-      },
-    },
-  };
-  return JSON.stringify(data);
-}
+
 
 export default function Page() {
   return (
     <>
-      {/* JSON‑LD for SEO (no hydration cost) */}
-      <Script
-        id="ld-cable-concealment"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: jsonLd() }}
+      {/* JSON-LD Schema */}
+      <JsonLd
+        data={localBusinessJSONLD({
+          url: canonical("/"),
+          telephone: "+13238638146",
+          logoUrl: `${BASE}/images/brand/ice-mountn-tv-mounting-logo.webp`,
+          address: { city: "Los Angeles", region: "CA", country: "US" }
+        })}
+      />
+      <JsonLd
+        data={serviceJSONLD({
+          url: canonical("/services/cable-concealment"),
+          name: "Cable Concealment",
+          description: "Professional in-wall cable concealment with new outlet installation behind TV for a completely wire-free look.",
+          areaName: "Los Angeles",
+          providerUrl: canonical("/")
+        })}
       />
       <CableConcealmentClient />
     </>

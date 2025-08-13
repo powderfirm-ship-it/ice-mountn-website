@@ -9,7 +9,8 @@
     "lint": "bunx tsc --noEmit && next lint",
     "format": "bunx biome format --write",
     "sitemap:blocklist": "ts-node --compiler-options '{\"module\":\"ESNext\"}' ../ice-mountn-scripts/parse-wrong-sitemap.ts",
-    "check:sitemap": "node ../ice-mountn-scripts/validate-sitemap.js"
+    "check:sitemap": "node ../ice-mountn-scripts/validate-sitemap.js",
+    "schema:check": "node ../ice-mountn-scripts/validate-schema.js"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",

@@ -1,7 +1,7 @@
 // src/lib/urls.ts
 export const BASE =
   process.env.SITE_BASE_URL?.replace(/\/+$/, '') ||
-  "https://ice-mountn-website.vercel.app"; // keep current prod until custom domain is live
+  "https://www.icemountn.com"; // canonical production domain
 
 export function canonical(path: string) {
   const p = path.startsWith("/") ? path : `/${path}`;
