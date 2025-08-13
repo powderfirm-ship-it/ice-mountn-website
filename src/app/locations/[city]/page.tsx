@@ -101,19 +101,19 @@ export default async function CityPage({ params }: CityPageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://icemountn.com"
+        "item": "https://www.icemountn.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Locations",
-        "item": "https://icemountn.com/locations"
+        "item": "https://www.icemountn.com/locations"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": `TV Mounting in ${cityName}`,
-        "item": `https://icemountn.com/locations/${resolvedParams.city}`
+        "item": `https://www.icemountn.com/locations/${resolvedParams.city}`
       }
     ]
   };
@@ -123,7 +123,7 @@ export default async function CityPage({ params }: CityPageProps) {
     "@type": "LocalBusiness",
     name: "Ice Mount'n",
     url: canonical(`/locations/${resolvedParams.city}`),
-    image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ice-mountn-website.vercel.app"}/images/brand/ice-mountn-tv-mounting-logo.webp`,
+    image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.icemountn.com"}/images/brand/ice-mountn-tv-mounting-logo.webp`,
     telephone: "+13238638146",
     areaServed: [
       { "@type": "City", name: cityName },

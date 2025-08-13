@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { CITIES } from '@/data/cities'
 
 export async function GET() {
-  const base = process.env.SITE_BASE_URL || "https://ice-mountn-website.vercel.app"
+  const base = process.env.SITE_BASE_URL || "https://www.icemountn.com"
   
   // Static pages
   const staticPages = [

@@ -15,7 +15,7 @@ export default function CustomerReviewsPage() {
     "@type": "LocalBusiness",
     "name": "Ice Mount'n",
     "description": "Professional TV mounting and home theater installation service in Los Angeles",
-    "url": "https://icemountn.com",
+    "url": "https://www.icemountn.com",
     "telephone": "(323) 863-8146",
     "address": {
       "@type": "PostalAddress",

@@ -68,13 +68,13 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `https://icemountn.com/locations/${city.slug}/${resolvedParams.service}`,
+      url: `https://www.icemountn.com/locations/${city.slug}/${resolvedParams.service}`,
       siteName: "Ice Mount'n",
       locale: "en_US",
       type: "website",
     },
     alternates: {
-      canonical: `https://icemountn.com/locations/${city.slug}/${resolvedParams.service}`,
+      canonical: `https://www.icemountn.com/locations/${city.slug}/${resolvedParams.service}`,
     },
   };
 }
@@ -130,10 +130,10 @@ export default async function CityServicePage({
               }
             },
             "serviceType": serviceData.title,
-            "url": `https://icemountn.com/locations/${city.slug}/${service}`,
+            "url": `https://www.icemountn.com/locations/${city.slug}/${service}`,
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://icemountn.com/locations/${city.slug}/${service}`
+                              "@id": `https://www.icemountn.com/locations/${city.slug}/${service}`
             }
           })
         }}

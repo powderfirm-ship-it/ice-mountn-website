@@ -79,7 +79,7 @@ export function UCLAPageClient() {
     "description": "Professional TV mounting service for UCLA students in dorms, apartments, and student housing. RA-approved, renter-friendly installations near campus.",
     "telephone": "(323) 863-8146",
     "email": "contact@icemountn.com",
-    "url": "https://icemountn.com/locations/ucla",
+    "url": "https://www.icemountn.com/locations/ucla",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Westwood",
@@ -114,19 +114,19 @@ export function UCLAPageClient() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://icemountn.com"
+        "item": "https://www.icemountn.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Locations",
-        "item": "https://icemountn.com/locations"
+        "item": "https://www.icemountn.com/locations"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "UCLA TV Mounting",
-        "item": "https://icemountn.com/locations/ucla"
+        "item": "https://www.icemountn.com/locations/ucla"
       }
     ]
   };

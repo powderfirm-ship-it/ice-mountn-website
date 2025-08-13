@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'TV Mounting Discounts | Student & Military Specials | Ice Mount\'n',
     description: 'Save on TV mounting with special discounts for students and military. As low as $50 per TV with customer-provided mount.',
     type: 'website',
-    url: 'https://icemountn.com/discounts',
+    url: 'https://www.icemountn.com/discounts',
     images: [
       {
         url: "/images/stock/hero-1.webp",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     images: ["/images/stock/hero-1.webp"]
   },
   alternates: {
-    canonical: 'https://icemountn.com/discounts'
+    canonical: 'https://www.icemountn.com/discounts'
   }
 };
 

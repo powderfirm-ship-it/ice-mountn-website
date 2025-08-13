@@ -44,7 +44,7 @@ export default function LocationsPage() {
               "@type": "LocalBusiness",
               name: "Ice Mount'n",
               url: canonicalUrl,
-              image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ice-mountn-website.vercel.app"}/images/brand/ice-mountn-tv-mounting-logo.webp`,
+              image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.icemountn.com"}/images/brand/ice-mountn-tv-mounting-logo.webp`,
               telephone: "+13238638146",
               address: {
                 "@type": "PostalAddress",

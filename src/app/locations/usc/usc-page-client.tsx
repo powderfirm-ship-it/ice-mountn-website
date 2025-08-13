@@ -79,7 +79,7 @@ export function USCPageClient() {
     "description": "Professional TV mounting service for USC students in dorms, apartments, and student housing. Landlord-approved, renter-friendly installations near campus.",
     "telephone": "(323) 863-8146",
     "email": "contact@icemountn.com",
-    "url": "https://icemountn.com/locations/usc",
+    "url": "https://www.icemountn.com/locations/usc",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "University Park",

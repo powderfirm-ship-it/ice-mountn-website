@@ -2,11 +2,11 @@ export function SchemaMarkup() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://icemountn.com/#organization",
+    "@id": "https://www.icemountn.com/#organization",
     "name": "Ice Mount'n",
     "alternateName": "Ice Mount'n TV Mounting & Home Theater Installation",
     "description": "Professional TV mounting and home theater installation service in Los Angeles. Same-day service, expert installation, and 100% satisfaction guarantee.",
-    "url": "https://icemountn.com",
+    "url": "https://www.icemountn.com",
     "telephone": "(323) 863-8146",
     "email": "contact@icemountn.com",
     "address": {
@@ -52,8 +52,8 @@ export function SchemaMarkup() {
       "Su 08:00-20:00"
     ],
     "priceRange": "$$",
-            "image": "https://icemountn.com/images/brand/ice-mountn-tv-mounting-logo.webp",
-        "logo": "https://icemountn.com/images/brand/ice-mountn-tv-mounting-logo.webp",
+            "image": "https://www.icemountn.com/images/brand/ice-mountn-tv-mounting-logo.webp",
+        "logo": "https://www.icemountn.com/images/brand/ice-mountn-tv-mounting-logo.webp",
     "sameAs": [
       "https://www.facebook.com/icemountn",
       "https://www.instagram.com/icemountn"
@@ -69,7 +69,7 @@ export function SchemaMarkup() {
             "name": "Standard TV Mounting",
             "description": "Secure wall installation for any size TV with professional cable management",
             "provider": {
-              "@id": "https://icemountn.com/#organization"
+              "@id": "https://www.icemountn.com/#organization"
             }
           }
         },
@@ -80,7 +80,7 @@ export function SchemaMarkup() {
             "name": "Over-Fireplace TV Mounting",
             "description": "Heat-safe TV installation above fireplaces with specialized mounting solutions",
             "provider": {
-              "@id": "https://icemountn.com/#organization"
+              "@id": "https://www.icemountn.com/#organization"
             }
           }
         },
@@ -91,7 +91,7 @@ export function SchemaMarkup() {
             "name": "In-Wall Cable Concealment",
             "description": "Professional in-wall cable routing and concealment for a clean appearance",
             "provider": {
-              "@id": "https://icemountn.com/#organization"
+              "@id": "https://www.icemountn.com/#organization"
             }
           }
         },
@@ -102,7 +102,7 @@ export function SchemaMarkup() {
             "name": "Sound-bar and Speaker Mounting",
             "description": "Professional speaker and sound-bar mounting with optimal positioning",
             "provider": {
-              "@id": "https://icemountn.com/#organization"
+              "@id": "https://www.icemountn.com/#organization"
             }
           }
         },
@@ -113,7 +113,7 @@ export function SchemaMarkup() {
             "name": "Samsung Frame TV Installation",
             "description": "Expert installation of Samsung Frame TVs and art-display screens with zero-gap wall finish",
             "provider": {
-              "@id": "https://icemountn.com/#organization"
+              "@id": "https://www.icemountn.com/#organization"
             }
           }
         }
@@ -203,19 +203,19 @@ export function SchemaMarkup() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://icemountn.com"
+        "item": "https://www.icemountn.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://icemountn.com/services"
+        "item": "https://www.icemountn.com/services"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Contact",
-        "item": "https://icemountn.com/contact"
+        "item": "https://www.icemountn.com/contact"
       }
     ]
   };

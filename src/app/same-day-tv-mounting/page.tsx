@@ -98,7 +98,7 @@ export default function SameDayTVMountingPage() {
     "areaServed": "Los Angeles, CA",
     "availableChannel": {
       "@type": "ServiceChannel",
-      "serviceUrl": "https://icemountn.com/same-day-tv-mounting",
+      "serviceUrl": "https://www.icemountn.com/same-day-tv-mounting",
       "serviceSmsNumber": "(323) 863-8146"
     }
   };

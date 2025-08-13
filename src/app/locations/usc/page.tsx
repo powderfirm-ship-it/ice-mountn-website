@@ -6,17 +6,17 @@ export const metadata: Metadata = {
   title: "USC TV Mounting (Student Discount) | Ice Mount'n",
   description: "Professional TV mounting for USC students in dorms, apartments & off-campus housing near campus. Student discount pricing as low as $50. Landlord-approved, renter-friendly installations.",
   alternates: {
-    canonical: "https://icemountn.com/locations/usc"
+    canonical: "https://www.icemountn.com/locations/usc"
   },
   openGraph: {
     title: "USC TV Mounting (Student Discount) | Ice Mount'n",
     description: "Professional TV mounting for USC students in dorms, apartments & off-campus housing near campus. Student discount pricing as low as $50. Landlord-approved, renter-friendly installations.",
     type: "website",
-    url: "https://icemountn.com/locations/usc",
+    url: "https://www.icemountn.com/locations/usc",
     siteName: "Ice Mount'n",
     images: [
       {
-        url: "https://icemountn.com/images/stock/hero-1.webp",
+        url: "https://www.icemountn.com/images/stock/hero-1.webp",
         width: 1200,
         height: 630,
         alt: "TV mounted above fireplace in student apartment near USC"
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "USC TV Mounting (Student Discount) | Ice Mount'n",
     description: "Professional TV mounting for USC students in dorms, apartments & off-campus housing near campus. Student discount pricing as low as $50. Landlord-approved, renter-friendly installations.",
-    images: ["https://icemountn.com/images/stock/hero-1.webp"]
+    images: ["https://www.icemountn.com/images/stock/hero-1.webp"]
   }
 };
 

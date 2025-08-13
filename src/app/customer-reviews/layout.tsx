@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Customer Reviews | Ice Mount\'n TV Mounting Los Angeles',
     description: 'Read authentic customer reviews for Ice Mount\'n TV mounting service. 4.9-star rating from 150+ satisfied customers.',
     type: 'website',
-    url: 'https://icemountn.com/customer-reviews',
+    url: 'https://www.icemountn.com/customer-reviews',
     images: [
       {
         url: "/images/stock/review-01.jpg",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     images: ["/images/stock/review-01.jpg"]
   },
   alternates: {
-    canonical: 'https://icemountn.com/customer-reviews'
+    canonical: 'https://www.icemountn.com/customer-reviews'
   }
 };
 

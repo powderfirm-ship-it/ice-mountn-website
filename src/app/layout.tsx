@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://icemountn.com'),
+  metadataBase: new URL('https://www.icemountn.com'),
   title: {
     template: '%s | Ice Mount\'n',
     default: 'TV Mounting Los Angeles | Ice Mount\'n - Same Day Service'
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Ice Mount'n - TV Mounting & Home Theater Installation Los Angeles",
     description: "Same-day TV mounting service across LA. Professional installation, lowest pricing, top-rated service.",
     locale: "en_US",
-    url: "https://icemountn.com",
+    url: "https://www.icemountn.com",
     images: [
       {
         url: "/images/stock/hero-1.webp",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     images: ["/images/stock/hero-1.webp"]
   },
   alternates: {
-    canonical: "https://icemountn.com"
+    canonical: "https://www.icemountn.com"
   },
   verification: {
     google: "your-google-verification-code", // Replace with actual verification code

@@ -35,7 +35,7 @@ export async function generateMetadata(
       title: `TV Mounting in ${cityName} | Ice Mount'n`,
       description: data.metaDescription,
       type: 'website',
-      url: `https://icemountn.com/locations/${resolvedParams.city}`,
+      url: `https://www.icemountn.com/locations/${resolvedParams.city}`,
       images: [
         {
           url: "/images/stock/hero-1.webp",
@@ -52,7 +52,7 @@ export async function generateMetadata(
       images: ["/images/stock/hero-1.webp"]
     },
     alternates: {
-      canonical: `https://icemountn.com/locations/${resolvedParams.city}`
+      canonical: `https://www.icemountn.com/locations/${resolvedParams.city}`
     }
   };
 }

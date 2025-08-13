@@ -7,4 +7,4 @@ export const buildDescription = (what: string, city?: string) =>
     : `${what} with licensed, renter-friendly installers. Same-day service, transparent pricing, and damage-free mounting. Call (323) 863-8146.`;
 
 export const canonical = (path: string) =>
-  `${process.env.NEXT_PUBLIC_SITE_URL || "https://ice-mountn-website.vercel.app"}${path}`;
+  `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.icemountn.com"}${path}`;
