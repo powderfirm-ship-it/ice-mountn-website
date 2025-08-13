@@ -10,7 +10,9 @@
     "format": "bunx biome format --write",
     "sitemap:blocklist": "ts-node --compiler-options '{\"module\":\"ESNext\"}' ../ice-mountn-scripts/parse-wrong-sitemap.ts",
     "check:sitemap": "node ../ice-mountn-scripts/validate-sitemap.js",
-    "schema:check": "node ../ice-mountn-scripts/validate-schema.js"
+    "schema:check": "node ../ice-mountn-scripts/validate-schema.js",
+    "print:bad-sitemap-urls": "node --experimental-import-meta-resolve scripts/print-bad-sitemap-urls.mjs",
+    "sitemap:check": "node scripts/verify-sitemap-simple.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",

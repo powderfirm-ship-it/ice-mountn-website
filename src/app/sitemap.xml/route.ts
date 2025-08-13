@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import { CITIES } from '@/data/cities'
+import { toCanonical } from '@/lib/canonical'
 
 export async function GET() {
-  const base = process.env.SITE_BASE_URL || "https://www.icemountn.com"
   
   // Static pages
   const staticPages = [
@@ -56,7 +56,7 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allPages.map(page => {
-  const url = new URL(page.path, base).toString()
+  const url = toCanonical(page.path)
   return `  <url>
     <loc>${url}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
