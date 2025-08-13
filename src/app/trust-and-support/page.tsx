@@ -64,6 +64,23 @@ export default function TrustAndSupportPage() {
               </div>
             </div>
 
+            {/* Service Overview */}
+            <div className="mt-12 bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
+                Service Overview
+              </h2>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Ice Mount'n provides professional TV mounting and home theater installation in Los Angeles, focused on safe installation, clean cable management,
+                and a reliable finish that looks great in everyday use. Every job includes a quick on-site assessment to confirm wall
+                type and mounting hardware, tidy routing of power and A/V lines, and a final level/safety check. If your setup needs
+                extras—like soundbar brackets, in-wall routing, or device concealment—we'll explain options and pricing before we start.
+                Our goal is a crisp, secure installation that fits your space, preserves manufacturer guidelines, and avoids damage to
+                walls or equipment. Customers choose us for same-day availability in much of Los Angeles, insured technicians, and clear,
+                upfront communication from booking to cleanup. If you're comparing services or planning a new TV layout, this page covers
+                what's included and common questions so you can schedule with confidence.
+              </p>
+            </div>
+
             {/* CTA Section */}
             <div className="mt-12 text-center">
               <p className="text-gray-600 mb-4">
