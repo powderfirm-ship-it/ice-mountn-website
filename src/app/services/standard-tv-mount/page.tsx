@@ -14,7 +14,7 @@ export default function StandardTVMountPage() {
   const handleBookOnline = openBooking;
 
   // SEO metadata
-  const title = buildTitle("Standard TV Wall Mounting");
+  const title = buildTitle("Standard TV Mounting");
   const description = buildDescription("Professional standard TV wall mounting with licensed, renter-friendly installers");
   const canonicalUrl = canonical("/services/standard-tv-mount");
 
@@ -89,9 +89,23 @@ export default function StandardTVMountPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Service",
-              name: "Standard TV Wall Mounting",
-              provider: { "@type": "LocalBusiness", name: "Ice Mount'n" },
-              areaServed: "Los Angeles",
+              name: "Standard TV Mounting",
+              provider: { 
+                "@type": "LocalBusiness", 
+                name: "Ice Mount'n",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Los Angeles",
+                  addressRegion: "CA",
+                  addressCountry: "US"
+                },
+                telephone: "+1-323-863-8146"
+              },
+              areaServed: [
+                { "@type": "City", name: "Los Angeles" },
+                { "@type": "City", name: "Santa Monica" },
+                { "@type": "City", name: "Beverly Hills" }
+              ],
               description: "Professional standard TV wall mounting with licensed, renter-friendly installers",
               hasOfferCatalog: {
                 "@type": "OfferCatalog",

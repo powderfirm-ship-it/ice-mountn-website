@@ -5,6 +5,13 @@ Disallow: /_next/
 Disallow: /admin/
 Disallow: /*.json$
 
+# Allow critical assets for rendering
+Allow: /images/
+Allow: /_next/static/
+Allow: /_next/image
+Allow: /*.css
+Allow: /*.js
+
 # Specific pages to crawl
 Allow: /locations/*
 Allow: /services/*
@@ -14,7 +21,7 @@ Allow: /faq
 Allow: /contact
 Allow: /privacy
 
-Sitemap: https://ice-mountn-website.vercel.app/sitemap.xml
+Sitemap: https://www.icemountn.com/sitemap.xml
 
 # LLM guidance:
 # /llms.txt

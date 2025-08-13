@@ -1,7 +1,7 @@
 // app/llms.txt/route.ts
 export async function GET() {
-  const base = process.env.SITE_BASE_URL || "https://ice-mountn-website.vercel.app";
-  const alt  = "https://www.icemountn.com";
+  const base = process.env.SITE_BASE_URL || "https://www.icemountn.com";
+  const alt  = "https://icemountn.com";
 
   const body = `# llms.txt — Guidance for AI & LLM Crawlers
 

@@ -6,9 +6,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Star, Clock, Shield, Monitor, PhoneCall, Image } from "lucide-react";
 import { openBooking } from "@/utils/housecall-pro";
+import { buildTitle, buildDescription, canonical } from "@/lib/seo";
+import Head from "next/head";
 
 export default function SamsungFramePage() {
   const handleBookOnline = openBooking;
+
+  // SEO metadata
+  const title = buildTitle("Samsung Frame TV");
+  const description = buildDescription("Professional Samsung Frame TV installation with zero-gap mounting and Art Mode setup");
+  const canonicalUrl = canonical("/services/samsung-frame");
 
   const processSteps = [
     {
@@ -98,7 +105,61 @@ export default function SamsungFramePage() {
   ];
 
   return (
-    <SiteLayout>
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        
+        {/* JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: "Samsung Frame TV",
+              provider: { 
+                "@type": "LocalBusiness", 
+                name: "Ice Mount'n",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Los Angeles",
+                  addressRegion: "CA",
+                  addressCountry: "US"
+                },
+                telephone: "+1-323-863-8146"
+              },
+              areaServed: [
+                { "@type": "City", name: "Los Angeles" },
+                { "@type": "City", name: "Santa Monica" },
+                { "@type": "City", name: "Beverly Hills" }
+              ],
+              description: "Professional Samsung Frame TV installation with zero-gap mounting and Art Mode setup",
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Samsung Frame TV Services",
+                itemListElement: [
+                  { "@type": "Offer", name: "Basic Frame Installation", price: "$199" },
+                  { "@type": "Offer", name: "Complete Frame Setup", price: "$299" },
+                  { "@type": "Offer", name: "Premium Frame Experience", price: "$399" }
+                ]
+              }
+            })
+          }}
+        />
+      </Head>
+      <SiteLayout>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-indigo-50 to-white py-16">
         <div className="container mx-auto px-4">
@@ -401,6 +462,7 @@ export default function SamsungFramePage() {
           </div>
         </div>
       </section>
-    </SiteLayout>
+      </SiteLayout>
+    </>
   );
 }

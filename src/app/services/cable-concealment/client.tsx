@@ -101,7 +101,7 @@ export default function CableConcealmentClient() {
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Completely hide TV cables inside your wall for a clean, professional
               look. Includes new outlet behind the TV and code‑compliant electrical
-              work.
+              work. Our licensed technicians ensure all installations meet local building codes.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
@@ -138,6 +138,34 @@ export default function CableConcealmentClient() {
                 <CheckCircle className="h-4 w-4 mr-1 text-green-600" />
                 Professional finish
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Content Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+              Professional In-Wall Cable Concealment in Los Angeles
+            </h2>
+            <div className="prose prose-lg mx-auto text-gray-700">
+              <p className="mb-6">
+                Ice Mount'n specializes in professional in-wall cable concealment services throughout Los Angeles County. 
+                Our licensed electricians and technicians understand the unique challenges of working with different wall 
+                types, from modern drywall construction to historic plaster walls found in older LA homes.
+              </p>
+              <p className="mb-6">
+                We provide comprehensive solutions that go beyond simple cable hiding. Each installation includes proper 
+                electrical work, including new outlet installation behind your TV where needed, GFCI protection where 
+                required by code, and professional wall finishing that preserves your home's aesthetic appeal.
+              </p>
+              <p className="mb-6">
+                Our service areas include Santa Monica, Beverly Hills, West Hollywood, Downtown LA, Culver City, 
+                and surrounding neighborhoods. We offer same-day service availability and transparent pricing with 
+                no hidden costs or surprise fees.
+              </p>
             </div>
           </div>
         </div>
@@ -308,6 +336,24 @@ export default function CableConcealmentClient() {
                 Sound‑bar Mounting
               </Link>{" "}
               for a seamless, wire‑free setup.
+            </div>
+            
+            <div className="mt-8 text-center">
+              <p className="text-gray-600 mb-4">Popular service areas:</p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <Link href="/locations/santa-monica" className="text-blue-600 hover:text-blue-700 underline">
+                  Santa Monica
+                </Link>
+                <Link href="/locations/beverly-hills" className="text-blue-600 hover:text-blue-700 underline">
+                  Beverly Hills
+                </Link>
+                <Link href="/locations/west-hollywood" className="text-blue-600 hover:text-blue-700 underline">
+                  West Hollywood
+                </Link>
+                <Link href="/locations/culver-city" className="text-blue-600 hover:text-blue-700 underline">
+                  Culver City
+                </Link>
+              </div>
             </div>
           </div>
         </div>

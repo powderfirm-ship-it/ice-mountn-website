@@ -14,7 +14,7 @@ export default function LocationsPage() {
   const handleBookOnline = openBooking;
 
   // SEO metadata
-  const title = buildTitle("TV Mounting Service Areas");
+  const title = buildTitle("TV Mounting Areas");
   const description = buildDescription("Professional TV mounting services throughout Los Angeles County");
   const canonicalUrl = canonical("/locations");
 
@@ -46,6 +46,12 @@ export default function LocationsPage() {
               url: canonicalUrl,
               image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ice-mountn-website.vercel.app"}/images/brand/ice-mountn-tv-mounting-logo.webp`,
               telephone: "+13238638146",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Los Angeles",
+                addressRegion: "CA",
+                addressCountry: "US"
+              },
               areaServed: [
                 { "@type": "City", name: "Los Angeles" },
                 { "@type": "AdministrativeArea", name: "Los Angeles County" }
@@ -55,8 +61,18 @@ export default function LocationsPage() {
                 "https://www.facebook.com/icemountn",
                 "https://www.instagram.com/icemountn"
               ],
-              serviceType: "TV mounting services",
-              description: "Professional TV mounting services throughout Los Angeles County with licensed, renter-friendly installers."
+              description: "Professional TV mounting services throughout Los Angeles County with licensed, renter-friendly installers.",
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "TV Mounting Services",
+                itemListElement: [
+                  { "@type": "Offer", name: "Standard TV Mount" },
+                  { "@type": "Offer", name: "Over-Fireplace Mount" },
+                  { "@type": "Offer", name: "In-Wall Cable Concealment" },
+                  { "@type": "Offer", name: "Samsung Frame TV Installation" },
+                  { "@type": "Offer", name: "Sound-bar / Speaker Mounting" }
+                ]
+              }
             })
           }}
         />
@@ -101,6 +117,34 @@ export default function LocationsPage() {
             <p className="text-gray-600">
               Same-day service available • Licensed & insured • 100% renter-friendly
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Content Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+              Professional TV Mounting Throughout Los Angeles County
+            </h2>
+            <div className="prose prose-lg mx-auto text-gray-700">
+              <p className="mb-6">
+                Ice Mount'n provides comprehensive TV mounting services across all neighborhoods in Los Angeles County. 
+                Our licensed technicians specialize in damage-free installations that preserve your walls and security deposits, 
+                making us the preferred choice for renters and homeowners alike.
+              </p>
+              <p className="mb-6">
+                From modern apartments in Santa Monica and Beverly Hills to historic homes in Pasadena and Silver Lake, 
+                we understand the unique challenges of each area's architecture and building codes. Our same-day service 
+                availability ensures minimal disruption to your schedule, while our transparent pricing eliminates surprise costs.
+              </p>
+              <p className="mb-6">
+                We serve both residential and commercial clients, offering specialized solutions for over-fireplace mounting, 
+                in-wall cable concealment, and Samsung Frame TV installations. Our commitment to quality extends beyond 
+                the initial installation with comprehensive cable management and professional finishing touches.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -233,6 +277,51 @@ export default function LocationsPage() {
                 We protect your walls and security deposit with clean, damage-free methods, tidy cable management, 
                 and precise alignment. Same-day service is available throughout Los Angeles County.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section with Internal Links */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              Our Complete TV Mounting Services
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Professional installation for every TV mounting need across Los Angeles
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Link href="/services/standard-tv-mount" className="group">
+                <Card className="border-gray-200 hover:shadow-lg transition-shadow group-hover:border-blue-300">
+                  <CardContent className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Standard TV Mount</h3>
+                    <p className="text-gray-600 text-sm">Professional wall mounting for all TV sizes</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link href="/services/over-fireplace-mount" className="group">
+                <Card className="border-gray-200 hover:shadow-lg transition-shadow group-hover:border-blue-300">
+                  <CardContent className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Over-Fireplace Mount</h3>
+                    <p className="text-gray-600 text-sm">Heat-safe installations above fireplaces</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link href="/services/cable-concealment" className="group">
+                <Card className="border-gray-200 hover:shadow-lg transition-shadow group-hover:border-blue-300">
+                  <CardContent className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Cable Concealment</h3>
+                    <p className="text-gray-600 text-sm">In-wall cable hiding for clean aesthetics</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+            <div className="mt-8">
+              <Link href="/services" className="text-blue-600 hover:text-blue-700 font-medium">
+                View All Services →
+              </Link>
             </div>
           </div>
         </div>

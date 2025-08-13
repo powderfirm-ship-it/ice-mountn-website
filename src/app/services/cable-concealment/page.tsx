@@ -4,25 +4,25 @@ import { canonical, buildTitle, buildDescription } from "@/lib/seo";
 import CableConcealmentClient from "./client";
 
 export const metadata: Metadata = {
-  title: buildTitle("In‑Wall Cable Concealment"),
+  title: buildTitle("Cable Concealment"),
   description: buildDescription(
-    "Completely hide TV cables inside your wall with a code‑compliant new outlet behind the TV and a clean, professional finish."
+    "Hide TV cables in-wall with new outlet behind TV. Code-compliant work and professional finish."
   ),
   alternates: {
     canonical: canonical("/services/cable-concealment"),
   },
   openGraph: {
-    title: buildTitle("In‑Wall Cable Concealment"),
+    title: buildTitle("Cable Concealment"),
     description:
-      "Hide TV power/HDMI in‑wall with a new outlet behind the TV. Code‑compliant work and a professional, paint‑ready finish.",
+      "Hide TV cables in-wall with new outlet behind TV. Code-compliant work and professional finish.",
     url: canonical("/services/cable-concealment"),
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: buildTitle("In‑Wall Cable Concealment"),
+    title: buildTitle("Cable Concealment"),
     description:
-      "Code‑compliant in‑wall cable routing with a new outlet behind your TV and a clean, professional finish.",
+      "Code-compliant in-wall cable routing with new outlet behind TV and professional finish.",
   },
 };
 
@@ -30,22 +30,27 @@ function jsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "In‑Wall Cable Concealment",
+    name: "Cable Concealment",
     provider: {
       "@type": "LocalBusiness",
-      name: "Ice Mount'n — Elite TV & Home Audio Installations",
+      name: "Ice Mount'n",
       url: canonical("/"),
-      areaServed: "Los Angeles, CA",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Los Angeles",
+        addressRegion: "CA",
+        addressCountry: "US"
+      },
       telephone: "+1-323-863-8146",
     },
-    serviceType: "TV Cable Concealment / Electrical Outlet Behind TV",
+    description: "Professional in-wall cable concealment with new outlet installation behind TV for a completely wire-free look.",
     areaServed: [
-      "Santa Monica, CA",
-      "West Hollywood, CA",
-      "Beverly Hills, CA",
-      "Downtown LA, CA",
-      "Culver City, CA",
-      "Glendale, CA",
+      { "@type": "City", name: "Santa Monica" },
+      { "@type": "City", name: "West Hollywood" },
+      { "@type": "City", name: "Beverly Hills" },
+      { "@type": "City", name: "Los Angeles" },
+      { "@type": "City", name: "Culver City" },
+      { "@type": "City", name: "Glendale" }
     ],
     offers: {
       "@type": "Offer",
@@ -55,6 +60,8 @@ function jsonLd() {
       priceSpecification: {
         "@type": "PriceSpecification",
         name: "From $199",
+        price: "199",
+        priceCurrency: "USD"
       },
     },
   };

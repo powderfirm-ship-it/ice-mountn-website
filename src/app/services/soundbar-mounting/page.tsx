@@ -6,9 +6,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Star, Clock, Shield, Volume2, PhoneCall, Speaker } from "lucide-react";
 import { openBooking } from "@/utils/housecall-pro";
+import { buildTitle, buildDescription, canonical } from "@/lib/seo";
+import Head from "next/head";
 
 export default function SoundbarMountingPage() {
   const handleBookOnline = openBooking;
+
+  // SEO metadata
+  const title = buildTitle("Soundbar Mounting");
+  const description = buildDescription("Professional soundbar and speaker mounting with optimal audio positioning");
+  const canonicalUrl = canonical("/services/soundbar-mounting");
 
   const processSteps = [
     {
@@ -93,7 +100,61 @@ export default function SoundbarMountingPage() {
   ];
 
   return (
-    <SiteLayout>
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        
+        {/* JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: "Soundbar Mounting",
+              provider: { 
+                "@type": "LocalBusiness", 
+                name: "Ice Mount'n",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Los Angeles",
+                  addressRegion: "CA",
+                  addressCountry: "US"
+                },
+                telephone: "+1-323-863-8146"
+              },
+              areaServed: [
+                { "@type": "City", name: "Los Angeles" },
+                { "@type": "City", name: "Santa Monica" },
+                { "@type": "City", name: "Beverly Hills" }
+              ],
+              description: "Professional soundbar and speaker mounting with optimal audio positioning",
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Soundbar Mounting Services",
+                itemListElement: [
+                  { "@type": "Offer", name: "Soundbar Only", price: "$129" },
+                  { "@type": "Offer", name: "Soundbar + Subwoofer", price: "$179" },
+                  { "@type": "Offer", name: "Surround Sound Setup", price: "$299" }
+                ]
+              }
+            })
+          }}
+        />
+      </Head>
+      <SiteLayout>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-purple-50 to-white py-16">
         <div className="container mx-auto px-4">
@@ -382,6 +443,7 @@ export default function SoundbarMountingPage() {
           </div>
         </div>
       </section>
-    </SiteLayout>
+      </SiteLayout>
+    </>
   );
 }

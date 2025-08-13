@@ -14,7 +14,7 @@ export default function OverFireplaceMountPage() {
   const handleBookOnline = openBooking;
 
   // SEO metadata
-  const title = buildTitle("Over-Fireplace TV Mounting");
+  const title = buildTitle("Fireplace TV Mounting");
   const description = buildDescription("Professional over-fireplace TV mounting with heat-safe clearance and licensed installers");
   const canonicalUrl = canonical("/services/over-fireplace-mount");
 
