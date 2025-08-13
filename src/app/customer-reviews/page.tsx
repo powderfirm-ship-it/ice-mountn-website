@@ -105,7 +105,7 @@ export default function CustomerReviewsPage() {
             <div className="space-y-6">
               <div className="relative">
                 <Image
-                  src="/images/stock/review-01.jpg"
+                  src="/images/stock/review-01.webp"
                   alt="Ice Mount'n TV mounting project showcase"
                   width={1200}
                   height={900}
