@@ -190,20 +190,6 @@ export default function CustomerReviewsPage() {
             </div>
           </div>
 
-          {/* Housecall Pro Reviews Iframe - Full Width Above Customer Reviews */}
-          <div className="mt-16">
-            <div className="rounded-lg overflow-hidden border bg-white my-12">
-              <iframe
-                src={HCP_REVIEWS_URL}
-                title="Ice Mount'n verified customer reviews"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full"
-                style={{ aspectRatio: "3 / 5", minHeight: 560, border: 0 }}
-              />
-            </div>
-          </div>
-
           {/* What Our Customers Say - Moved to Bottom, Full Width */}
           <div className="mt-16">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
