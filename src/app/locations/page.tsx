@@ -7,9 +7,60 @@ import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { locations, campusLocations } from "@/data/locations";
 import { openBooking } from "@/utils/housecall-pro";
+import { buildTitle, buildDescription, canonical } from "@/lib/seo";
+import Head from "next/head";
 
 export default function LocationsPage() {
   const handleBookOnline = openBooking;
+
+  // SEO metadata
+  const title = buildTitle("TV Mounting Service Areas");
+  const description = buildDescription("Professional TV mounting services throughout Los Angeles County");
+  const canonicalUrl = canonical("/locations");
+
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalUrl} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        
+        {/* JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Ice Mount'n",
+              url: canonicalUrl,
+              image: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ice-mountn-website.vercel.app"}/images/brand/ice-mountn-tv-mounting-logo.webp`,
+              telephone: "+13238638146",
+              areaServed: [
+                { "@type": "City", name: "Los Angeles" },
+                { "@type": "AdministrativeArea", name: "Los Angeles County" }
+              ],
+              priceRange: "$$",
+              sameAs: [
+                "https://www.facebook.com/icemountn",
+                "https://www.instagram.com/icemountn"
+              ],
+              serviceType: "TV mounting services",
+              description: "Professional TV mounting services throughout Los Angeles County with licensed, renter-friendly installers."
+            })
+          }}
+        />
+      </Head>
 
   return (
     <SiteLayout>
@@ -18,12 +69,12 @@ export default function LocationsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              TV Mounting Near You in Greater LA
+              TV Mounting Service Near Me in Greater LA
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Professional, renter-friendly TV mounting services throughout Los Angeles County.
-              From beachside condos to downtown lofts, we provide damage-free installations
-              that protect your security deposit while creating the perfect entertainment setup.
+              From beachside condos in Santa Monica to downtown lofts in DTLA, we provide damage-free installations
+              that protect your security deposit while creating the perfect entertainment setup. Same-day service available.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -175,6 +226,14 @@ export default function LocationsPage() {
                 </p>
               </div>
             </div>
+            
+            <div className="mt-8 text-center">
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Choose Ice Mount'n for licensed, renter-friendly TV mounting throughout Los Angeles County. 
+                We protect your walls and security deposit with clean, damage-free methods, tidy cable management, 
+                and precise alignment. Same-day service is available throughout Los Angeles County.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -214,5 +273,6 @@ export default function LocationsPage() {
         </div>
       </section>
     </SiteLayout>
+    </>
   );
 }

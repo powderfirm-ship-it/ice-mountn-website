@@ -62,6 +62,7 @@ export function CityPageClient({
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Professional, renter-friendly TV mounting services in {cityName}. 
               {isCampus ? ' Student housing and dorm installations with RA approval.' : ' Apartment and condo installations that protect your security deposit.'}
+              Same-day service available throughout Los Angeles County.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -138,6 +139,37 @@ export function CityPageClient({
                 </div>
               ))}
             </div>
+            
+            <div className="mt-8 text-center">
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Choose Ice Mount'n for licensed, renter-friendly TV mounting in {cityName}. 
+                We protect your walls and security deposit with clean, damage-free methods, tidy cable management, 
+                and precise alignment. Same-day service is available throughout Los Angeles County.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Neighborhoods Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-gray-600">
+              We serve {cityName} neighborhoods including {data.landmarks?.slice(0, 3).join(', ') || 'downtown areas'}, 
+              with quick arrivals to nearby areas. See all service areas on our <Link href="/locations" className="text-blue-600 hover:text-blue-700 underline">locations page</Link>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Links Section */}
+      <section className="py-8 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-sm text-gray-600">
+              Nearby areas: <Link href="/locations/santa-monica" className="text-blue-600 hover:text-blue-700 underline">Santa Monica</Link>, <Link href="/locations/west-hollywood" className="text-blue-600 hover:text-blue-700 underline">West Hollywood</Link>, <Link href="/locations/beverly-hills" className="text-blue-600 hover:text-blue-700 underline">Beverly Hills</Link>, <Link href="/locations/culver-city" className="text-blue-600 hover:text-blue-700 underline">Culver City</Link>
+            </p>
           </div>
         </div>
       </section>
