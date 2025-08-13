@@ -1,10 +1,10 @@
 export type ServiceSlug =
-  | "standard-tv"
-  | "over-fireplace"
-  | "in-wall-cable"
-  | "soundbar-speaker"
+  | "standard-tv-mount"
+  | "over-fireplace-mount"
+  | "cable-concealment"
+  | "soundbar-mounting"
   | "samsung-frame"
-  | "same-day";
+  | "same-day-tv-mounting";
 
 export const SERVICES: Record<ServiceSlug, {
   title: string;
@@ -14,7 +14,7 @@ export const SERVICES: Record<ServiceSlug, {
   icon: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightning";
   bullets: string[];
 }> = {
-  "standard-tv": {
+  "standard-tv-mount": {
     title: "Standard TV Mount",
     h1: "Standard TV Wall Mounting",
     description: "Secure, damage‑free TV mounting with clean cable options and perfect placement.",
@@ -22,7 +22,7 @@ export const SERVICES: Record<ServiceSlug, {
     icon: "tv",
     bullets: ["Stud‑secure mount", "Tilt/level calibration", "Works with all sizes", "Cable tidy options"]
   },
-  "over-fireplace": {
+  "over-fireplace-mount": {
     title: "Over‑Fireplace Mount",
     h1: "Over‑Fireplace TV Mounting",
     description: "Heat‑safe mounting above fireplaces using specialized brackets and methods.",
@@ -30,7 +30,7 @@ export const SERVICES: Record<ServiceSlug, {
     icon: "flame",
     bullets: ["Heat‑aware placement", "Pull‑down options", "Articulation choices", "Code‑compliant"]
   },
-  "in-wall-cable": {
+  "cable-concealment": {
     title: "In‑Wall Cable Concealment",
     h1: "In‑Wall Cable Concealment",
     description: "Hide power and data lines in‑wall for a clean, code‑compliant look.",
@@ -38,7 +38,7 @@ export const SERVICES: Record<ServiceSlug, {
     icon: "cable",
     bullets: ["Outlet + power bridge", "Data/HDMI runs", "Code compliant", "Clean aesthetic"]
   },
-  "soundbar-speaker": {
+  "soundbar-mounting": {
     title: "Sound‑bar / Speaker Mounting",
     h1: "Sound‑bar & Speaker Mounting",
     description: "Mount and align soundbars and speakers for an immersive setup.",
@@ -54,7 +54,7 @@ export const SERVICES: Record<ServiceSlug, {
     icon: "frame",
     bullets: ["Zero‑gap mount", "One Connect routing", "Art Mode setup", "Wire‑free look"]
   },
-  "same-day": {
+  "same-day-tv-mounting": {
     title: "Same‑Day Service",
     h1: "Same‑Day TV Mounting",
     description: "Urgent installs with landlord‑friendly methods across LA.",

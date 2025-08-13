@@ -37,7 +37,7 @@ function getIcon(name: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightni
   }
 }
 
-const ORDER: ServiceSlug[] = ["standard-tv", "over-fireplace", "in-wall-cable", "soundbar-speaker", "samsung-frame", "same-day"];
+const ORDER: ServiceSlug[] = ["standard-tv-mount", "over-fireplace-mount", "cable-concealment", "soundbar-mounting", "samsung-frame", "same-day-tv-mounting"];
 
 export function CityPageClient({ 
   cityName, 
