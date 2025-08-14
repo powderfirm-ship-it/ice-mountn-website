@@ -740,9 +740,9 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
       }
     ]
   },
-  "inglwood": {
+  "inglewood": {
     name: "Inglewood",
-    slug: "inglwood",
+    slug: "inglewood",
     neighborhoods: ["Inglewood", "Hawthorne", "El Segundo", "Lennox", "Westchester", "South Los Angeles"],
     landmarks: ["SoFi Stadium", "The Forum", "Hollywood Park Casino", "Inglewood Park Cemetery", "Centinela Adobe"],
     localChallenges: ["stadium area access", "parking restrictions", "apartment building rules", "commercial zoning"],
