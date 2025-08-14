@@ -14,6 +14,8 @@ import MasonryGallery from "@/components/masonry-gallery";
 import { getCityData } from "@/data/cities";
 import { DiscountBanner } from "@/components/discount-banner";
 import Image from "next/image";
+import CustomerReviewsSection from "@/components/customer-reviews-section";
+import { getCityReviews } from "@/data/city-reviews";
 
 interface CityPageClientProps {
   cityName: string;
@@ -183,6 +185,7 @@ export function CityPageClient({
                 From {neighborhoods.slice(0, 2).join(" to ")} to {neighborhoods.slice(-1)[0]}, we provide tailored TV mounting solutions for every property type in {cityName}. 
                 We know local parking, building access rules, and {localChallenges.slice(0, 2).join(", ")} — so your installation is smooth and compliant.
                 {landmarks.length > 0 && ` Our team recently mounted a Samsung Frame TV in the ${neighborhoods[0]} neighborhood near ${landmarks[0]}, where wall types often require specialized mounting techniques.`}
+                We've handled installations in {neighborhoods[0]} condos with strict HOA rules, {neighborhoods[1]} homes with unique architectural features, and properties near {landmarks[0]} that require specialized mounting approaches.
               </p>
             </div>
 
@@ -275,7 +278,8 @@ export function CityPageClient({
                   <h4 className="font-semibold text-gray-800 mb-2">{cityName} Building-Specific Knowledge</h4>
                   <p className="text-gray-600 text-sm">
                     We understand {cityName}'s unique architecture, from {neighborhoods[0]}'s {localChallenges[0] || 'building codes'} to {neighborhoods[1]}'s {localChallenges[1] || 'property requirements'}. 
-                    Our technicians handle everything from high ceilings in luxury condos near {landmarks[0]} to concrete walls in older buildings.
+                    Our technicians handle everything from high ceilings in luxury condos near {landmarks[0]} to concrete walls in older buildings in {neighborhoods[2] || neighborhoods[1]}.
+                    We've installed TVs in {neighborhoods[0]} apartments near {landmarks[0]} and {neighborhoods[1]} homes with the typical {cityName} construction challenges.
                   </p>
                 </div>
                 <div>
@@ -283,6 +287,7 @@ export function CityPageClient({
                   <p className="text-gray-600 text-sm">
                     Our team knows {cityName} like locals, from parking regulations in {neighborhoods[0]} to access procedures for buildings near {landmarks[0]}. 
                     We coordinate with property managers and HOAs to ensure smooth service delivery.
+                    We're familiar with the tight parking in {neighborhoods[0]}, the building access procedures near {landmarks[0]}, and the HOA requirements in {neighborhoods[1]} luxury complexes.
                   </p>
                 </div>
               </div>
@@ -312,6 +317,8 @@ export function CityPageClient({
             </h2>
             <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
               See examples of our work in {cityName} homes and apartments. Each installation is tailored to the unique characteristics of your property.
+              From {neighborhoods[0]} condos near {landmarks[0]} to {neighborhoods[1]} homes with {cityName}'s typical construction challenges, 
+              our gallery showcases the quality and precision of our local installations.
             </p>
             
             <MasonryGallery 
@@ -343,12 +350,14 @@ export function CityPageClient({
                   <p className="text-gray-600 mb-4">
                     This {cityName} family in the {neighborhoods[0]} neighborhood wanted their Samsung Frame TV to look like artwork when not in use. 
                     We installed it with zero-gap mounting and concealed all cables in-wall for a completely clean appearance, 
-                    working around the unique wall construction common in {cityName} homes.
+                    working around the unique wall construction common in {cityName} homes near {landmarks[0]}.
+                    The {neighborhoods[0]} area has specific building challenges that our team is well-versed in handling.
                   </p>
                   <p className="text-gray-600 mb-4">
                     The installation took just 2 hours, and the family was amazed at how seamlessly the TV integrated 
                     with their {cityName} home's aesthetic near {landmarks[0]}. No visible wires, perfect positioning, and Art Mode that 
                     makes it look like a gallery piece. We handled the {localChallenges[0] || 'local building requirements'} with ease.
+                    This {neighborhoods[0]} installation showcases our expertise with {cityName}'s unique architectural challenges.
                   </p>
                   <div className="flex items-center space-x-2 text-sm text-gray-500">
                     <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -373,6 +382,12 @@ export function CityPageClient({
           </div>
         </div>
       </section>
+
+      {/* Customer Reviews Section */}
+      <CustomerReviewsSection 
+        cityName={cityName} 
+        reviews={getCityReviews(citySlug)}
+      />
 
       {/* Neighborhood-Specific FAQ */}
       <section className="py-16 bg-white">
@@ -456,6 +471,7 @@ export function CityPageClient({
                 the unique characteristics of your neighborhood. From {neighborhoods.slice(0, 3).join(" to ")} and beyond, 
                 our technicians are familiar with {cityName}'s building codes, wall types, and local regulations. 
                 We've installed TVs in apartments near {landmarks[0]} and {landmarks[1] || landmarks[0]}, handling everything from luxury condos to historic homes.
+                Our {cityName} team recently mounted a Samsung Frame TV in the {neighborhoods[0]} neighborhood near {landmarks[0]}, where building-specific challenges like high ceilings and concrete walls required our expertise.
               </p>
               
               <p className="mb-6">
@@ -497,13 +513,14 @@ export function CityPageClient({
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Related TV Mounting Services & Areas Near {cityName}
+              Related TV Mounting Services & Areas Near {cityName} - Serving {neighborhoods.slice(0, 2).join(" and ")}
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Related Services */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Our {cityName} TV Mounting Services</h3>
+                <p className="text-sm text-gray-600 mb-3">Professional installations in {neighborhoods[0]} and throughout {cityName}</p>
                 <ul className="space-y-2">
                   <li>
                     <Link href="/services/standard-tv-mount" className="text-blue-600 hover:text-blue-700 hover:underline">
@@ -531,6 +548,7 @@ export function CityPageClient({
               {/* Nearby Cities */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">TV Mounting Near {cityName}</h3>
+                <p className="text-sm text-gray-600 mb-3">Serving {cityName} and surrounding areas</p>
                 <ul className="space-y-2">
                   {nearbyCities.slice(0, 3).map((city) => (
                     <li key={city}>
@@ -545,6 +563,7 @@ export function CityPageClient({
               {/* Additional Links */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">More {cityName} TV Mounting Resources</h3>
+                <p className="text-sm text-gray-600 mb-3">Local expertise and customer satisfaction</p>
                 <ul className="space-y-2">
                   <li>
                     <Link href="/customer-reviews" className="text-blue-600 hover:text-blue-700 hover:underline">
@@ -597,9 +616,9 @@ export function CityPageClient({
       <SeoTextBlock
         title={`TV Mounting in ${cityName}: What to Expect`}
         paragraphs={[
-          `When you choose Ice Mount'n for TV mounting services in ${cityName}, you're selecting a team that understands the unique characteristics of your neighborhood. Our technicians are familiar with ${cityName}'s building codes, wall types, and local regulations, ensuring your installation meets all requirements while maintaining the aesthetic appeal of your space. We've installed TVs in apartments near ${landmarks[0]} and ${landmarks[1] || landmarks[0]}, handling everything from luxury condos to historic homes.`,
-          `Our ${cityName} service area covers all residential and commercial properties, from historic homes near ${landmarks[0]} to modern apartments in ${neighborhoods[2]}. We handle everything from basic mounting to complex installations requiring custom solutions. Whether you're in a ${neighborhoods[0]} condo with strict building rules or a ${neighborhoods[1]} home with unique architectural features, our team adapts to your specific needs. Many of our clients live in ${neighborhoods[0]} where wall types often require specialized mounting techniques.`,
-          `The installation process in ${cityName} typically takes 1-3 hours depending on your setup complexity. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new TV setup without waiting weeks for an appointment. We coordinate with ${cityName} property managers and HOAs to ensure smooth access and compliance, handling building-specific challenges like high ceilings, concrete walls, and older wiring common to ${cityName} properties.`
+          `When you choose Ice Mount'n for TV mounting services in ${cityName}, you're selecting a team that understands the unique characteristics of your neighborhood. Our technicians are familiar with ${cityName}'s building codes, wall types, and local regulations, ensuring your installation meets all requirements while maintaining the aesthetic appeal of your space. We've installed TVs in apartments near ${landmarks[0]} and ${landmarks[1] || landmarks[0]}, handling everything from luxury condos to historic homes. Our ${cityName} team recently mounted a Samsung Frame TV in the ${neighborhoods[0]} neighborhood near ${landmarks[0]}, where building-specific challenges like high ceilings and concrete walls required our expertise.`,
+          `Our ${cityName} service area covers all residential and commercial properties, from historic homes near ${landmarks[0]} to modern apartments in ${neighborhoods[2]}. We handle everything from basic mounting to complex installations requiring custom solutions. Whether you're in a ${neighborhoods[0]} condo with strict building rules or a ${neighborhoods[1]} home with unique architectural features, our team adapts to your specific needs. Many of our clients live in ${neighborhoods[0]} where wall types often require specialized mounting techniques. We've handled installations in ${neighborhoods[0]} condos with strict HOA rules, ${neighborhoods[1]} homes with unique architectural features, and properties near ${landmarks[0]} that require specialized mounting approaches.`,
+          `The installation process in ${cityName} typically takes 1-3 hours depending on your setup complexity. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new TV setup without waiting weeks for an appointment. We coordinate with ${cityName} property managers and HOAs to ensure smooth access and compliance, handling building-specific challenges like high ceilings, concrete walls, and older wiring common to ${cityName} properties. Our team is familiar with the tight parking in ${neighborhoods[0]}, the building access procedures near ${landmarks[0]}, and the HOA requirements in ${neighborhoods[1]} luxury complexes.`
         ]}
       />
 
@@ -608,10 +627,11 @@ export function CityPageClient({
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Ready for {cityName} TV Mounting? - Professional Installation Near {landmarks[0]}
+              Ready for {cityName} TV Mounting? - Professional Installation Near {landmarks[0]} in {neighborhoods[0]}
             </h2>
             <p className="text-xl text-blue-100 mb-8">
               Professional installation that protects your property and creates the perfect entertainment setup.
+              Serving {neighborhoods.slice(0, 2).join(" and ")} with local expertise and same-day availability.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
