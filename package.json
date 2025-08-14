@@ -13,7 +13,10 @@
     "check:sitemap": "node ../ice-mountn-scripts/validate-sitemap.js",
     "schema:check": "node ../ice-mountn-scripts/validate-schema.js",
     "print:bad-sitemap-urls": "node --experimental-import-meta-resolve scripts/print-bad-sitemap-urls.mjs",
-    "sitemap:check": "node scripts/verify-sitemap-simple.mjs"
+    "sitemap:check": "node scripts/verify-sitemap-simple.mjs",
+    "sitemap:gen": "next-sitemap",
+    "sitemap:fix": "node scripts/fix-sitemap-canonicals.mjs",
+    "sitemap:build": "npm run sitemap:gen && npm run sitemap:fix"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",
@@ -39,9 +42,10 @@
     "@types/react-dom": "^18.3.7",
     "eslint": "^9.27.0",
     "eslint-config-next": "15.1.7",
+    "next-sitemap": "^4.2.3",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
