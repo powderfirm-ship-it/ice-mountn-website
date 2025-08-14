@@ -33,6 +33,18 @@ const nextConfig = {
         destination: 'https://pro.housecallpro.com/IceMountn/573582/terms',
         permanent: false, // temporary; switch to true if you want a 308 later
       },
+
+      // 4xx Error Fixes: Redirect non-existent pages to canonical URLs
+      {
+        source: '/locations/nearby-areas',
+        destination: '/locations',
+        permanent: true, // 301 redirect to locations hub
+      },
+      {
+        source: '/services/same-day-tv-mounting',
+        destination: '/same-day-tv-mounting',
+        permanent: true, // 301 redirect to canonical same-day service page
+      },
     ];
   },
   allowedDevOrigins: ["*.preview.same-app.com"],

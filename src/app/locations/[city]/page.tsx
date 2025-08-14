@@ -1,5 +1,5 @@
 import { SiteLayout } from "@/components/site-layout";
-import { locations, getLocationBySlug, getCampusLocationBySlug } from "@/data/locations";
+import { locations, getLocationBySlug, getCampusLocationBySlug, campusLocations } from "@/data/locations";
 import { notFound } from "next/navigation";
 import { CityPageClient } from "./city-page-client";
 import { SERVICES, type ServiceSlug } from "@/data/services";
@@ -41,6 +41,15 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       description: buildDescription("Professional TV mounting services", cityName),
     }
   };
+}
+
+// Generate static params for all cities and campuses
+export async function generateStaticParams() {
+  const allLocations = [...locations, ...campusLocations];
+  
+  return allLocations.map((location) => ({
+    city: location.slug,
+  }));
 }
 
 // Dynamic routes handle all cities and campuses at runtime

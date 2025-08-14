@@ -891,6 +891,766 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
         answer: "Our technicians know USC area parking regulations and can coordinate with building management for smooth access to your property."
       }
     ]
+  },
+  "bel-air": {
+    name: "Bel Air",
+    slug: "bel-air",
+    neighborhoods: ["Bel Air Estates", "Bel Air Crest", "Bel Air Glen"],
+    landmarks: ["Getty Center", "Bel Air Country Club", "UCLA campus"],
+    localChallenges: ["luxury home requirements", "strict building codes", "hillside access", "security system integration"],
+    localBenefits: ["luxury home expertise", "hillside skills", "security system knowledge", "premium service standards"],
+    jobCount: 145,
+    averageRating: 4.9,
+    nearbyCities: ["Brentwood", "Westwood", "Beverly Hills"],
+    heroImage: "tv-mounting-los-angeles-08.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-07.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-08.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-09.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "Do you handle luxury home installations in Bel Air?",
+        answer: "Yes, we specialize in luxury Bel Air homes. We understand the high standards and can integrate with existing security systems and smart home technology."
+      },
+      {
+        question: "Can you work with Bel Air building codes?",
+        answer: "Absolutely. Our technicians are familiar with Bel Air building codes and can ensure all installations meet local requirements and inspections."
+      },
+      {
+        question: "Do you offer premium cable concealment for luxury homes?",
+        answer: "Yes, we provide premium in-wall cable concealment that maintains the aesthetic standards expected in Bel Air luxury properties."
+      },
+      {
+        question: "How do you handle hillside access in Bel Air?",
+        answer: "We're experienced with Bel Air's hillside terrain and can access hillside properties safely. We coordinate with property managers for smooth service delivery."
+      }
+    ]
+  },
+  "beverly-glen": {
+    name: "Beverly Glen",
+    slug: "beverly-glen",
+    neighborhoods: ["Beverly Glen", "Beverly Glen Circle", "Beverly Glen Estates"],
+    landmarks: ["Beverly Glen Circle", "Beverly Hills", "Coldwater Canyon"],
+    localChallenges: ["hillside access", "luxury home requirements", "narrow canyon roads", "parking limitations"],
+    localBenefits: ["hillside expertise", "luxury home knowledge", "canyon area navigation", "premium service standards"],
+    jobCount: 123,
+    averageRating: 4.9,
+    nearbyCities: ["Beverly Hills", "Bel Air", "West Hollywood"],
+    heroImage: "tv-mounting-los-angeles-19.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-16.webp",
+      "tv-wall-installation-los-angeles-04.webp",
+      "tv-mounting-los-angeles-17.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-18.webp",
+      "tv-wall-installation-los-angeles-05.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle hillside access in Beverly Glen?",
+        answer: "We're experienced with Beverly Glen's hillside terrain and can access hillside properties safely. We coordinate with property managers for smooth service delivery."
+      },
+      {
+        question: "Can you work in Beverly Glen luxury homes?",
+        answer: "Yes, we handle Beverly Glen's luxury homes with care. We're familiar with high-end requirements and can ensure premium installations."
+      },
+      {
+        question: "Do you offer same-day service in Beverly Glen?",
+        answer: "Absolutely! We provide same-day service throughout Beverly Glen, including hillside areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle canyon area parking in Beverly Glen?",
+        answer: "Our technicians know Beverly Glen's canyon layout and can coordinate with neighbors for smooth access to your property."
+      }
+    ]
+  },
+  "beverly-grove": {
+    name: "Beverly Grove",
+    slug: "beverly-grove",
+    neighborhoods: ["Beverly Grove", "Fairfax District", "Melrose District"],
+    landmarks: ["The Grove", "Farmers Market", "Melrose Avenue"],
+    localChallenges: ["tourist area access", "parking restrictions", "apartment building rules", "commercial zoning"],
+    localBenefits: ["tourist area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
+    jobCount: 156,
+    averageRating: 4.8,
+    nearbyCities: ["West Hollywood", "Beverly Hills", "Fairfax"],
+    heroImage: "tv-mounting-los-angeles-20.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-19.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-20.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-21.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle Grove area access in Beverly Grove?",
+        answer: "We're experienced with Beverly Grove's tourist areas and can coordinate with building management for smooth access to Grove-adjacent properties."
+      },
+      {
+        question: "Can you work in Beverly Grove apartment buildings?",
+        answer: "Yes, we handle Beverly Grove's apartment buildings with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Beverly Grove?",
+        answer: "Absolutely! We provide same-day service throughout Beverly Grove, including Grove areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle parking restrictions in Beverly Grove?",
+        answer: "Our technicians know Beverly Grove parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "boyle-heights": {
+    name: "Boyle Heights",
+    slug: "boyle-heights",
+    neighborhoods: ["Boyle Heights", "East LA", "Lincoln Heights"],
+    landmarks: ["Mariachi Plaza", "Hollenbeck Park", "East LA College"],
+    localChallenges: ["historic preservation", "older construction", "parking limitations", "apartment building rules"],
+    localBenefits: ["historic home expertise", "preservation knowledge", "local landmark understanding", "community navigation"],
+    jobCount: 134,
+    averageRating: 4.7,
+    nearbyCities: ["Downtown LA", "East Hollywood", "Lincoln Heights"],
+    heroImage: "tv-mounting-los-angeles-21.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-01.webp",
+      "tv-wall-installation-los-angeles-01.webp",
+      "tv-mounting-los-angeles-02.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-03.webp",
+      "tv-wall-installation-los-angeles-02.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle historic preservation in Boyle Heights?",
+        answer: "We're experienced with Boyle Heights' historic homes and can ensure installations meet preservation requirements while providing modern functionality."
+      },
+      {
+        question: "Can you work in older Boyle Heights properties?",
+        answer: "Yes, we handle Boyle Heights' historic properties with care. We're familiar with older construction and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Boyle Heights?",
+        answer: "Absolutely! We provide same-day service throughout Boyle Heights, including historic areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle parking limitations in Boyle Heights?",
+        answer: "Our technicians know Boyle Heights' street layout and can coordinate with neighbors for smooth access to your property."
+      }
+    ]
+  },
+  "century-city": {
+    name: "Century City",
+    slug: "century-city",
+    neighborhoods: ["Century City", "Westwood", "Beverly Hills"],
+    landmarks: ["Westfield Century City", "Fox Studios", "Beverly Hills"],
+    localChallenges: ["high-rise access", "commercial zoning", "parking limitations", "security protocols"],
+    localBenefits: ["high-rise expertise", "commercial property knowledge", "security coordination", "downtown logistics"],
+    jobCount: 178,
+    averageRating: 4.8,
+    nearbyCities: ["Westwood", "Beverly Hills", "West Los Angeles"],
+    heroImage: "tv-mounting-los-angeles-12.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-13.webp",
+      "tv-wall-installation-los-angeles-03.webp",
+      "tv-mounting-los-angeles-14.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-15.webp",
+      "tv-wall-installation-los-angeles-04.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle high-rise access in Century City?",
+        answer: "We're experienced with Century City's high-rises and can coordinate with building security and management for smooth access to your property."
+      },
+      {
+        question: "Can you work in Century City commercial properties?",
+        answer: "Yes, we handle Century City's commercial properties with care. We're familiar with commercial zoning and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Century City?",
+        answer: "Absolutely! We provide same-day service throughout Century City, including high-rise areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle Century City parking restrictions?",
+        answer: "Our technicians know Century City parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "chinatown": {
+    name: "Chinatown",
+    slug: "chinatown",
+    neighborhoods: ["Chinatown", "Downtown LA", "Echo Park"],
+    landmarks: ["Chinatown Central Plaza", "Union Station", "Dodger Stadium"],
+    localChallenges: ["historic preservation", "older construction", "parking limitations", "tourist area logistics"],
+    localBenefits: ["historic home expertise", "preservation knowledge", "tourist area understanding", "local landmark experience"],
+    jobCount: 145,
+    averageRating: 4.7,
+    nearbyCities: ["Downtown LA", "Echo Park", "Lincoln Heights"],
+    heroImage: "tv-mounting-los-angeles-11.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-16.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-17.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-18.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle historic preservation in Chinatown?",
+        answer: "We're experienced with Chinatown's historic homes and can ensure installations meet preservation requirements while providing modern functionality."
+      },
+      {
+        question: "Can you work in older Chinatown properties?",
+        answer: "Yes, we handle Chinatown's historic properties with care. We're familiar with older construction and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Chinatown?",
+        answer: "Absolutely! We provide same-day service throughout Chinatown, including historic areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle tourist area logistics in Chinatown?",
+        answer: "Our technicians know Chinatown's tourist areas and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "eagle-rock": {
+    name: "Eagle Rock",
+    slug: "eagle-rock",
+    neighborhoods: ["Eagle Rock", "Highland Park", "Glassell Park"],
+    landmarks: ["Eagle Rock", "Colorado Boulevard", "Occidental College"],
+    localChallenges: ["historic preservation", "older construction", "hillside access", "parking limitations"],
+    localBenefits: ["historic home expertise", "preservation knowledge", "hillside skills", "local landmark understanding"],
+    jobCount: 123,
+    averageRating: 4.8,
+    nearbyCities: ["Highland Park", "Glassell Park", "Pasadena"],
+    heroImage: "tv-mounting-los-angeles-10.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-19.webp",
+      "tv-wall-installation-los-angeles-01.webp",
+      "tv-mounting-los-angeles-20.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-21.webp",
+      "tv-wall-installation-los-angeles-02.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle historic preservation in Eagle Rock?",
+        answer: "We're experienced with Eagle Rock's historic homes and can ensure installations meet preservation requirements while providing modern functionality."
+      },
+      {
+        question: "Can you work in older Eagle Rock properties?",
+        answer: "Yes, we handle Eagle Rock's historic properties with care. We're familiar with older construction and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Eagle Rock?",
+        answer: "Absolutely! We provide same-day service throughout Eagle Rock, including historic areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle hillside access in Eagle Rock?",
+        answer: "We're experienced with Eagle Rock's hillside terrain and can access hillside properties safely. We coordinate with property managers for smooth service delivery."
+      }
+    ]
+  },
+  "east-hollywood": {
+    name: "East Hollywood",
+    slug: "east-hollywood",
+    neighborhoods: ["East Hollywood", "Thai Town", "Little Armenia"],
+    landmarks: ["Thai Town", "Barnsdall Art Park", "Los Feliz"],
+    localChallenges: ["apartment building rules", "parking restrictions", "tourist area logistics", "diverse community needs"],
+    localBenefits: ["apartment building experience", "parking knowledge", "tourist area understanding", "community diversity expertise"],
+    jobCount: 167,
+    averageRating: 4.7,
+    nearbyCities: ["Hollywood", "Los Feliz", "Thai Town"],
+    heroImage: "tv-mounting-los-angeles-09.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-03.webp",
+      "tv-wall-installation-los-angeles-03.webp",
+      "tv-mounting-los-angeles-04.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-05.webp",
+      "tv-wall-installation-los-angeles-04.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle apartment building rules in East Hollywood?",
+        answer: "We're experienced with East Hollywood's apartment buildings and can coordinate with building management for smooth access to your property."
+      },
+      {
+        question: "Can you work in East Hollywood's diverse communities?",
+        answer: "Yes, we handle East Hollywood's diverse communities with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in East Hollywood?",
+        answer: "Absolutely! We provide same-day service throughout East Hollywood, including all neighborhoods. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle parking restrictions in East Hollywood?",
+        answer: "Our technicians know East Hollywood parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "encino": {
+    name: "Encino",
+    slug: "encino",
+    neighborhoods: ["Encino", "Sherman Oaks", "Tarzana"],
+    landmarks: ["Encino Village", "Lake Balboa", "Sepulveda Basin"],
+    localChallenges: ["valley area access", "parking regulations", "apartment building rules", "commercial zoning"],
+    localBenefits: ["valley area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
+    jobCount: 189,
+    averageRating: 4.8,
+    nearbyCities: ["Sherman Oaks", "Tarzana", "Van Nuys"],
+    heroImage: "tv-mounting-los-angeles-08.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-07.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-08.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-09.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle valley area access in Encino?",
+        answer: "We're experienced with Encino's valley location and can navigate the area efficiently for quick service delivery to all neighborhoods."
+      },
+      {
+        question: "Can you work in Encino apartment buildings?",
+        answer: "Yes, we handle Encino's apartment buildings with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Encino?",
+        answer: "Absolutely! We provide same-day service throughout Encino, including all valley areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle Encino parking regulations?",
+        answer: "Our technicians know Encino parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "gardena": {
+    name: "Gardena",
+    slug: "gardena",
+    neighborhoods: ["Gardena", "Torrance", "Hawthorne"],
+    landmarks: ["Gardena City Hall", "Gardena Valley", "South Bay"],
+    localChallenges: ["industrial area access", "parking restrictions", "apartment building rules", "commercial zoning"],
+    localBenefits: ["industrial area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
+    jobCount: 134,
+    averageRating: 4.7,
+    nearbyCities: ["Torrance", "Hawthorne", "Inglewood"],
+    heroImage: "tv-mounting-los-angeles-07.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-10.webp",
+      "tv-wall-installation-los-angeles-01.webp",
+      "tv-mounting-los-angeles-11.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-12.webp",
+      "tv-wall-installation-los-angeles-02.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle industrial area access in Gardena?",
+        answer: "We're experienced with Gardena's industrial areas and can coordinate with security for smooth access to properties near industrial facilities."
+      },
+      {
+        question: "Can you work in Gardena apartment buildings?",
+        answer: "Yes, we handle Gardena's apartment buildings with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Gardena?",
+        answer: "Absolutely! We provide same-day service throughout Gardena, including industrial areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle Gardena parking restrictions?",
+        answer: "Our technicians know Gardena parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "hermosa-beach": {
+    name: "Hermosa Beach",
+    slug: "hermosa-beach",
+    neighborhoods: ["Hermosa Beach", "Manhattan Beach", "Redondo Beach"],
+    landmarks: ["Hermosa Beach Pier", "The Strand", "Hermosa Beach"],
+    localChallenges: ["beach proximity", "parking restrictions", "tourist area access", "older beach homes"],
+    localBenefits: ["beach area expertise", "parking knowledge", "tourist area understanding", "beach community experience"],
+    jobCount: 112,
+    averageRating: 4.8,
+    nearbyCities: ["Manhattan Beach", "Redondo Beach", "El Segundo"],
+    heroImage: "tv-mounting-los-angeles-06.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-13.webp",
+      "tv-wall-installation-los-angeles-03.webp",
+      "tv-mounting-los-angeles-14.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-15.webp",
+      "tv-wall-installation-los-angeles-04.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle beach proximity in Hermosa Beach?",
+        answer: "We use corrosion-resistant hardware and consider salt air exposure when installing TVs near the beach. This ensures long-lasting installations in coastal Hermosa Beach."
+      },
+      {
+        question: "Can you access properties in the Hermosa Beach area?",
+        answer: "Yes, we're experienced with Hermosa Beach area access and can coordinate with property managers for smooth service delivery in this beautiful beach community."
+      },
+      {
+        question: "Do you work in older Hermosa Beach homes?",
+        answer: "Absolutely! We handle Hermosa Beach's historic beach homes with care, ensuring installations meet preservation requirements while providing modern functionality."
+      },
+      {
+        question: "How do you handle parking restrictions in Hermosa Beach?",
+        answer: "Our technicians know Hermosa Beach parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "los-feliz": {
+    name: "Los Feliz",
+    slug: "los-feliz",
+    neighborhoods: ["Los Feliz", "Griffith Park", "Silver Lake"],
+    landmarks: ["Griffith Observatory", "Griffith Park", "Los Feliz Village"],
+    localChallenges: ["hillside access", "older homes", "narrow streets", "parking limitations"],
+    localBenefits: ["hillside expertise", "historic home knowledge", "local street navigation", "community understanding"],
+    jobCount: 145,
+    averageRating: 4.8,
+    nearbyCities: ["Silver Lake", "East Hollywood", "Griffith Park"],
+    heroImage: "tv-mounting-los-angeles-05.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-16.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-17.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-18.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle hillside access in Los Feliz?",
+        answer: "We're experienced with Los Feliz's hillside terrain and can access hillside properties safely. We coordinate with property managers for smooth service delivery."
+      },
+      {
+        question: "Can you work in older Los Feliz homes?",
+        answer: "Yes, we handle Los Feliz's historic homes with care. We're familiar with older construction and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Los Feliz?",
+        answer: "Absolutely! We provide same-day service throughout Los Feliz, including hillside areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle narrow street parking in Los Feliz?",
+        answer: "Our technicians know Los Feliz's street layout and can coordinate with neighbors for smooth access to your property."
+      }
+    ]
+  },
+  "north-hollywood": {
+    name: "North Hollywood",
+    slug: "north-hollywood",
+    neighborhoods: ["North Hollywood", "NoHo Arts District", "Toluca Lake"],
+    landmarks: ["NoHo Arts District", "Universal Studios", "Toluca Lake"],
+    localChallenges: ["arts district access", "parking restrictions", "apartment building rules", "commercial zoning"],
+    localBenefits: ["arts district expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
+    jobCount: 178,
+    averageRating: 4.8,
+    nearbyCities: ["Toluca Lake", "Burbank", "Studio City"],
+    heroImage: "tv-mounting-los-angeles-04.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-19.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-20.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-21.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle arts district access in North Hollywood?",
+        answer: "We're experienced with North Hollywood's NoHo Arts District and can coordinate with building management for smooth access to arts district properties."
+      },
+      {
+        question: "Can you work in North Hollywood apartment buildings?",
+        answer: "Yes, we handle North Hollywood's apartment buildings with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in North Hollywood?",
+        answer: "Absolutely! We provide same-day service throughout North Hollywood, including arts district areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle North Hollywood parking restrictions?",
+        answer: "Our technicians know North Hollywood parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "pacific-palisades": {
+    name: "Pacific Palisades",
+    slug: "pacific-palisades",
+    neighborhoods: ["Pacific Palisades", "Brentwood", "Malibu"],
+    landmarks: ["Pacific Palisades Village", "Will Rogers State Beach", "Temescal Canyon"],
+    localChallenges: ["beach proximity", "luxury home requirements", "canyon access", "parking restrictions"],
+    localBenefits: ["beach area expertise", "luxury home knowledge", "canyon navigation", "premium service standards"],
+    jobCount: 123,
+    averageRating: 4.9,
+    nearbyCities: ["Brentwood", "Malibu", "Santa Monica"],
+    heroImage: "tv-mounting-los-angeles-03.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-01.webp",
+      "tv-wall-installation-los-angeles-01.webp",
+      "tv-mounting-los-angeles-02.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-03.webp",
+      "tv-wall-installation-los-angeles-02.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle beach proximity in Pacific Palisades?",
+        answer: "We use corrosion-resistant hardware and consider salt air exposure when installing TVs near the beach. This ensures long-lasting installations in coastal Pacific Palisades."
+      },
+      {
+        question: "Can you work in Pacific Palisades luxury homes?",
+        answer: "Yes, we handle Pacific Palisades' luxury homes with care. We're familiar with high-end requirements and can ensure premium installations."
+      },
+      {
+        question: "Do you offer same-day service in Pacific Palisades?",
+        answer: "Absolutely! We provide same-day service throughout Pacific Palisades, including beach and canyon areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle canyon access in Pacific Palisades?",
+        answer: "We're experienced with Pacific Palisades' canyon terrain and can access canyon properties safely. We coordinate with property managers for smooth service delivery."
+      }
+    ]
+  },
+  "playa-del-rey": {
+    name: "Playa del Rey",
+    slug: "playa-del-rey",
+    neighborhoods: ["Playa del Rey", "Marina del Rey", "Venice"],
+    landmarks: ["Playa del Rey Beach", "Ballona Wetlands", "LAX Airport"],
+    localChallenges: ["beach proximity", "airport area access", "parking restrictions", "tourist area logistics"],
+    localBenefits: ["beach area expertise", "airport area knowledge", "parking understanding", "tourist-friendly service"],
+    jobCount: 98,
+    averageRating: 4.8,
+    nearbyCities: ["Marina del Rey", "Venice", "El Segundo"],
+    heroImage: "tv-mounting-los-angeles-02.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-04.webp",
+      "tv-wall-installation-los-angeles-03.webp",
+      "tv-mounting-los-angeles-05.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-06.webp",
+      "tv-wall-installation-los-angeles-04.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle beach proximity in Playa del Rey?",
+        answer: "We use corrosion-resistant hardware and consider salt air exposure when installing TVs near the beach. This ensures long-lasting installations in coastal Playa del Rey."
+      },
+      {
+        question: "Can you access properties in the Playa del Rey area?",
+        answer: "Yes, we're experienced with Playa del Rey area access and can coordinate with property managers for smooth service delivery in this unique beach community."
+      },
+      {
+        question: "Do you work in Playa del Rey condos and apartments?",
+        answer: "Absolutely! We handle Playa del Rey's beachfront properties with care, ensuring installations meet preservation requirements while providing modern functionality."
+      },
+      {
+        question: "How do you handle airport area access in Playa del Rey?",
+        answer: "Our technicians know Playa del Rey's airport-adjacent location and can coordinate with security for smooth access to properties near LAX."
+      }
+    ]
+  },
+  "redondo-beach": {
+    name: "Redondo Beach",
+    slug: "redondo-beach",
+    neighborhoods: ["Redondo Beach", "Hermosa Beach", "Manhattan Beach"],
+    landmarks: ["Redondo Beach Pier", "King Harbor", "The Strand"],
+    localChallenges: ["beach proximity", "parking restrictions", "tourist area access", "older beach homes"],
+    localBenefits: ["beach area expertise", "parking knowledge", "tourist area understanding", "beach community experience"],
+    jobCount: 112,
+    averageRating: 4.8,
+    nearbyCities: ["Hermosa Beach", "Manhattan Beach", "Torrance"],
+    heroImage: "tv-mounting-los-angeles-01.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-07.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-08.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-09.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle beach proximity in Redondo Beach?",
+        answer: "We use corrosion-resistant hardware and consider salt air exposure when installing TVs near the beach. This ensures long-lasting installations in coastal Redondo Beach."
+      },
+      {
+        question: "Can you access properties in the Redondo Beach area?",
+        answer: "Yes, we're experienced with Redondo Beach area access and can coordinate with property managers for smooth service delivery in this beautiful harbor community."
+      },
+      {
+        question: "Do you work in older Redondo Beach homes?",
+        answer: "Absolutely! We handle Redondo Beach's historic beach homes with care, ensuring installations meet preservation requirements while providing modern functionality."
+      },
+      {
+        question: "How do you handle parking restrictions in Redondo Beach?",
+        answer: "Our technicians know Redondo Beach parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "south-pasadena": {
+    name: "South Pasadena",
+    slug: "south-pasadena",
+    neighborhoods: ["South Pasadena", "Pasadena", "Eagle Rock"],
+    landmarks: ["South Pasadena City Hall", "Mission Street", "Arroyo Seco"],
+    localChallenges: ["historic preservation", "older construction", "hillside access", "parking limitations"],
+    localBenefits: ["historic home expertise", "preservation knowledge", "hillside skills", "local landmark understanding"],
+    jobCount: 98,
+    averageRating: 4.8,
+    nearbyCities: ["Pasadena", "Eagle Rock", "Highland Park"],
+    heroImage: "tv-mounting-los-angeles-16.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-19.webp",
+      "tv-wall-installation-los-angeles-05.webp",
+      "tv-mounting-los-angeles-20.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-21.webp",
+      "tv-wall-installation-los-angeles-06.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle historic preservation in South Pasadena?",
+        answer: "We're experienced with South Pasadena's historic homes and can ensure installations meet preservation requirements while providing modern functionality."
+      },
+      {
+        question: "Can you work in older South Pasadena properties?",
+        answer: "Yes, we handle South Pasadena's historic properties with care. We're familiar with older construction and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in South Pasadena?",
+        answer: "Absolutely! We provide same-day service throughout South Pasadena, including historic areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle hillside access in South Pasadena?",
+        answer: "We're experienced with South Pasadena's hillside terrain and can access hillside properties safely. We coordinate with property managers for smooth service delivery."
+      }
+    ]
+  },
+  "toluca-lake": {
+    name: "Toluca Lake",
+    slug: "toluca-lake",
+    neighborhoods: ["Toluca Lake", "North Hollywood", "Burbank"],
+    landmarks: ["Toluca Lake", "Warner Bros. Studios", "Universal Studios"],
+    localChallenges: ["lakeside access", "studio area access", "parking restrictions", "apartment building rules"],
+    localBenefits: ["lakeside expertise", "studio area knowledge", "parking understanding", "apartment building experience"],
+    jobCount: 134,
+    averageRating: 4.8,
+    nearbyCities: ["North Hollywood", "Burbank", "Studio City"],
+    heroImage: "tv-mounting-los-angeles-15.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-16.webp",
+      "tv-wall-installation-los-angeles-01.webp",
+      "tv-mounting-los-angeles-17.webp",
+      "tv-mounting-service-los-angeles-01.webp",
+      "tv-mounting-los-angeles-18.webp",
+      "tv-wall-installation-los-angeles-02.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle lakeside access in Toluca Lake?",
+        answer: "We're experienced with Toluca Lake's lakeside location and can coordinate with property managers for smooth access to lakeside properties."
+      },
+      {
+        question: "Can you work in Toluca Lake apartment buildings?",
+        answer: "Yes, we handle Toluca Lake's apartment buildings with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Toluca Lake?",
+        answer: "Absolutely! We provide same-day service throughout Toluca Lake, including lakeside areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle studio area access in Toluca Lake?",
+        answer: "Our technicians know Toluca Lake's studio-adjacent location and can coordinate with security for smooth access to properties near Warner Bros. and Universal Studios."
+      }
+    ]
+  },
+  "van-nuys": {
+    name: "Van Nuys",
+    slug: "van-nuys",
+    neighborhoods: ["Van Nuys", "Sherman Oaks", "Encino"],
+    landmarks: ["Van Nuys Airport", "Sherman Oaks Galleria", "Lake Balboa"],
+    localChallenges: ["valley area access", "parking regulations", "apartment building rules", "commercial zoning"],
+    localBenefits: ["valley area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
+    jobCount: 167,
+    averageRating: 4.7,
+    nearbyCities: ["Sherman Oaks", "Encino", "North Hollywood"],
+    heroImage: "tv-mounting-los-angeles-14.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-13.webp",
+      "tv-wall-installation-los-angeles-03.webp",
+      "tv-mounting-los-angeles-14.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-15.webp",
+      "tv-wall-installation-los-angeles-04.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle valley area access in Van Nuys?",
+        answer: "We're experienced with Van Nuys' valley location and can navigate the area efficiently for quick service delivery to all neighborhoods."
+      },
+      {
+        question: "Can you work in Van Nuys apartment buildings?",
+        answer: "Yes, we handle Van Nuys' apartment buildings with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in Van Nuys?",
+        answer: "Absolutely! We provide same-day service throughout Van Nuys, including all valley areas. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle Van Nuys parking regulations?",
+        answer: "Our technicians know Van Nuys parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
+  },
+  "west-los-angeles": {
+    name: "West Los Angeles",
+    slug: "west-los-angeles",
+    neighborhoods: ["West Los Angeles", "Brentwood", "Sawtelle"],
+    landmarks: ["Sawtelle Japantown", "Brentwood Country Club", "UCLA campus"],
+    localChallenges: ["diverse neighborhood access", "parking restrictions", "apartment building rules", "commercial zoning"],
+    localBenefits: ["diverse neighborhood expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
+    jobCount: 189,
+    averageRating: 4.8,
+    nearbyCities: ["Brentwood", "Sawtelle", "Westwood"],
+    heroImage: "tv-mounting-los-angeles-13.webp",
+    galleryImages: [
+      "tv-mounting-los-angeles-10.webp",
+      "tv-wall-installation-los-angeles-01.webp",
+      "tv-mounting-los-angeles-11.webp",
+      "tv-mounting-service-los-angeles-02.webp",
+      "tv-mounting-los-angeles-12.webp",
+      "tv-wall-installation-los-angeles-02.webp"
+    ],
+    localFaqs: [
+      {
+        question: "How do you handle diverse neighborhood access in West Los Angeles?",
+        answer: "We're experienced with West Los Angeles' diverse neighborhoods and can coordinate with building management for smooth access to all areas."
+      },
+      {
+        question: "Can you work in West Los Angeles apartment buildings?",
+        answer: "Yes, we handle West Los Angeles' apartment buildings with care. We're familiar with local building codes and can ensure safe, compliant installations."
+      },
+      {
+        question: "Do you offer same-day service in West Los Angeles?",
+        answer: "Absolutely! We provide same-day service throughout West Los Angeles, including all neighborhoods. We know local parking and access procedures."
+      },
+      {
+        question: "How do you handle West Los Angeles parking restrictions?",
+        answer: "Our technicians know West Los Angeles parking regulations and can coordinate with building management for smooth access to your property."
+      }
+    ]
   }
 };
 

@@ -197,6 +197,186 @@ export const locations: LocationData[] = [
     description: "Hawthorne TV mounting serving South Bay apartments, condos, and family homes. Renter-friendly mounting solutions available.",
     metaTitle: "TV Mounting Hawthorne | South Bay Installation",
     metaDescription: "TV mounting in Hawthorne & South Bay area. Renter-friendly service for apartments, condos & family homes. Same-day installation available."
+  },
+  {
+    slug: "bel-air",
+    name: "Bel Air",
+    neighborhoods: ["Bel Air Estates", "Bel Air Crest", "Bel Air Glen"],
+    landmarks: ["Getty Center", "Bel Air Country Club", "UCLA campus"],
+    description: "Professional TV mounting in Bel Air serving luxury estates and upscale residences. Premium installation with white-glove service.",
+    metaTitle: "TV Mounting Bel Air | Luxury Estate Installation",
+    metaDescription: "Luxury TV mounting in Bel Air near Getty Center. Premium service for estates & upscale homes. Same-day installation available."
+  },
+  {
+    slug: "beverly-glen",
+    name: "Beverly Glen",
+    neighborhoods: ["Beverly Glen", "Beverly Glen Circle", "Beverly Glen Estates"],
+    landmarks: ["Beverly Glen Circle", "Beverly Hills", "Coldwater Canyon"],
+    description: "TV mounting services in Beverly Glen serving hillside estates and luxury homes. Renter-friendly solutions for all property types.",
+    metaTitle: "TV Mounting Beverly Glen | Hillside Installation",
+    metaDescription: "Professional TV mounting in Beverly Glen. Hillside expertise for estates & luxury homes. Same-day service available."
+  },
+  {
+    slug: "beverly-grove",
+    name: "Beverly Grove",
+    neighborhoods: ["Beverly Grove", "Fairfax District", "Melrose District"],
+    landmarks: ["The Grove", "Farmers Market", "Melrose Avenue"],
+    description: "TV mounting in Beverly Grove serving modern condos, apartments, and family homes. Renter-friendly solutions near The Grove.",
+    metaTitle: "TV Mounting Beverly Grove | Grove Area Installation",
+    metaDescription: "TV mounting in Beverly Grove near The Grove & Farmers Market. Renter-friendly service for condos & homes. Same-day available."
+  },
+  {
+    slug: "boyle-heights",
+    name: "Boyle Heights",
+    neighborhoods: ["Boyle Heights", "East LA", "Lincoln Heights"],
+    landmarks: ["Mariachi Plaza", "Hollenbeck Park", "East LA College"],
+    description: "TV mounting services throughout Boyle Heights serving apartments, condos, and family homes. Renter-friendly solutions available.",
+    metaTitle: "TV Mounting Boyle Heights | East LA Installation",
+    metaDescription: "Professional TV mounting in Boyle Heights. Renter-friendly service for apartments, condos & homes. Same-day installation available."
+  },
+  {
+    slug: "century-city",
+    name: "Century City",
+    neighborhoods: ["Century City", "Westwood", "Beverly Hills"],
+    landmarks: ["Westfield Century City", "Fox Studios", "Beverly Hills"],
+    description: "Century City TV mounting specialists serving high-rise condos and luxury apartments. Renter-friendly mounting solutions available.",
+    metaTitle: "TV Mounting Century City | High-Rise Installation",
+    metaDescription: "TV mounting in Century City near Westfield mall. High-rise expertise for condos & luxury apartments. Same-day available."
+  },
+  {
+    slug: "chinatown",
+    name: "Chinatown",
+    neighborhoods: ["Chinatown", "Downtown LA", "Echo Park"],
+    landmarks: ["Chinatown Central Plaza", "Union Station", "Dodger Stadium"],
+    description: "TV mounting in Chinatown serving apartments, condos, and historic homes. Renter-friendly solutions near Union Station.",
+    metaTitle: "TV Mounting Chinatown | Historic District Installation",
+    metaDescription: "Professional TV mounting in Chinatown. Historic district expertise for apartments, condos & homes. Same-day service available."
+  },
+  {
+    slug: "eagle-rock",
+    name: "Eagle Rock",
+    neighborhoods: ["Eagle Rock", "Highland Park", "Glassell Park"],
+    landmarks: ["Eagle Rock", "Colorado Boulevard", "Occidental College"],
+    description: "Eagle Rock TV mounting specialists serving historic homes, condos, and apartments. Renter-friendly mounting solutions available.",
+    metaTitle: "TV Mounting Eagle Rock | Historic Home Installation",
+    metaDescription: "TV mounting in Eagle Rock near Occidental College. Historic home expertise for condos, apartments & homes. Same-day available."
+  },
+  {
+    slug: "east-hollywood",
+    name: "East Hollywood",
+    neighborhoods: ["East Hollywood", "Thai Town", "Little Armenia"],
+    landmarks: ["Thai Town", "Barnsdall Art Park", "Los Feliz"],
+    description: "TV mounting services in East Hollywood serving diverse neighborhoods and apartment buildings. Renter-friendly solutions available.",
+    metaTitle: "TV Mounting East Hollywood | Thai Town Installation",
+    metaDescription: "Professional TV mounting in East Hollywood. Thai Town & Little Armenia expertise for apartments & condos. Same-day available."
+  },
+  {
+    slug: "encino",
+    name: "Encino",
+    neighborhoods: ["Encino", "Sherman Oaks", "Tarzana"],
+    landmarks: ["Encino Village", "Lake Balboa", "Sepulveda Basin"],
+    description: "Encino TV mounting for valley condos, apartments, and family homes. Renter-friendly mounting near Lake Balboa.",
+    metaTitle: "TV Mounting Encino | Valley Installation",
+    metaDescription: "TV mounting in Encino near Lake Balboa. Valley expertise for condos, apartments & homes. Same-day service available."
+  },
+  {
+    slug: "gardena",
+    name: "Gardena",
+    neighborhoods: ["Gardena", "Torrance", "Hawthorne"],
+    landmarks: ["Gardena City Hall", "Gardena Valley", "South Bay"],
+    description: "Gardena TV mounting specialists serving South Bay apartments, condos, and family homes. Renter-friendly solutions available.",
+    metaTitle: "TV Mounting Gardena | South Bay Installation",
+    metaDescription: "Professional TV mounting in Gardena. South Bay expertise for apartments, condos & homes. Same-day installation available."
+  },
+  {
+    slug: "hermosa-beach",
+    name: "Hermosa Beach",
+    neighborhoods: ["Hermosa Beach", "Manhattan Beach", "Redondo Beach"],
+    landmarks: ["Hermosa Beach Pier", "The Strand", "Hermosa Beach"],
+    description: "Hermosa Beach TV mounting for beachside homes, condos, and luxury apartments. Premium installation with ocean views.",
+    metaTitle: "TV Mounting Hermosa Beach | Beachside Installation",
+    metaDescription: "TV mounting in Hermosa Beach near the pier & Strand. Beachside expertise for homes, condos & luxury apartments. Same-day available."
+  },
+  {
+    slug: "los-feliz",
+    name: "Los Feliz",
+    neighborhoods: ["Los Feliz", "Griffith Park", "Silver Lake"],
+    landmarks: ["Griffith Observatory", "Griffith Park", "Los Feliz Village"],
+    description: "Los Feliz TV mounting specialists serving historic homes, condos, and apartments. Renter-friendly mounting near Griffith Park.",
+    metaTitle: "TV Mounting Los Feliz | Griffith Park Installation",
+    metaDescription: "TV mounting in Los Feliz near Griffith Observatory. Historic home expertise for condos, apartments & homes. Same-day available."
+  },
+  {
+    slug: "north-hollywood",
+    name: "North Hollywood",
+    neighborhoods: ["North Hollywood", "NoHo Arts District", "Toluca Lake"],
+    landmarks: ["NoHo Arts District", "Universal Studios", "Toluca Lake"],
+    description: "North Hollywood TV mounting serving the NoHo Arts District and surrounding areas. Renter-friendly solutions for all property types.",
+    metaTitle: "TV Mounting North Hollywood | NoHo Arts Installation",
+    metaDescription: "Professional TV mounting in North Hollywood. NoHo Arts District expertise for condos, apartments & homes. Same-day service available."
+  },
+  {
+    slug: "pacific-palisades",
+    name: "Pacific Palisades",
+    neighborhoods: ["Pacific Palisades", "Brentwood", "Malibu"],
+    landmarks: ["Pacific Palisades Village", "Will Rogers State Beach", "Temescal Canyon"],
+    description: "Pacific Palisades TV mounting for beachside estates and luxury homes. Premium installation with ocean and canyon views.",
+    metaTitle: "TV Mounting Pacific Palisades | Beachside Estate Installation",
+    metaDescription: "Luxury TV mounting in Pacific Palisades near the beach. Beachside estate expertise for luxury homes. Same-day installation available."
+  },
+  {
+    slug: "playa-del-rey",
+    name: "Playa del Rey",
+    neighborhoods: ["Playa del Rey", "Marina del Rey", "Venice"],
+    landmarks: ["Playa del Rey Beach", "Ballona Wetlands", "LAX Airport"],
+    description: "Playa del Rey TV mounting for beachside condos, apartments, and family homes. Renter-friendly solutions near the beach.",
+    metaTitle: "TV Mounting Playa del Rey | Beachside Installation",
+    metaDescription: "TV mounting in Playa del Rey near the beach. Beachside expertise for condos, apartments & homes. Same-day service available."
+  },
+  {
+    slug: "redondo-beach",
+    name: "Redondo Beach",
+    neighborhoods: ["Redondo Beach", "Hermosa Beach", "Manhattan Beach"],
+    landmarks: ["Redondo Beach Pier", "King Harbor", "The Strand"],
+    description: "Redondo Beach TV mounting for beachside homes, condos, and luxury apartments. Premium installation with harbor views.",
+    metaTitle: "TV Mounting Redondo Beach | Harbor Installation",
+    metaDescription: "TV mounting in Redondo Beach near the pier & harbor. Beachside expertise for homes, condos & luxury apartments. Same-day available."
+  },
+  {
+    slug: "south-pasadena",
+    name: "South Pasadena",
+    neighborhoods: ["South Pasadena", "Pasadena", "Eagle Rock"],
+    landmarks: ["South Pasadena City Hall", "Mission Street", "Arroyo Seco"],
+    description: "South Pasadena TV mounting specialists serving historic homes, condos, and apartments. Renter-friendly mounting solutions available.",
+    metaTitle: "TV Mounting South Pasadena | Historic Home Installation",
+    metaDescription: "Professional TV mounting in South Pasadena. Historic home expertise for condos, apartments & homes. Same-day installation available."
+  },
+  {
+    slug: "toluca-lake",
+    name: "Toluca Lake",
+    neighborhoods: ["Toluca Lake", "North Hollywood", "Burbank"],
+    landmarks: ["Toluca Lake", "Warner Bros. Studios", "Universal Studios"],
+    description: "Toluca Lake TV mounting for lakeside homes, condos, and luxury apartments. Premium installation with lake views.",
+    metaTitle: "TV Mounting Toluca Lake | Lakeside Installation",
+    metaDescription: "TV mounting in Toluca Lake near Warner Bros. Lakeside expertise for homes, condos & luxury apartments. Same-day available."
+  },
+  {
+    slug: "van-nuys",
+    name: "Van Nuys",
+    neighborhoods: ["Van Nuys", "Sherman Oaks", "Encino"],
+    landmarks: ["Van Nuys Airport", "Sherman Oaks Galleria", "Lake Balboa"],
+    description: "Van Nuys TV mounting specialists serving valley condos, apartments, and family homes. Renter-friendly mounting solutions available.",
+    metaTitle: "TV Mounting Van Nuys | Valley Installation",
+    metaDescription: "Professional TV mounting in Van Nuys. Valley expertise for condos, apartments & homes. Same-day installation available."
+  },
+  {
+    slug: "west-los-angeles",
+    name: "West Los Angeles",
+    neighborhoods: ["West Los Angeles", "Brentwood", "Sawtelle"],
+    landmarks: ["Sawtelle Japantown", "Brentwood Country Club", "UCLA campus"],
+    description: "West Los Angeles TV mounting serving diverse neighborhoods and property types. Renter-friendly solutions for all residents.",
+    metaTitle: "TV Mounting West Los Angeles | Westside Installation",
+    metaDescription: "TV mounting in West Los Angeles. Westside expertise for condos, apartments & homes. Same-day service available."
   }
 ];
 

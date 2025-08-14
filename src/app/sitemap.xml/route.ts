@@ -27,7 +27,7 @@ export async function GET() {
     { path: '/services/samsung-frame', priority: 0.8, changeFreq: 'monthly' },
   ]
 
-  // Location pages
+  // Location pages - only include valid locations from our registry
   const locationPages = Object.values(ALL_CITIES).map(city => ({
     path: `/locations/${city.slug}`,
     priority: 0.7,
@@ -35,13 +35,13 @@ export async function GET() {
   }))
 
   // Location + service combination pages - use the new canonical service slugs
+  // Exclude same-day-tv-mounting since it's now a redirect
   const locationServicePages = Object.values(ALL_CITIES).flatMap(city => [
     { path: `/locations/${city.slug}/standard-tv-mount`, priority: 0.7, changeFreq: 'monthly' },
     { path: `/locations/${city.slug}/over-fireplace-mount`, priority: 0.7, changeFreq: 'monthly' },
     { path: `/locations/${city.slug}/cable-concealment`, priority: 0.7, changeFreq: 'monthly' },
     { path: `/locations/${city.slug}/soundbar-mounting`, priority: 0.7, changeFreq: 'monthly' },
     { path: `/locations/${city.slug}/samsung-frame`, priority: 0.7, changeFreq: 'monthly' },
-    { path: `/locations/${city.slug}/same-day-tv-mounting`, priority: 0.7, changeFreq: 'monthly' },
   ])
 
   // Combine all pages
