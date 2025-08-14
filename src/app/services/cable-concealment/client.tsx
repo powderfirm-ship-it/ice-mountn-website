@@ -13,6 +13,8 @@ import {
   PhoneCall,
 } from "lucide-react";
 import { openBooking } from "@/utils/housecall-pro";
+import MasonryGallery from "@/components/MasonryGallery";
+import { getServiceImages } from "@/lib/gallery";
 import SeoTextBlock from "@/components/seo-text-block";
 
 export default function CableConcealmentClient() {
@@ -224,6 +226,14 @@ export default function CableConcealmentClient() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <MasonryGallery
+        title="Recent Installs"
+        subtitle="A few examples from recent Ice Mount'n projects"
+        images={getServiceImages("cable-concealment")}
+        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
+      />
 
       {/* Process */}
       <section className="py-16 bg-gray-50">

@@ -8,6 +8,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CheckCircle, Star, Clock, Shield, Thermometer, PhoneCall, AlertTriangle } from 'lucide-react';
 import { openHousecallProModal } from '@/utils/housecall-pro';
 import SeoTextBlock from '@/components/seo-text-block';
+import MasonryGallery from '@/components/MasonryGallery';
+import { getServiceImages } from '@/lib/gallery';
 
 import JsonLd from "@/components/seo/JsonLd";
 import { localBusinessJSONLD, serviceJSONLD } from "@/lib/schema";
@@ -239,6 +241,14 @@ export default function OverFireplaceMountClient() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <MasonryGallery
+        title="Recent Installs"
+        subtitle="A few examples from recent Ice Mount'n projects"
+        images={getServiceImages("over-fireplace-mount")}
+        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
+      />
 
       {/* Process Section */}
       <section className="py-16 bg-gray-50">

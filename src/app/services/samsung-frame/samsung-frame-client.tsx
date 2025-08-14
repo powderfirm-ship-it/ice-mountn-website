@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Star, Clock, Shield, Monitor, PhoneCall, Image } from "lucide-react";
 import { openHousecallProModal } from "@/utils/housecall-pro";
+import MasonryGallery from "@/components/MasonryGallery";
+import { getServiceImages } from "@/lib/gallery";
 import SeoTextBlock from "@/components/seo-text-block";
 
 export function SamsungFrameClient() {
@@ -225,6 +227,14 @@ export function SamsungFrameClient() {
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <MasonryGallery
+        title="Recent Installs"
+        subtitle="A few examples from recent Ice Mount'n projects"
+        images={getServiceImages("samsung-frame")}
+        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
+      />
 
       {/* Process Section */}
       <section className="py-16 bg-gray-50">

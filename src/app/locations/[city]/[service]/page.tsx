@@ -14,6 +14,8 @@ import Image from "next/image";
 import Link from "next/link";
 import HcpBookButton from "@/components/hcp-book-button";
 import SeoTextBlock from "@/components/seo-text-block";
+import MasonryGallery from "@/components/MasonryGallery";
+import { getLocationImages } from "@/lib/gallery";
 
 // Icon mapping function
 function getIcon(name: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightning") {
@@ -424,6 +426,14 @@ export default async function CityServicePage({
             </div>
           </div>
         </section>
+
+        {/* Gallery Section */}
+        <MasonryGallery
+          title={`Recent Installs in ${city.name}`}
+          subtitle={`A few Ice Mount'n projects completed in ${city.name}`}
+          images={getLocationImages(city.slug, city.name)}
+          cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
+        />
 
         {/* SEO Text Block */}
         <SeoTextBlock
