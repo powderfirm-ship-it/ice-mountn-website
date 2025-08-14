@@ -19,7 +19,7 @@ interface UrlCheckResult {
 
 const BASE_URL = "http://localhost:3000";
 
-const TARGET_URLS = [
+const LOCAL_TARGET_URLS = [
   // 20 neighborhood locations that should now return 200 OK
   `${BASE_URL}/locations/bel-air`,
   `${BASE_URL}/locations/beverly-glen`,
@@ -47,12 +47,12 @@ const TARGET_URLS = [
   `${BASE_URL}/services/same-day-tv-mounting`
 ];
 
-const EXPECTED_REDIRECTS: Record<string, string> = {
+const LOCAL_EXPECTED_REDIRECTS: Record<string, string> = {
   [`${BASE_URL}/locations/nearby-areas`]: `${BASE_URL}/locations`,
   [`${BASE_URL}/services/same-day-tv-mounting`]: `${BASE_URL}/same-day-tv-mounting`
 };
 
-async function checkUrl(url: string): Promise<UrlCheckResult> {
+async function checkLocalUrl(url: string): Promise<UrlCheckResult> {
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -84,7 +84,7 @@ async function checkUrl(url: string): Promise<UrlCheckResult> {
   }
 }
 
-async function checkAllUrls(): Promise<void> {
+async function checkAllLocalUrls(): Promise<void> {
   console.log('🔍 Checking 22 URLs for 4xx error resolution (LOCAL)...\n');
   console.log('Make sure you have "npm start" running in another terminal!\n');
   
@@ -93,13 +93,13 @@ async function checkAllUrls(): Promise<void> {
   let errorCount = 0;
 
   // Check URLs in parallel with a small delay to avoid overwhelming the server
-  for (let i = 0; i < TARGET_URLS.length; i++) {
-    const url = TARGET_URLS[i];
-    const result = await checkUrl(url);
+  for (let i = 0; i < LOCAL_TARGET_URLS.length; i++) {
+    const url = LOCAL_TARGET_URLS[i];
+    const result = await checkLocalUrl(url);
     results.push(result);
     
     // Add small delay between requests
-    if (i < TARGET_URLS.length - 1) {
+    if (i < LOCAL_TARGET_URLS.length - 1) {
       await new Promise(resolve => setTimeout(resolve, 100));
     }
   }
@@ -124,7 +124,7 @@ async function checkAllUrls(): Promise<void> {
     console.log(`   Status: ${statusText}`);
     
     if (isRedirect && result.redirectUrl) {
-      const expectedRedirect = EXPECTED_REDIRECTS[result.url];
+      const expectedRedirect = LOCAL_EXPECTED_REDIRECTS[result.url];
       const redirectIcon = expectedRedirect && result.redirectUrl.includes(expectedRedirect.split('/').pop()!) ? '✅' : '⚠️';
       console.log(`   Redirects to: ${redirectIcon} ${result.redirectUrl}`);
       
@@ -157,7 +157,7 @@ async function checkAllUrls(): Promise<void> {
   let redirectSuccessCount = 0;
   let redirectErrorCount = 0;
   
-  for (const [sourceUrl, expectedTarget] of Object.entries(EXPECTED_REDIRECTS)) {
+  for (const [sourceUrl, expectedTarget] of Object.entries(LOCAL_EXPECTED_REDIRECTS)) {
     const result = results.find(r => r.url === sourceUrl);
     if (result && (result.status === 301 || result.status === 308) && result.redirectUrl) {
       if (result.redirectUrl.includes(expectedTarget.split('/').pop()!)) {
@@ -187,7 +187,7 @@ async function checkAllUrls(): Promise<void> {
 
 // Run the check
 if (require.main === module) {
-  checkAllUrls().catch(error => {
+  checkAllLocalUrls().catch(error => {
     console.error('❌ Script execution failed:', error);
     process.exit(1);
   });
