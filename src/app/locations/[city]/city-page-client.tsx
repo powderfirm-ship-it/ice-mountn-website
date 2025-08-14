@@ -16,6 +16,7 @@ import { DiscountBanner } from "@/components/discount-banner";
 import Image from "next/image";
 import CustomerReviewsSection from "@/components/customer-reviews-section";
 import { getCityReviews } from "@/data/city-reviews";
+import CityMap from "@/components/CityMap";
 
 interface CityPageClientProps {
   cityName: string;
@@ -297,11 +298,266 @@ export function CityPageClient({
             <div className="mt-12 text-center">
               <div className="bg-white p-6 rounded-lg shadow-sm inline-block">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">{cityName} TV Mounting Service Area</h3>
-                <div className="w-80 h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <MapPin className="h-12 w-12 text-gray-400" />
-                  <span className="text-gray-500 ml-2">Map showing {cityName} location</span>
-                </div>
+                <CityMap
+                  city={`${cityName}, CA`}
+                  zoom={13}
+                  className="w-80 h-48"
+                />
                 <p className="text-sm text-gray-600 mt-2">Serving all {cityName} neighborhoods</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dedicated City Map Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              Map: TV Mounting in {cityName} - Our Service Area Coverage
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              We serve homeowners and renters throughout {cityName} and surrounding neighborhoods. Use the interactive map below to see our typical service area in {cityName} and understand how we cover all local communities.
+            </p>
+            <CityMap
+              city={`${cityName}, CA`}
+              zoom={13}
+            />
+            <div className="mt-6 text-center">
+              <p className="text-gray-600 text-sm">
+                Our {cityName} service area covers all residential and commercial properties, from {neighborhoods[0]} to {neighborhoods[neighborhoods.length - 1] || neighborhoods[1]}, 
+                including areas near {landmarks[0]} and {landmarks[1] || landmarks[0]}.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Neighborhood Coverage Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              {cityName} Neighborhood Coverage - Local TV Mounting Expertise
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              We provide comprehensive TV mounting services across all {cityName} neighborhoods, understanding the unique characteristics and challenges of each area.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {neighborhoods.slice(0, 9).map((neighborhood, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{neighborhood}</h3>
+                  <p className="text-gray-600 text-sm mb-3">
+                    {index === 0 && `Our most popular ${cityName} neighborhood, ${neighborhood} features luxury condos and apartments near ${landmarks[0]}. We're familiar with the HOA requirements and building-specific challenges in this area.`}
+                    {index === 1 && `${neighborhood} offers a mix of historic homes and modern apartments. We handle everything from plaster walls to concrete construction, ensuring damage-free installations that protect your property.`}
+                    {index === 2 && `In ${neighborhood}, we frequently work with older buildings that require specialized mounting techniques. Our team understands the unique wall types and construction methods common in this ${cityName} area.`}
+                    {index === 3 && `${neighborhood} features newer construction with modern amenities. We're experienced with the building codes and access procedures specific to this ${cityName} neighborhood.`}
+                    {index === 4 && `This ${cityName} area near ${landmarks[1] || landmarks[0]} has unique parking and access considerations. Our technicians coordinate with building management to ensure smooth service delivery.`}
+                    {index === 5 && `${neighborhood} offers diverse housing options from single-family homes to multi-unit buildings. We adapt our mounting approach to meet the specific needs of each property type.`}
+                    {index === 6 && `In ${neighborhood}, we handle everything from basic mounting to complex installations requiring custom solutions. Our local expertise ensures compliance with all ${cityName} building requirements.`}
+                    {index === 7 && `${neighborhood} features properties with unique architectural elements. We use specialized techniques to mount TVs while preserving the character of these distinctive ${cityName} homes.`}
+                    {index === 8 && `This ${cityName} neighborhood near ${landmarks[2] || landmarks[0]} requires careful consideration of local regulations and building codes. Our team ensures all installations meet compliance standards.`}
+                  </p>
+                  <div className="text-blue-600 text-sm font-medium">
+                    ✓ {cityName} local expertise
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Landmarks & Building-Specific Experience */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              {cityName} Landmarks & Building-Specific TV Mounting Experience
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              Our team has extensive experience working in buildings near {cityName}'s most notable landmarks, understanding the unique challenges and requirements of each area.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {landmarks.slice(0, 6).map((landmark, index) => (
+                <div key={index} className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{landmark}</h3>
+                  <p className="text-gray-600 mb-4">
+                    {index === 0 && `Properties near ${landmark} often feature luxury amenities and strict building codes. We're familiar with the management requirements and can provide landlord-approved installations that meet all association guidelines. Our team understands the parking procedures and access protocols specific to this ${cityName} landmark area.`}
+                    {index === 1 && `Buildings around ${landmark} typically have unique architectural features that require specialized mounting approaches. We handle everything from high ceilings to custom wall treatments, ensuring installations that enhance rather than detract from the property's aesthetic appeal.`}
+                    {index === 2 && `This ${cityName} landmark area features a mix of residential and commercial properties. We coordinate with building management to ensure smooth access and compliance with all local regulations. Our team is experienced with the parking challenges and loading dock procedures in this area.`}
+                    {index === 3 && `Properties near ${landmark} often require careful consideration of historic preservation requirements. We use mounting methods that protect the building's character while providing modern functionality. Our team understands the unique challenges of working in this ${cityName} landmark district.`}
+                    {index === 4 && `This ${cityName} area near ${landmark} features modern construction with state-of-the-art amenities. We're familiar with the building systems and can integrate TV installations with existing smart home technology and security systems.`}
+                    {index === 5 && `Buildings around ${landmark} offer diverse mounting challenges from concrete walls to panel systems. Our team adapts to each property's unique requirements, ensuring installations that meet all safety and aesthetic standards.`}
+                  </p>
+                  <div className="flex items-center space-x-2 text-sm text-gray-500">
+                    <Building className="h-4 w-4" />
+                    <span>Building-specific expertise</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Apartment & Condo Tips Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              {cityName} Apartment & Condo TV Mounting - Renter-Friendly Solutions
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              We specialize in {cityName} apartment and condo installations, understanding the unique challenges of rental properties and HOA requirements.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Renter Deposit Protection</h3>
+                <p className="text-gray-600 mb-4">
+                  Our damage-free mounting methods protect your security deposit in {cityName} apartments. We use specialized anchors and techniques that work with various wall types common in {cityName} rental properties, from drywall to plaster to concrete.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  We've installed TVs in {neighborhoods[0]} apartments near {landmarks[0]} and {neighborhoods[1]} condos with strict building rules, always leaving walls in perfect condition. Our team understands the deposit requirements and building codes specific to {cityName} rental properties.
+                </p>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li>• Damage-free mounting techniques</li>
+                  <li>• Security deposit protection</li>
+                  <li>• Landlord-approved installations</li>
+                  <li>• Clean, professional results</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">HOA & Building Management</h3>
+                <p className="text-gray-600 mb-4">
+                  We work regularly with {cityName} HOAs and property managers, especially in luxury complexes like those near {landmarks[0]}. We can provide all necessary documentation for association approval and use mounting methods that comply with building guidelines.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  Our experience with {cityName} properties ensures smooth approval processes. We understand the specific requirements of {neighborhoods[0]} luxury condos and {neighborhoods[1]} apartment buildings, handling everything from application processes to final inspections.
+                </p>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li>• HOA approval assistance</li>
+                  <li>• Building code compliance</li>
+                  <li>• Property manager coordination</li>
+                  <li>• Documentation support</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Parking & Access Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              {cityName} Parking & Access - Smooth Service Delivery
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              Our technicians are experts in {cityName} parking regulations and building access procedures, ensuring hassle-free service delivery.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Parking Solutions</h3>
+                <p className="text-gray-600 mb-4">
+                  We handle {cityName} parking challenges with ease, from permit parking in {neighborhoods[0]} to street cleaning schedules in {neighborhoods[1]}. Our technicians arrive with compact equipment and coordinate with building management for optimal parking solutions.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  We're familiar with the parking restrictions near {landmarks[0]} and {landmarks[1] || landmarks[0]}, including event days and special permit requirements. Our team plans routes to minimize parking challenges and ensure timely service delivery.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="h-4 w-4 text-blue-600" />
+                    <span>Street cleaning schedule awareness</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin className="h-4 w-4 text-blue-600" />
+                    <span>Permit parking coordination</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Shield className="h-4 w-4 text-blue-600" />
+                    <span>Building management coordination</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Building Access</h3>
+                <p className="text-gray-600 mb-4">
+                  We coordinate with {cityName} property managers and security staff to ensure smooth building access. Our team is experienced with the access procedures of {neighborhoods[0]} luxury complexes and {neighborhoods[1]} apartment buildings.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  We handle everything from security check-ins to elevator access, working with building staff to minimize disruption to residents. Our technicians are familiar with the access protocols near {landmarks[0]} and throughout {cityName}.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div className="flex items-center space-x-2">
+                    <Building className="h-4 w-4 text-blue-600" />
+                    <span>Security coordination</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Users className="h-4 w-4 text-blue-600" />
+                    <span>Property manager liaison</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Wrench className="h-4 w-4 text-blue-600" />
+                    <span>Equipment access planning</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Safety & Compliance Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              {cityName} Safety & Compliance - Professional Standards
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              All our {cityName} installations meet the highest safety standards and comply with local building codes and regulations.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Fireplace Mounting Safety</h3>
+                <p className="text-gray-600 mb-4">
+                  When mounting TVs above fireplaces in {cityName} homes, we consider heat exposure and use appropriate mounting hardware. Our team understands the temperature considerations for {neighborhoods[0]} homes with fireplaces and {neighborhoods[1]} properties with unique heating systems.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  We recommend our <Link href="/services/over-fireplace-mount" className="text-blue-600 hover:text-blue-700 hover:underline">over-fireplace mounting service</Link> for {cityName} properties, ensuring safe installations that don't compromise your fireplace's functionality or safety.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <li>• Heat-resistant mounting hardware</li>
+                  <li>• Safe distance calculations</li>
+                  <li>• Fireplace functionality preservation</li>
+                  <li>• Local code compliance</li>
+                </div>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Cable Management & Child Safety</h3>
+                <p className="text-gray-600 mb-4">
+                  We provide child-safe cable management solutions for {cityName} families, using our <Link href="/services/cable-concealment" className="text-blue-600 hover:text-blue-700 hover:underline">in-wall cable concealment service</Link> to eliminate tripping hazards and create clean, safe installations.
+                </p>
+                <p className="text-gray-600 mb-4">
+                  Our team understands the safety requirements for {cityName} homes with children, ensuring all installations meet child safety standards. We use secure mounting brackets and proper cable routing throughout {neighborhoods[0]} and {neighborhoods[1]}.
+                </p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <li>• Child-safe cable routing</li>
+                  <li>• Secure mounting brackets</li>
+                  <li>• In-wall concealment options</li>
+                  <li>• Safety compliance verification</li>
+                </div>
               </div>
             </div>
           </div>
@@ -452,6 +708,61 @@ export function CityPageClient({
                   Plus, our same-day service and 10% discount for direct bookings make us the smart choice for {cityName} residents.
                 </AccordionContent>
               </AccordionItem>
+
+              {/* Additional Hyper-Local Micro-FAQs */}
+              <AccordionItem value="hyper-local-5" className="bg-gray-50 border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  How do you handle parking in {neighborhoods[0]} near {landmarks[0]}?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4">
+                  We're experts in {neighborhoods[0]} parking, especially near {landmarks[0]}. Our technicians coordinate with building management for permit parking and use compact equipment to navigate the area efficiently. We plan our routes around street cleaning schedules and event days to ensure smooth service delivery.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="hyper-local-6" className="bg-gray-50 border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  Can you work in {neighborhoods[1]} homes with older construction?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4">
+                  Absolutely! {neighborhoods[1]} features many historic homes with unique construction challenges. We're experienced with plaster walls, lath construction, and older wiring common in this {cityName} neighborhood. Our damage-free mounting techniques protect your property while ensuring secure installations.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="hyper-local-7" className="bg-gray-50 border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  Do you offer same-day service in {neighborhoods[2] || neighborhoods[1]}?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4">
+                  Yes! We provide same-day TV mounting throughout {cityName}, including {neighborhoods[2] || neighborhoods[1]}. Book before 2 PM for same-day installation. Our team knows the area well and can navigate efficiently to provide quick, professional service in this {cityName} neighborhood.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="hyper-local-8" className="bg-gray-50 border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  How do you handle condo rules in {neighborhoods[0]} luxury buildings?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4">
+                  We're experienced with {neighborhoods[0]} luxury condo requirements, especially near {landmarks[0]}. We can provide all necessary documentation for HOA approval and use mounting methods that comply with building guidelines. Our team understands the specific requirements of luxury {cityName} properties.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="hyper-local-9" className="bg-gray-50 border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  What TV mounting services are most popular in {cityName}?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4">
+                  In {cityName}, our most popular services are <Link href="/services/standard-tv-mount" className="text-blue-600 hover:text-blue-700 hover:underline">standard mounting</Link> for most homes, <Link href="/services/over-fireplace-mount" className="text-blue-600 hover:text-blue-700 hover:underline">over-fireplace installations</Link> for {neighborhoods[0]} luxury properties, and <Link href="/services/cable-concealment" className="text-blue-600 hover:text-blue-700 hover:underline">cable concealment</Link> for clean aesthetics. We also install many <Link href="/services/samsung-frame" className="text-blue-600 hover:text-blue-700 hover:underline">Samsung Frame TVs</Link> in {cityName} homes.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="hyper-local-10" className="bg-gray-50 border border-gray-200 rounded-lg px-6">
+                <AccordionTrigger className="text-left font-semibold text-gray-900">
+                  How do you handle {cityName}'s unique weather considerations?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 pb-4">
+                  We consider {cityName}'s climate when planning installations. For properties near {landmarks[0]} and {landmarks[1] || landmarks[0]}, we use appropriate mounting hardware and cable management solutions. Our team understands how local weather patterns affect installation longevity and ensures all work meets {cityName} building code requirements.
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
           </div>
         </div>
@@ -511,7 +822,7 @@ export function CityPageClient({
       {/* Internal Linking */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               Related TV Mounting Services & Areas Near {cityName} - Serving {neighborhoods.slice(0, 2).join(" and ")}
             </h2>
@@ -542,6 +853,11 @@ export function CityPageClient({
                       Samsung Frame Installation
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/services/soundbar-mounting" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Soundbar Mounting
+                    </Link>
+                  </li>
                 </ul>
               </div>
               
@@ -550,13 +866,42 @@ export function CityPageClient({
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">TV Mounting Near {cityName}</h3>
                 <p className="text-sm text-gray-600 mb-3">Serving {cityName} and surrounding areas</p>
                 <ul className="space-y-2">
-                  {nearbyCities.slice(0, 3).map((city) => (
+                  {nearbyCities.slice(0, 9).map((city) => (
                     <li key={city}>
                       <Link href={`/locations/${city.toLowerCase().replace(/\s+/g, '-')}`} className="text-blue-600 hover:text-blue-700 hover:underline">
                         TV Mounting in {city}
                       </Link>
                     </li>
                   ))}
+                  {nearbyCities.length < 9 && (
+                    <>
+                      <li>
+                        <Link href="/locations/beverly-hills" className="text-blue-600 hover:text-blue-700 hover:underline">
+                          TV Mounting in Beverly Hills
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/locations/santa-monica" className="text-blue-600 hover:text-blue-700 hover:underline">
+                          TV Mounting in Santa Monica
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/locations/hollywood" className="text-blue-600 hover:text-blue-700 hover:underline">
+                          TV Mounting in Hollywood
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/locations/venice" className="text-blue-600 hover:text-blue-700 hover:underline">
+                          TV Mounting in Venice
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/locations/westwood" className="text-blue-600 hover:text-blue-700 hover:underline">
+                          TV Mounting in Westwood
+                        </Link>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
               
@@ -586,6 +931,112 @@ export function CityPageClient({
                     </Link>
                   </li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nearby Areas Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              TV Mounting in Areas Near {cityName} - Extended Service Coverage
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              While we're based in {cityName}, our service area extends to surrounding communities, providing professional TV mounting throughout the region.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Beverly Hills</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Luxury home TV mounting with high-end finish requirements. We handle everything from security system integration to premium cable concealment in Beverly Hills properties.
+                </p>
+                <Link href="/locations/beverly-hills" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Beverly Hills →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Santa Monica</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Beach area installations with corrosion-resistant hardware. We handle older apartment buildings and tourist area access challenges throughout Santa Monica.
+                </p>
+                <Link href="/locations/santa-monica" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Santa Monica →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Hollywood</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Hillside access expertise and historic home installations. We handle everything from tourist area logistics to older apartment building challenges in Hollywood.
+                </p>
+                <Link href="/locations/hollywood" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Hollywood →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Venice</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Beach community installations with canal area access expertise. We handle historic beach cottages and coastal weather considerations throughout Venice.
+                </p>
+                <Link href="/locations/venice" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Venice →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Westwood</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Student housing expertise and university area knowledge. We handle everything from dorm installations to apartment building rules throughout the Westwood area.
+                </p>
+                <Link href="/locations/westwood" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Westwood →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Pasadena</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Historic preservation expertise and hillside access skills. We handle everything from older construction to hillside terrain challenges throughout Pasadena.
+                </p>
+                <Link href="/locations/pasadena" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Pasadena →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Burbank</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Studio area access and media district expertise. We handle everything from commercial zoning to hillside properties throughout Burbank.
+                </p>
+                <Link href="/locations/burbank" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Burbank →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">West Hollywood</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  Entertainment district expertise and apartment building experience. We handle everything from parking restrictions to tourist area logistics throughout West Hollywood.
+                </p>
+                <Link href="/locations/west-hollywood" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in West Hollywood →
+                </Link>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Downtown LA</h3>
+                <p className="text-gray-600 text-sm mb-3">
+                  High-rise expertise and commercial property knowledge. We handle everything from security protocols to parking limitations throughout Downtown LA.
+                </p>
+                <Link href="/locations/dtla" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-medium">
+                  TV Mounting in Downtown LA →
+                </Link>
               </div>
             </div>
           </div>
