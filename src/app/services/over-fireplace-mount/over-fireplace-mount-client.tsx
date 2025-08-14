@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle, Star, Clock, Shield, Thermometer, PhoneCall, AlertTriangle } from 'lucide-react';
 import { openHousecallProModal } from '@/utils/housecall-pro';
+import SeoTextBlock from '@/components/seo-text-block';
 
 import JsonLd from "@/components/seo/JsonLd";
 import { localBusinessJSONLD, serviceJSONLD } from "@/lib/schema";
@@ -492,6 +493,16 @@ export default function OverFireplaceMountClient() {
           </div>
         </div>
       </section>
+
+      {/* SEO Text Block */}
+      <SeoTextBlock
+        title="About Our Over-Fireplace Mount Service in Los Angeles"
+        paragraphs={[
+          "When you choose Ice Mount'n for over-fireplace TV mounting services in Los Angeles, you're selecting a team that understands the unique challenges of fireplace installations. Our technicians are familiar with local building codes, wall types, and heat safety requirements across all Los Angeles County areas, ensuring your installation meets all safety standards while maintaining the aesthetic appeal of your space.",
+          "Our over-fireplace mounting service covers all residential properties throughout Los Angeles, from historic homes in Pasadena to modern apartments in Santa Monica. We handle everything from basic heat-safe mounting to enhanced installations with pull-down brackets and complete cable concealment, ensuring your TV is securely mounted with professional heat management.",
+          "The installation process typically takes 2-4 hours depending on your setup complexity and fireplace type. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new fireplace TV setup without waiting weeks for an appointment, regardless of your location in the Greater Los Angeles area."
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-orange-600">

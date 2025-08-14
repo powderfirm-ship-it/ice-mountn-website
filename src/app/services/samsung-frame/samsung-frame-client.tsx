@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Star, Clock, Shield, Monitor, PhoneCall, Image } from "lucide-react";
 import { openHousecallProModal } from "@/utils/housecall-pro";
+import SeoTextBlock from "@/components/seo-text-block";
 
 export function SamsungFrameClient() {
   const handleBookOnline = openHousecallProModal;
@@ -494,6 +495,16 @@ export function SamsungFrameClient() {
           </div>
         </div>
       </section>
+
+      {/* SEO Text Block */}
+      <SeoTextBlock
+        title="About Our Samsung Frame TV Installation Service in Los Angeles"
+        paragraphs={[
+          "When you choose Ice Mount'n for Samsung Frame TV installation services in Los Angeles, you're selecting a team that understands the unique challenges of Frame TV installations. Our technicians are familiar with local building codes, wall types, and specialized mounting requirements across all Los Angeles County areas, ensuring your installation meets all requirements while achieving the perfect zero-gap artwork appearance.",
+          "Our Samsung Frame TV installation service covers all residential properties throughout Los Angeles, from historic homes in Pasadena to modern apartments in Santa Monica. We handle everything from basic Frame mounting to complete installations with One Connect Box concealment and Art Mode optimization, ensuring your Frame TV is professionally installed with gallery-quality finishing.",
+          "The installation process typically takes 2-4 hours depending on your setup complexity and concealment requirements. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new artwork display without waiting weeks for an appointment, regardless of your location in the Greater Los Angeles area."
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-indigo-600">

@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle, Star, Clock, Shield, Volume2, PhoneCall, Speaker } from 'lucide-react';
 import { openBooking } from '@/utils/housecall-pro';
+import SeoTextBlock from '@/components/seo-text-block';
 
 export default function SoundbarMountingClient() {
   const handleBookOnline = openBooking;
@@ -461,6 +462,16 @@ export default function SoundbarMountingClient() {
           </div>
         </div>
       </section>
+
+      {/* SEO Text Block */}
+      <SeoTextBlock
+        title="About Our Soundbar Mounting Service in Los Angeles"
+        paragraphs={[
+          "When you choose Ice Mount'n for soundbar and speaker mounting services in Los Angeles, you're selecting a team that understands the unique challenges of audio installations. Our technicians are familiar with local building codes, wall types, and acoustic requirements across all Los Angeles County areas, ensuring your installation meets all requirements while optimizing sound quality for your space.",
+          "Our soundbar mounting service covers all residential properties throughout Los Angeles, from historic homes in Pasadena to modern apartments in Santa Monica. We handle everything from basic soundbar mounting to complete surround sound setups with optimal positioning, ensuring your audio equipment is professionally installed with clean cable management.",
+          "The installation process typically takes 1-3 hours depending on your setup complexity and number of speakers. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new audio setup without waiting weeks for an appointment, regardless of your location in the Greater Los Angeles area."
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-purple-600">

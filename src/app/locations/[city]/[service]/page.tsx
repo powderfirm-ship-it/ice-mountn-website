@@ -13,6 +13,7 @@ import SiteLayoutServer from "@/components/site-layout-server";
 import Image from "next/image";
 import Link from "next/link";
 import HcpBookButton from "@/components/hcp-book-button";
+import SeoTextBlock from "@/components/seo-text-block";
 
 // Icon mapping function
 function getIcon(name: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightning") {
@@ -423,6 +424,16 @@ export default async function CityServicePage({
             </div>
           </div>
         </section>
+
+        {/* SEO Text Block */}
+        <SeoTextBlock
+          title={`${serviceData.title} in ${city.name}: What to Expect`}
+          paragraphs={[
+            `When you choose Ice Mount'n for ${serviceData.title.toLowerCase()} installation in ${city.name}, you're selecting a team that understands the unique characteristics of your neighborhood. Our technicians are familiar with ${city.name}'s building codes, wall types, and local regulations, ensuring your installation meets all requirements while maintaining the aesthetic appeal of your space.`,
+            `Our ${city.name} service area covers all residential and commercial properties, from historic homes to modern apartments. We handle everything from basic mounting to complex installations requiring custom solutions. Whether you're in a ${city.name} condo with strict building rules or a private home with unique architectural features, our team adapts to your specific needs.`,
+            `The installation process in ${city.name} typically takes 1-3 hours depending on your setup complexity. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new ${serviceData.title.toLowerCase()} setup without waiting weeks for an appointment.`
+          ]}
+        />
 
         {/* Location Info */}
         <section className="py-20 bg-gray-50" style={{ contentVisibility: "auto", containIntrinsicSize: "1px 800px" }}>

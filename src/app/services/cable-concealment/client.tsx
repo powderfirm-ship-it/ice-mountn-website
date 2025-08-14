@@ -13,6 +13,7 @@ import {
   PhoneCall,
 } from "lucide-react";
 import { openBooking } from "@/utils/housecall-pro";
+import SeoTextBlock from "@/components/seo-text-block";
 
 export default function CableConcealmentClient() {
   const handleBookOnline = openBooking;
@@ -472,6 +473,16 @@ export default function CableConcealmentClient() {
           </div>
         </div>
       </section>
+
+      {/* SEO Text Block */}
+      <SeoTextBlock
+        title="About Our Cable Concealment Service in Los Angeles"
+        paragraphs={[
+          "When you choose Ice Mount'n for in-wall cable concealment services in Los Angeles, you're selecting a team that understands the unique challenges of electrical and cable installations. Our technicians are familiar with local building codes, wall types, and electrical requirements across all Los Angeles County areas, ensuring your installation meets all safety standards while creating a completely wire-free appearance.",
+          "Our cable concealment service covers all residential properties throughout Los Angeles, from historic homes in Pasadena to modern apartments in Santa Monica. We handle everything from basic cable hiding to complete in-wall routing with new electrical outlets, ensuring your installation is code-compliant with professional finishing touches.",
+          "The installation process typically takes 2-4 hours depending on your setup complexity and wall structure. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your clean, wire-free setup without waiting weeks for an appointment, regardless of your location in the Greater Los Angeles area."
+        ]}
+      />
 
       {/* CTA */}
       <section className="py-16 bg-green-600">

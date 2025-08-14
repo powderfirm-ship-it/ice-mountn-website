@@ -9,6 +9,7 @@ import Link from "next/link";
 import { openBooking } from "@/utils/housecall-pro";
 import { SERVICES, type ServiceSlug } from "@/data/services";
 import { Tv, Flame, Cable, Speaker, Frame, Zap } from "lucide-react";
+import SeoTextBlock from "@/components/seo-text-block";
 
 interface CityPageClientProps {
   cityName: string;
@@ -309,6 +310,16 @@ export function CityPageClient({
           </div>
         </div>
       </section>
+
+      {/* SEO Text Block */}
+      <SeoTextBlock
+        title={`TV Mounting in ${cityName}: What to Expect`}
+        paragraphs={[
+          `When you choose Ice Mount'n for TV mounting services in ${cityName}, you're selecting a team that understands the unique characteristics of your neighborhood. Our technicians are familiar with ${cityName}'s building codes, wall types, and local regulations, ensuring your installation meets all requirements while maintaining the aesthetic appeal of your space.`,
+          `Our ${cityName} service area covers all residential and commercial properties, from historic homes to modern apartments. We handle everything from basic mounting to complex installations requiring custom solutions. Whether you're in a ${cityName} condo with strict building rules or a private home with unique architectural features, our team adapts to your specific needs.`,
+          `The installation process in ${cityName} typically takes 1-3 hours depending on your setup complexity. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new TV setup without waiting weeks for an appointment.`
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-blue-600">

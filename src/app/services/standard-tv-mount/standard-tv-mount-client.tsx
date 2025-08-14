@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall } from "lucide-react";
 import { openHousecallProModal } from "@/utils/housecall-pro";
+import SeoTextBlock from "@/components/seo-text-block";
 
 // schema + urls
 import JsonLd from "@/components/seo/JsonLd";
@@ -435,6 +436,16 @@ export default function StandardTVMountClient() {
           </div>
         </div>
       </section>
+
+      {/* SEO Text Block */}
+      <SeoTextBlock
+        title="About Our Standard TV Mount Service in Los Angeles"
+        paragraphs={[
+          "When you choose Ice Mount'n for standard TV mounting services in Los Angeles, you're selecting a team that understands the unique characteristics of Southern California homes and apartments. Our technicians are familiar with local building codes, wall types, and regulations across all Los Angeles County areas, ensuring your installation meets all requirements while maintaining the aesthetic appeal of your space.",
+          "Our standard TV mounting service covers all residential and commercial properties throughout Los Angeles, from historic homes in Pasadena to modern apartments in Santa Monica. We handle everything from basic mounting to enhanced installations with cable concealment, ensuring your TV is securely mounted with professional finishing touches.",
+          "The installation process typically takes 1-3 hours depending on your setup complexity and TV size. We arrive on time, work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy your new TV setup without waiting weeks for an appointment, regardless of your location in the Greater Los Angeles area."
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-blue-600">
