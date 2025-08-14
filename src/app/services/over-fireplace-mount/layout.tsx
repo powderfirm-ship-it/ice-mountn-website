@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Over-Fireplace TV Mounting Los Angeles | Ice Mount'n",
@@ -9,12 +10,13 @@ export const metadata: Metadata = {
     description: "Expert over-fireplace TV mounting with heat-safe installation and pull-down brackets. Professional assessment included.",
     images: ["/images/over-fireplace-mount.jpg"],
     type: "website",
+    url: canonical("/services/over-fireplace-mount"),
   },
   twitter: {
     title: "Over-Fireplace TV Mounting Los Angeles | Ice Mount'n",
   },
   alternates: {
-    canonical: "/services/over-fireplace-mount",
+    canonical: canonical("/services/over-fireplace-mount"),
   },
 };
 

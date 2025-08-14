@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { canonical } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'TV Mounting Discounts | Student & Military Specials',
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
     title: 'TV Mounting Discounts | Student & Military Specials | Ice Mount\'n',
     description: 'Save on TV mounting with special discounts for students and military. As low as $50 per TV with customer-provided mount.',
     type: 'website',
-    url: 'https://www.icemountn.com/discounts',
+    url: canonical('/discounts'),
     images: [
       {
-        url: "/images/stock/hero-1.webp",
+        url: canonical("/images/stock/hero-1.webp"),
         width: 1200,
         height: 630,
         alt: "TV mounting discounts for students and military in Los Angeles"
@@ -22,10 +23,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: 'TV Mounting Discounts | Student & Military Specials',
     description: 'Save on TV mounting with special discounts for students and military. As low as $50 per TV with customer-provided mount.',
-    images: ["/images/stock/hero-1.webp"]
+    images: [canonical("/images/stock/hero-1.webp")]
   },
   alternates: {
-    canonical: 'https://www.icemountn.com/discounts'
+    canonical: canonical('/discounts')
   }
 };
 

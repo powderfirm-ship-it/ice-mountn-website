@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
+import { canonical, buildTitle, buildDescription } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "FAQ | Ice Mount'n - TV Mounting Questions & Answers Los Angeles",
-  description: "Get answers to frequently asked questions about TV mounting, pricing, same-day service, and installation process. Professional TV mounting services throughout Los Angeles.",
+  title: buildTitle("FAQ"),
+  description: buildDescription("Get answers to frequently asked questions about TV mounting, pricing, same-day service, and installation process."),
   keywords: "TV mounting FAQ, Los Angeles TV installation questions, mounting service pricing, same day TV mounting, professional installation questions",
+  alternates: {
+    canonical: canonical("/faq"),
+  },
   openGraph: {
-    title: "Ice Mount'n FAQ - TV Mounting Questions Answered",
+    title: buildTitle("FAQ"),
     description: "Find answers to common questions about our professional TV mounting services in Los Angeles. Same-day installation available.",
-            images: ["/images/brand/ice-mountn-tv-mounting-logo.webp"],
+    url: canonical("/faq"),
+    type: "website",
+    images: [canonical("/images/brand/ice-mountn-tv-mounting-logo.webp")],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: buildTitle("FAQ"),
+    description: "Find answers to common questions about our professional TV mounting services in Los Angeles. Same-day installation available.",
   },
 };
 

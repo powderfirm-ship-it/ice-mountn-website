@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "TV Mounting Services in Los Angeles | Ice Mount'n",
@@ -9,12 +10,13 @@ export const metadata: Metadata = {
     description: "Professional TV mounting and home theater installation services throughout Los Angeles. Same-day service available.",
     images: ["/images/tv-mounting-services.jpg"],
     type: "website",
+    url: canonical("/services"),
   },
   twitter: {
     title: "TV Mounting Services in Los Angeles | Ice Mount'n",
   },
   alternates: {
-    canonical: "/services",
+    canonical: canonical("/services"),
   },
 };
 

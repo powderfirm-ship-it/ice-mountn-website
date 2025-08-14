@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Soundbar & Speaker Mounting Los Angeles | Ice Mount'n",
@@ -9,12 +10,13 @@ export const metadata: Metadata = {
     description: "Professional audio equipment mounting and calibration. From soundbars to complete surround sound systems.",
     images: ["/images/soundbar-mounting.jpg"],
     type: "website",
+    url: canonical("/services/soundbar-mounting"),
   },
   twitter: {
     title: "Soundbar & Speaker Mounting Los Angeles | Ice Mount'n",
   },
   alternates: {
-    canonical: "/services/soundbar-mounting",
+    canonical: canonical("/services/soundbar-mounting"),
   },
 };
 

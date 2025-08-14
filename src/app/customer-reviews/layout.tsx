@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { canonical } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Customer Reviews | 4.9★ TV Mounting Service',
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Customer Reviews | Ice Mount\'n TV Mounting Los Angeles',
     description: 'Read authentic customer reviews for Ice Mount\'n TV mounting service. 4.9-star rating from 150+ satisfied customers.',
     type: 'website',
-    url: 'https://www.icemountn.com/customer-reviews',
+    url: canonical('/customer-reviews'),
     images: [
       {
-        url: "/images/stock/review-01.webp",
+        url: canonical("/images/stock/review-01.webp"),
         width: 1200,
         height: 630,
         alt: "Ice Mount'n customer reviews and TV mounting testimonials"
@@ -22,10 +23,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: 'Customer Reviews | Ice Mount\'n TV Mounting',
     description: 'Read authentic customer reviews for Ice Mount\'n TV mounting service. 4.9-star rating from 150+ satisfied customers.',
-    images: ["/images/stock/review-01.webp"]
+    images: [canonical("/images/stock/review-01.webp")]
   },
   alternates: {
-    canonical: 'https://www.icemountn.com/customer-reviews'
+    canonical: canonical('/customer-reviews')
   }
 };
 

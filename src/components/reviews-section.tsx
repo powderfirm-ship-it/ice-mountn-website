@@ -39,31 +39,12 @@ const reviews = [
 
 export function ReviewsSection() {
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section className="py-12 lg:py-16">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            What Our Customers Say
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what Los Angeles homeowners
-            have to say about our TV mounting services.
-          </p>
-
-          <div className="flex items-center justify-center space-x-2 mt-6">
-            <div className="flex space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
-            <span className="text-lg font-semibold text-gray-900">4.9/5</span>
-            <span className="text-gray-600">from 150+ reviews</span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Reviews Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {reviews.map((review, index) => (
-            <Card key={index} className="border-gray-200 hover:shadow-lg transition-shadow duration-300">
+            <Card key={index} className="border-gray-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-1 mb-3">
                   {[...Array(review.rating)].map((_, i) => (
@@ -94,17 +75,18 @@ export function ReviewsSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <div className="mb-6">
+        {/* Call to Action Section */}
+        <div className="text-center">
+          <div className="mb-8">
             <Link
               href="/customer-reviews"
-              className="inline-flex items-center text-blue-700 hover:text-blue-800 font-medium transition-colors underline underline-offset-2"
+              className="inline-flex items-center text-blue-700 hover:text-blue-800 font-medium transition-colors underline underline-offset-2 text-lg"
             >
               View more reviews ➜
             </Link>
           </div>
 
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-8 text-lg">
             Ready to join our satisfied customers?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

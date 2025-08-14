@@ -1,5 +1,28 @@
+import type { Metadata } from "next";
+import { canonical, buildTitle, buildDescription } from "@/lib/seo";
 import { SiteLayout } from "@/components/site-layout";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: buildTitle("Trust & Support"),
+  description: buildDescription(
+    "Learn about our Trust & Support fee that covers comprehensive insurance, 24/7 customer support, and quality assurance."
+  ),
+  alternates: {
+    canonical: canonical("/trust-and-support"),
+  },
+  openGraph: {
+    title: buildTitle("Trust & Support"),
+    description: "Learn about our Trust & Support fee that covers comprehensive insurance, 24/7 customer support, and quality assurance.",
+    url: canonical("/trust-and-support"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: buildTitle("Trust & Support"),
+    description: "Learn about our Trust & Support fee that covers comprehensive insurance, 24/7 customer support, and quality assurance.",
+  },
+};
 
 export default function TrustAndSupportPage() {
   return (

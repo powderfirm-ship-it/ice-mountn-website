@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Samsung Frame TV Installation Los Angeles | Ice Mount'n",
@@ -9,12 +10,13 @@ export const metadata: Metadata = {
     description: "Expert Samsung Frame TV installation with zero-gap mounting and Art Mode setup. Transform your space into an art gallery.",
     images: ["/images/samsung-frame-installation.jpg"],
     type: "website",
+    url: canonical("/services/samsung-frame"),
   },
   twitter: {
     title: "Samsung Frame TV Installation Los Angeles | Ice Mount'n",
   },
   alternates: {
-    canonical: "/services/samsung-frame",
+    canonical: canonical("/services/samsung-frame"),
   },
 };
 

@@ -1,74 +1,52 @@
-import type { Metadata } from "next";
-import { canonical, buildTitle, buildDescription } from "@/lib/seo";
-import { SiteLayout } from "@/components/site-layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle, Star, Clock, Shield, Monitor, PhoneCall, Image } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+'use client';
+
+import { SiteLayout } from '@/components/site-layout';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { CheckCircle, Star, Clock, Shield, Thermometer, PhoneCall, AlertTriangle } from 'lucide-react';
+import { openHousecallProModal } from '@/utils/housecall-pro';
 
 import JsonLd from "@/components/seo/JsonLd";
 import { localBusinessJSONLD, serviceJSONLD } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: buildTitle("Samsung Frame TV Installation"),
-  description: buildDescription("Expert Samsung Frame TV installation with zero-gap mounting and Art Mode setup. Transform your space into an art gallery."),
-  alternates: {
-    canonical: canonical("/services/samsung-frame"),
-  },
-  openGraph: {
-    title: buildTitle("Samsung Frame TV Installation"),
-    description: "Expert Samsung Frame TV installation with zero-gap mounting and Art Mode setup. Transform your space into an art gallery.",
-    url: canonical("/services/samsung-frame"),
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: buildTitle("Samsung Frame TV Installation"),
-    description: "Expert Samsung Frame TV installation with zero-gap mounting and Art Mode setup. Transform your space into an art gallery.",
-  },
-};
-
-export default function SamsungFramePage() {
+export default function OverFireplaceMountClient() {
   const handleBookOnline = openHousecallProModal;
 
   const pricingOptions = [
     {
-      title: "Basic Frame Installation",
+      title: "Basic Fireplace Mount",
       price: "$199",
-      description: "Frame TV mounting with basic cable management",
-      timeEstimate: "2-3 hours",
+      description: "Standard over-fireplace TV mounting",
       features: [
-        "Frame TV wall mounting",
+        "Est. time: 2-3 hours",
+        "Heat-safe mounting bracket",
         "Basic cable management",
-        "Art Mode setup",
-        "Level adjustment"
+        "Safety clearance check"
       ]
     },
     {
-      title: "Complete Frame Setup",
+      title: "Premium Fireplace Mount",
       price: "$299",
-      description: "Full installation with One Connect Box concealment",
-      timeEstimate: "3-4 hours",
+      description: "Enhanced mounting with pull-down bracket",
       features: [
-        "Zero-gap wall mounting",
-        "One Connect Box hiding",
-        "Complete cable concealment",
-        "Art Mode optimization"
+        "Est. time: 3-4 hours",
+        "Pull-down articulating mount",
+        "Advanced cable concealment",
+        "Heat sensor installation"
       ],
       popular: true
     },
     {
-      title: "Premium Frame Experience",
+      title: "Ultra Fireplace Mount",
       price: "$399",
-      description: "Ultimate Frame installation with custom bezels",
-      timeEstimate: "4-5 hours",
+      description: "Professional mounting with full features",
       features: [
-        "Premium mounting",
-        "Custom bezel installation",
-        "In-wall One Connect routing",
-        "Professional calibration"
+        "Est. time: 4-5 hours",
+        "Premium articulating mount",
+        "Complete cable concealment",
+        "Professional heat management"
       ]
     }
   ];
@@ -76,63 +54,41 @@ export default function SamsungFramePage() {
   const processSteps = [
     {
       step: 1,
-      title: "Frame Assessment",
-      description: "Evaluate wall space and plan the perfect artwork positioning"
+      title: "Heat Assessment",
+      description: "Measure fireplace temperature and clearance requirements"
     },
     {
       step: 2,
-      title: "Precision Installation",
-      description: "Mount Frame TV flush to wall with zero-gap finish"
+      title: "Mount Selection",
+      description: "Choose appropriate heat-resistant mounting bracket"
     },
     {
       step: 3,
-      title: "Cable Concealment",
-      description: "Route One Connect Box and cables for completely invisible setup"
+      title: "Safe Installation",
+      description: "Install with proper clearance and heat protection"
     },
     {
       step: 4,
-      title: "Art Mode Setup",
-      description: "Configure Art Mode and customize display settings"
+      title: "Final Testing",
+      description: "Test mount stability and heat safety measures"
     }
   ];
 
   const benefits = [
-    "Zero-gap wall mounting for artwork appearance",
-    "Complete cable concealment with One Connect Box",
-    "Art Mode optimization and setup",
-    "Custom frame bezel installation",
-    "Ambient light sensor calibration",
-    "Artwork subscription activation",
-    "Professional wall finishing",
-    "Samsung Frame TV expertise"
+    "Heat-safe mounting solutions",
+    "Professional clearance assessment",
+    "Pull-down bracket options",
+    "Heat-resistant hardware",
+    "Safety-first installation",
+    "Professional cable management"
   ];
 
-  const frameFeatures = [
-    {
-      title: "Art Mode Display",
-      description: "Seamlessly switch between TV and artwork with motion sensor activation"
-    },
-    {
-      title: "One Connect Box",
-      description: "Single cable connection eliminates multiple cords for clean installation"
-    },
-    {
-      title: "Anti-Reflection Screen",
-      description: "Matte display finish reduces glare and enhances artwork appearance"
-    },
-    {
-      title: "Customizable Bezels",
-      description: "Choose from multiple bezel styles to match your home décor"
-    }
-  ];
-
-  const frameSizes = [
-    { size: "32\"", model: "LS03T/LS03B", price: "From $199" },
-    { size: "43\"", model: "LS03T/LS03B", price: "From $199" },
-    { size: "50\"", model: "LS03T/LS03B", price: "From $229" },
-    { size: "55\"", model: "LS03T/LS03B", price: "From $229" },
-    { size: "65\"", model: "LS03T/LS03B", price: "From $259" },
-    { size: "75\"", model: "LS03T/LS03B", price: "From $289" }
+  const safetyFeatures = [
+    "Temperature monitoring during installation",
+    "Proper clearance from heat sources",
+    "Heat-resistant mounting materials",
+    "Safety testing and verification",
+    "Professional heat management"
   ];
 
   return (
@@ -140,70 +96,91 @@ export default function SamsungFramePage() {
       {/* JSON-LD (do not duplicate LocalBusiness on the same page) */}
       <JsonLd
         data={localBusinessJSONLD({
-          url: canonical("/"),
+          url: "https://www.icemountn.com/",
           telephone: "+13238638146",
-          logoUrl: `${canonical("/")}/favicon/site-icon-512.webp`,
+          logoUrl: "https://www.icemountn.com/favicon/site-icon-512.webp",
           address: { city: "Los Angeles", region: "CA", country: "US" }
         })}
       />
       <JsonLd
         data={serviceJSONLD({
-          url: canonical("/services/samsung-frame"),
-          name: "Samsung Frame TV Installation",
-          description: "Zero‑gap mounting, One Connect Box concealment, and Art Mode optimization.",
+          url: "https://www.icemountn.com/services/over-fireplace-mount",
+          name: "Over‑Fireplace TV Mounting",
+          description: "Heat‑aware, safe TV mounting above fireplaces with professional assessment.",
           areaName: "Los Angeles",
-          providerUrl: canonical("/")
+          providerUrl: "https://www.icemountn.com/"
         })}
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-50 to-white py-16">
+      <section className="bg-gradient-to-br from-orange-50 to-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="bg-indigo-100 text-indigo-800 border-indigo-200 mb-4">
-              Samsung Certified Specialist
+            <Badge className="bg-orange-100 text-orange-800 border-orange-200 mb-4">
+              Heat-Safe Service
             </Badge>
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Samsung Frame TV Installation
+              Over-Fireplace TV Mounting
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Expert installation of Samsung Frame TVs with perfect artwork presentation.
-              Zero-gap mounting, complete cable concealment, and Art Mode optimization.
+              Heat-aware, safe TV mounting above fireplaces with professional assessment. 
+              Our specialists ensure proper clearance and heat protection.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
                 onClick={handleBookOnline}
                 size="lg"
-                className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4"
+                className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 py-4"
               >
-                Book Frame Installation
+                Book Installation
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold px-8 py-4"
+                className="border-orange-600 text-orange-600 hover:bg-orange-50 font-semibold px-8 py-4"
                 asChild
               >
                 <a href="tel:(323) 863-8146">
                   <PhoneCall className="h-5 w-5 mr-2" />
-                  Call Specialist
+                  Call (323) 863-8146
                 </a>
               </Button>
             </div>
 
             <div className="flex items-center justify-center space-x-6 text-sm text-gray-600">
               <div className="flex items-center">
-                <Image className="h-4 w-4 mr-1" />
-                Art Mode expert
-              </div>
-              <div className="flex items-center">
                 <Shield className="h-4 w-4 mr-1" />
-                Samsung certified
+                Heat-safe mounting
               </div>
               <div className="flex items-center">
                 <Star className="h-4 w-4 mr-1 fill-yellow-400 text-yellow-400" />
-                Zero-gap mounting
+                Professional assessment
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 mr-1 text-green-600" />
+                Safety verified
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Heat Notice */}
+      <section className="py-8 bg-orange-100 border-l-4 border-orange-500">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-start space-x-3">
+              <AlertTriangle className="h-6 w-6 text-orange-600 mt-1 shrink-0" />
+              <div>
+                <h3 className="text-lg font-semibold text-orange-800 mb-2">
+                  Important Heat Safety Notice
+                </h3>
+                <p className="text-orange-700">
+                  Over-fireplace TV mounting requires special consideration for heat management. 
+                  Our technicians assess fireplace temperature, clearance requirements, and install 
+                  appropriate heat-resistant mounting solutions to protect your TV.
+                </p>
               </div>
             </div>
           </div>
@@ -215,27 +192,32 @@ export default function SamsungFramePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Samsung Frame Installation Services
+              Over-Fireplace Mounting Options
             </h2>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {pricingOptions.map((service, index) => (
-                <Card key={index} className={`relative ${service.popular ? 'ring-2 ring-indigo-500 shadow-lg' : ''}`}>
-                  {service.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <Badge className="bg-indigo-600 text-white">Most Popular</Badge>
+              {pricingOptions.map((opt, i) => (
+                <Card
+                  key={opt.title}
+                  className={`relative ${opt.popular ? "ring-2 ring-orange-500 shadow-lg" : ""}`}
+                >
+                  {opt.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <Badge className="bg-orange-600 text-white">Most Popular</Badge>
                     </div>
                   )}
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
-                    <div className="text-3xl font-bold text-indigo-600 mb-4">{service.price}</div>
-                    <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-                    <div className="text-sm text-gray-500 mb-4">Est. Time: {service.timeEstimate}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {opt.title}
+                    </h3>
+                    <div className="text-3xl font-bold text-orange-600 mb-4">
+                      {opt.price}
+                    </div>
+                    <p className="text-gray-600 text-sm mb-4">{opt.description}</p>
                     <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-gray-600">
-                          <CheckCircle className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
-                          {feature}
+                      {opt.features.map((f) => (
+                        <li key={f} className="flex items-center text-sm text-gray-600">
+                          <CheckCircle className="h-4 w-4 text-green-600 mr-2 shrink-0" />
+                          {f}
                         </li>
                       ))}
                     </ul>
@@ -244,23 +226,13 @@ export default function SamsungFramePage() {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-              {frameSizes.map((frame, index) => (
-                <Card key={index} className="text-center">
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold text-gray-900 mb-1">{frame.size}</h4>
-                    <p className="text-xs text-gray-600 mb-2">{frame.model}</p>
-                    <p className="text-sm font-medium text-indigo-600">{frame.price}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
             <div className="bg-gray-50 rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Samsung Frame TV Specialist</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Heat-Safe Installation
+              </h3>
               <p className="text-gray-600">
-                Certified in Samsung Frame TV installation with expertise in Art Mode setup,
-                One Connect Box concealment, and zero-gap wall mounting.
+                All over-fireplace installations include heat assessment, proper clearance measurement, 
+                and heat-resistant mounting hardware. Safety is our top priority.
               </p>
             </div>
           </div>
@@ -272,43 +244,19 @@ export default function SamsungFramePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Our Frame TV Installation Process
+              Our Fireplace Mounting Process
             </h2>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {processSteps.map((step, index) => (
-                <Card key={index} className="text-center">
+              {processSteps.map((s) => (
+                <Card key={s.step} className="text-center">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
-                      {step.step}
+                    <div className="w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
+                      {s.step}
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
-                    <p className="text-gray-600 text-sm">{step.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Frame Features */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Samsung Frame TV Features
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {frameFeatures.map((feature, index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                      <Monitor className="h-5 w-5 text-indigo-600 mr-2" />
-                      {feature.title}
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      {s.title}
                     </h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-gray-600 text-sm">{s.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -318,18 +266,17 @@ export default function SamsungFramePage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Why Choose Our Frame TV Installation
+              Why Choose Our Fireplace Mounting
             </h2>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                  <span className="text-gray-700">{benefit}</span>
+              {benefits.map((b) => (
+                <div key={b} className="flex items-center space-x-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 shrink-0" />
+                  <span className="text-gray-700">{b}</span>
                 </div>
               ))}
             </div>
@@ -337,49 +284,43 @@ export default function SamsungFramePage() {
         </div>
       </section>
 
-      {/* Installation Gallery Preview */}
-      <section className="py-16 bg-white">
+      {/* Safety Features */}
+      <section className="py-16 bg-orange-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Perfect Frame TV Installations
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              Heat Safety Features
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              See how Samsung Frame TVs transform your living space into an art gallery
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Living Room Frame Install</span>
-              </div>
-              <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Bedroom Art Mode Display</span>
-              </div>
-              <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Zero-Gap Wall Mount</span>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {safetyFeatures.map((f) => (
+                <div key={f} className="flex items-center space-x-3">
+                  <Thermometer className="h-5 w-5 text-orange-600 shrink-0" />
+                  <span className="text-gray-700">{f}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Samsung Frame TV FAQ
+              Over-Fireplace Mounting FAQ
             </h2>
 
             <div className="space-y-6">
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    What makes Frame TV installation different?
+                    Is it safe to mount a TV above a fireplace?
                   </h3>
                   <p className="text-gray-600">
-                    Frame TVs require specialized zero-gap mounting to achieve the artwork appearance.
-                    The One Connect Box must be hidden, and Art Mode needs proper calibration for the best experience.
+                    Yes, when done properly by professionals. We assess fireplace temperature, 
+                    use heat-resistant mounting hardware, and ensure proper clearance to protect 
+                    your TV from heat damage.
                   </p>
                 </CardContent>
               </Card>
@@ -387,11 +328,12 @@ export default function SamsungFramePage() {
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Can you hide the One Connect Box completely?
+                    What clearance is needed above a fireplace?
                   </h3>
                   <p className="text-gray-600">
-                    Yes, we specialize in concealing the One Connect Box either in a nearby cabinet,
-                    behind the wall, or in a media closet with the single cable routed invisibly to the TV.
+                    We recommend at least 12-18 inches above the fireplace opening, depending on 
+                    your specific fireplace type and heat output. Our technicians measure and 
+                    assess this during installation.
                   </p>
                 </CardContent>
               </Card>
@@ -399,11 +341,12 @@ export default function SamsungFramePage() {
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Do you install custom bezels?
+                    Do you install pull-down brackets?
                   </h3>
                   <p className="text-gray-600">
-                    Yes, we install Samsung's custom bezels in various styles and colors to match your décor.
-                    Bezels are sold separately by Samsung and can be ordered to match your installation.
+                    Yes! Pull-down brackets are excellent for over-fireplace installations as they 
+                    allow you to lower the TV for comfortable viewing and raise it when not in use. 
+                    We offer several pull-down options.
                   </p>
                 </CardContent>
               </Card>
@@ -411,14 +354,27 @@ export default function SamsungFramePage() {
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    How do you set up Art Mode?
+                    How do you protect the TV from heat?
                   </h3>
                   <p className="text-gray-600">
-                    We configure Art Mode with optimal brightness, color settings, and motion sensor sensitivity.
-                    We can also help set up the Samsung Art Store subscription for access to premium artwork.
+                    We use heat-resistant mounting materials, install proper clearance, and may 
+                    add heat shields if needed. Our technicians also monitor temperature during 
+                    installation to ensure safety.
                   </p>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="mt-10 text-center text-sm text-gray-600">
+              Pair with{" "}
+              <a href="/services/standard-tv-mount" className="underline underline-offset-4">
+                Standard TV Mounting
+              </a>{" "}
+              or{" "}
+              <a href="/services/cable-concealment" className="underline underline-offset-4">
+                Cable Concealment
+              </a>{" "}
+              for a complete, professional setup.
             </div>
           </div>
         </div>
@@ -435,7 +391,7 @@ export default function SamsungFramePage() {
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-900 mb-2">Our Approach</h3>
                   <p className="text-gray-600 text-sm">
-                    We begin with a quick assessment of your space, wall type, and device compatibility to ensure a clean, secure Samsung Frame installation
+                    We begin with a quick assessment of your space, wall type, and device compatibility to ensure a clean, secure over-fireplace mounting
                     that meets building and manufacturer guidelines. Our technicians confirm placement, routing options, and finishing details
                     before any drilling occurs.
                   </p>
@@ -525,11 +481,11 @@ export default function SamsungFramePage() {
 
               <AccordionItem value="q5" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-gray-900">
-                  How do you optimize Art Mode and One Connect Box setup?
+                  How do you ensure heat safety for over-fireplace installations?
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 pb-4 text-sm">
-                  We configure Art Mode with optimal brightness and motion sensitivity, then conceal the One Connect Box
-                  either behind the wall or in a nearby cabinet for a completely invisible, gallery-quality installation.
+                  We measure fireplace temperature, install heat-resistant mounting hardware, and ensure proper clearance.
+                  Pull-down brackets are available for better viewing angles while maintaining safety from heat exposure.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -538,34 +494,32 @@ export default function SamsungFramePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-indigo-600">
+      <section className="py-16 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Transform Your Space with Samsung Frame TV
+              Ready for Safe Fireplace TV Mounting?
             </h2>
-            <p className="text-xl text-indigo-100 mb-8">
-              Expert Frame TV installation with zero-gap mounting and complete cable concealment.
-              Book your specialized installation today.
+            <p className="text-xl text-orange-100 mb-8">
+              Heat-safe over-fireplace mounting with professional assessment and heat protection. 
+              Book your installation today.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={handleBookOnline}
                 size="lg"
-                className="bg-white text-indigo-600 hover:bg-gray-100 font-semibold px-8 py-4"
+                className="bg-white text-orange-600 hover:bg-gray-100 font-semibold px-8 py-4"
               >
-                Book Frame Installation
+                Book Installation
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white text-indigo-600 border-white hover:bg-indigo-50 hover:text-indigo-700 font-semibold px-8 py-4"
+                className="bg-white text-orange-700 border-white hover:bg-orange-50 hover:text-orange-700 font-semibold px-8 py-4"
                 asChild
               >
-                <a href="tel:(323) 863-8146">
-                  Call (323) 863-8146
-                </a>
+                <a href="tel:(323) 863-8146">Call (323) 863-8146</a>
               </Button>
             </div>
           </div>

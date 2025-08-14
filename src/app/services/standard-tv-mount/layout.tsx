@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Standard TV Wall Mounting Service Los Angeles | $149+ | Ice Mount'n",
@@ -9,9 +10,10 @@ export const metadata: Metadata = {
     description: "Professional TV wall mounting service starting at $149. Same-day installation available throughout Los Angeles County.",
     images: ["/images/tv-mount-service.jpg"],
     type: "website",
+    url: canonical("/services/standard-tv-mount"),
   },
   alternates: {
-    canonical: "/services/standard-tv-mount",
+    canonical: canonical("/services/standard-tv-mount"),
   },
 };
 

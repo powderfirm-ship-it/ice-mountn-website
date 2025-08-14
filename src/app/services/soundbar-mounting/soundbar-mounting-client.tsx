@@ -1,209 +1,148 @@
-import type { Metadata } from "next";
-import { canonical, buildTitle, buildDescription } from "@/lib/seo";
-import { SiteLayout } from "@/components/site-layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle, Star, Clock, Shield, Monitor, PhoneCall, Image } from "lucide-react";
-import { openHousecallProModal } from "@/utils/housecall-pro";
+'use client';
 
-import JsonLd from "@/components/seo/JsonLd";
-import { localBusinessJSONLD, serviceJSONLD } from "@/lib/schema";
+import { SiteLayout } from '@/components/site-layout';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { CheckCircle, Star, Clock, Shield, Volume2, PhoneCall, Speaker } from 'lucide-react';
+import { openBooking } from '@/utils/housecall-pro';
 
-export const metadata: Metadata = {
-  title: buildTitle("Samsung Frame TV Installation"),
-  description: buildDescription("Expert Samsung Frame TV installation with zero-gap mounting and Art Mode setup. Transform your space into an art gallery."),
-  alternates: {
-    canonical: canonical("/services/samsung-frame"),
-  },
-  openGraph: {
-    title: buildTitle("Samsung Frame TV Installation"),
-    description: "Expert Samsung Frame TV installation with zero-gap mounting and Art Mode setup. Transform your space into an art gallery.",
-    url: canonical("/services/samsung-frame"),
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: buildTitle("Samsung Frame TV Installation"),
-    description: "Expert Samsung Frame TV installation with zero-gap mounting and Art Mode setup. Transform your space into an art gallery.",
-  },
-};
-
-export default function SamsungFramePage() {
-  const handleBookOnline = openHousecallProModal;
-
-  const pricingOptions = [
-    {
-      title: "Basic Frame Installation",
-      price: "$199",
-      description: "Frame TV mounting with basic cable management",
-      timeEstimate: "2-3 hours",
-      features: [
-        "Frame TV wall mounting",
-        "Basic cable management",
-        "Art Mode setup",
-        "Level adjustment"
-      ]
-    },
-    {
-      title: "Complete Frame Setup",
-      price: "$299",
-      description: "Full installation with One Connect Box concealment",
-      timeEstimate: "3-4 hours",
-      features: [
-        "Zero-gap wall mounting",
-        "One Connect Box hiding",
-        "Complete cable concealment",
-        "Art Mode optimization"
-      ],
-      popular: true
-    },
-    {
-      title: "Premium Frame Experience",
-      price: "$399",
-      description: "Ultimate Frame installation with custom bezels",
-      timeEstimate: "4-5 hours",
-      features: [
-        "Premium mounting",
-        "Custom bezel installation",
-        "In-wall One Connect routing",
-        "Professional calibration"
-      ]
-    }
-  ];
+export default function SoundbarMountingClient() {
+  const handleBookOnline = openBooking;
 
   const processSteps = [
     {
       step: 1,
-      title: "Frame Assessment",
-      description: "Evaluate wall space and plan the perfect artwork positioning"
+      title: "Audio Assessment",
+      description: "Evaluate room acoustics and determine optimal speaker placement"
     },
     {
       step: 2,
-      title: "Precision Installation",
-      description: "Mount Frame TV flush to wall with zero-gap finish"
+      title: "Precise Mounting",
+      description: "Install speakers/soundbar at ideal height and angle for best audio"
     },
     {
       step: 3,
-      title: "Cable Concealment",
-      description: "Route One Connect Box and cables for completely invisible setup"
+      title: "Cable Management",
+      description: "Route audio cables cleanly and connect to your audio system"
     },
     {
       step: 4,
-      title: "Art Mode Setup",
-      description: "Configure Art Mode and customize display settings"
+      title: "Audio Calibration",
+      description: "Test and optimize speaker positioning for room acoustics"
     }
   ];
 
   const benefits = [
-    "Zero-gap wall mounting for artwork appearance",
-    "Complete cable concealment with One Connect Box",
-    "Art Mode optimization and setup",
-    "Custom frame bezel installation",
-    "Ambient light sensor calibration",
-    "Artwork subscription activation",
-    "Professional wall finishing",
-    "Samsung Frame TV expertise"
+    "Optimal speaker positioning for room acoustics",
+    "Clean cable management for audio equipment",
+    "Soundbar mounting below or above TV",
+    "Surround speaker installation",
+    "Subwoofer placement optimization",
+    "Wire concealment for clean appearance",
+    "Professional audio calibration",
+    "Compatible with all major brands"
   ];
 
-  const frameFeatures = [
+  const serviceOptions = [
     {
-      title: "Art Mode Display",
-      description: "Seamlessly switch between TV and artwork with motion sensor activation"
+      type: "Soundbar Only",
+      price: "$129",
+      description: "Mount soundbar below or above TV with cable management",
+      features: ["Soundbar wall mounting", "Cable management", "Optimal positioning", "Connection testing"],
+      timeEstimate: "1-2 hours"
     },
     {
-      title: "One Connect Box",
-      description: "Single cable connection eliminates multiple cords for clean installation"
+      type: "Soundbar + Subwoofer",
+      price: "$179",
+      description: "Complete 2.1 system setup with optimal placement",
+      features: ["Soundbar mounting", "Subwoofer positioning", "Cable management", "System calibration"],
+      popular: true,
+      timeEstimate: "2-3 hours"
     },
     {
-      title: "Anti-Reflection Screen",
-      description: "Matte display finish reduces glare and enhances artwork appearance"
-    },
-    {
-      title: "Customizable Bezels",
-      description: "Choose from multiple bezel styles to match your home décor"
+      type: "Surround Sound Setup",
+      price: "$299",
+      description: "Full surround speaker installation and calibration",
+      features: ["Multiple speaker mounting", "Surround positioning", "Complete wiring", "Professional calibration"],
+      timeEstimate: "3-4 hours"
     }
   ];
 
-  const frameSizes = [
-    { size: "32\"", model: "LS03T/LS03B", price: "From $199" },
-    { size: "43\"", model: "LS03T/LS03B", price: "From $199" },
-    { size: "50\"", model: "LS03T/LS03B", price: "From $229" },
-    { size: "55\"", model: "LS03T/LS03B", price: "From $229" },
-    { size: "65\"", model: "LS03T/LS03B", price: "From $259" },
-    { size: "75\"", model: "LS03T/LS03B", price: "From $289" }
+  const supportedBrands = [
+    "Sonos", "Samsung", "LG", "Sony", "Bose", "JBL", "Yamaha", "Klipsch", "Polk Audio", "KEF", "Definitive Technology", "Harman Kardon"
+  ];
+
+  const audioTips = [
+    {
+      title: "Soundbar Placement",
+      description: "Position soundbar at ear level when seated, typically 2-3 feet below TV center"
+    },
+    {
+      title: "Room Acoustics",
+      description: "Consider room size, furniture placement, and wall materials for optimal sound"
+    },
+    {
+      title: "Cable Quality",
+      description: "Use high-quality HDMI ARC or optical cables for best audio transmission"
+    },
+    {
+      title: "Calibration",
+      description: "Proper calibration ensures balanced sound across all listening positions"
+    }
   ];
 
   return (
     <SiteLayout>
-      {/* JSON-LD (do not duplicate LocalBusiness on the same page) */}
-      <JsonLd
-        data={localBusinessJSONLD({
-          url: canonical("/"),
-          telephone: "+13238638146",
-          logoUrl: `${canonical("/")}/favicon/site-icon-512.webp`,
-          address: { city: "Los Angeles", region: "CA", country: "US" }
-        })}
-      />
-      <JsonLd
-        data={serviceJSONLD({
-          url: canonical("/services/samsung-frame"),
-          name: "Samsung Frame TV Installation",
-          description: "Zero‑gap mounting, One Connect Box concealment, and Art Mode optimization.",
-          areaName: "Los Angeles",
-          providerUrl: canonical("/")
-        })}
-      />
-
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-50 to-white py-16">
+      <section className="bg-gradient-to-br from-purple-50 to-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="bg-indigo-100 text-indigo-800 border-indigo-200 mb-4">
-              Samsung Certified Specialist
+            <Badge className="bg-purple-100 text-purple-800 border-purple-200 mb-4">
+              Audio Specialist
             </Badge>
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Samsung Frame TV Installation
+              Soundbar & Speaker Mounting
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Expert installation of Samsung Frame TVs with perfect artwork presentation.
-              Zero-gap mounting, complete cable concealment, and Art Mode optimization.
+              Professional audio equipment mounting and calibration. From simple soundbars
+              to complete surround sound systems - optimized for your room's acoustics.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
                 onClick={handleBookOnline}
                 size="lg"
-                className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4"
+                className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-4"
               >
-                Book Frame Installation
+                Book Audio Setup
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold px-8 py-4"
+                className="border-purple-600 text-purple-600 hover:bg-purple-50 font-semibold px-8 py-4"
                 asChild
               >
                 <a href="tel:(323) 863-8146">
                   <PhoneCall className="h-5 w-5 mr-2" />
-                  Call Specialist
+                  Call for Consultation
                 </a>
               </Button>
             </div>
 
             <div className="flex items-center justify-center space-x-6 text-sm text-gray-600">
               <div className="flex items-center">
-                <Image className="h-4 w-4 mr-1" />
-                Art Mode expert
+                <Volume2 className="h-4 w-4 mr-1" />
+                Audio optimization
               </div>
               <div className="flex items-center">
                 <Shield className="h-4 w-4 mr-1" />
-                Samsung certified
+                All brands supported
               </div>
               <div className="flex items-center">
                 <Star className="h-4 w-4 mr-1 fill-yellow-400 text-yellow-400" />
-                Zero-gap mounting
+                Professional calibration
               </div>
             </div>
           </div>
@@ -215,24 +154,24 @@ export default function SamsungFramePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Samsung Frame Installation Services
+              Audio Mounting Services
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {pricingOptions.map((service, index) => (
-                <Card key={index} className={`relative ${service.popular ? 'ring-2 ring-indigo-500 shadow-lg' : ''}`}>
-                  {service.popular && (
+              {serviceOptions.map((option, index) => (
+                <Card key={index} className={`relative ${option.popular ? 'ring-2 ring-purple-500 shadow-lg' : ''}`}>
+                  {option.popular && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <Badge className="bg-indigo-600 text-white">Most Popular</Badge>
+                      <Badge className="bg-purple-600 text-white">Most Popular</Badge>
                     </div>
                   )}
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
-                    <div className="text-3xl font-bold text-indigo-600 mb-4">{service.price}</div>
-                    <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-                    <div className="text-sm text-gray-500 mb-4">Est. Time: {service.timeEstimate}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{option.type}</h3>
+                    <div className="text-3xl font-bold text-purple-600 mb-4">{option.price}</div>
+                    <p className="text-gray-600 text-sm mb-4">{option.description}</p>
+                    <div className="text-sm text-gray-500 mb-4">Est. Time: {option.timeEstimate}</div>
                     <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
+                      {option.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center text-sm text-gray-600">
                           <CheckCircle className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
                           {feature}
@@ -244,23 +183,11 @@ export default function SamsungFramePage() {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-              {frameSizes.map((frame, index) => (
-                <Card key={index} className="text-center">
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold text-gray-900 mb-1">{frame.size}</h4>
-                    <p className="text-xs text-gray-600 mb-2">{frame.model}</p>
-                    <p className="text-sm font-medium text-indigo-600">{frame.price}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
             <div className="bg-gray-50 rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Samsung Frame TV Specialist</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Professional Audio Calibration</h3>
               <p className="text-gray-600">
-                Certified in Samsung Frame TV installation with expertise in Art Mode setup,
-                One Connect Box concealment, and zero-gap wall mounting.
+                All installations include professional audio calibration to optimize sound quality
+                for your specific room acoustics and listening preferences.
               </p>
             </div>
           </div>
@@ -272,14 +199,14 @@ export default function SamsungFramePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Our Frame TV Installation Process
+              Our Audio Installation Process
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {processSteps.map((step, index) => (
                 <Card key={index} className="text-center">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
+                    <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
                       {step.step}
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{step.title}</h3>
@@ -292,23 +219,47 @@ export default function SamsungFramePage() {
         </div>
       </section>
 
-      {/* Frame Features */}
+      {/* Supported Brands */}
       <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-12">
+              Compatible with All Major Brands
+            </h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+              {supportedBrands.map((brand, index) => (
+                <div key={index} className="bg-gray-50 rounded-lg p-4 text-center">
+                  <span className="text-gray-700 font-medium">{brand}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-gray-600">
+              Don't see your brand? We work with all audio equipment manufacturers.
+              Call us to discuss your specific audio setup needs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Audio Tips */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Samsung Frame TV Features
+              Professional Audio Tips
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {frameFeatures.map((feature, index) => (
+              {audioTips.map((tip, index) => (
                 <Card key={index}>
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                      <Monitor className="h-5 w-5 text-indigo-600 mr-2" />
-                      {feature.title}
+                      <Speaker className="h-5 w-5 text-purple-600 mr-2" />
+                      {tip.title}
                     </h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-gray-600">{tip.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -318,11 +269,11 @@ export default function SamsungFramePage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Why Choose Our Frame TV Installation
+              Why Choose Professional Audio Mounting
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -337,49 +288,23 @@ export default function SamsungFramePage() {
         </div>
       </section>
 
-      {/* Installation Gallery Preview */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Perfect Frame TV Installations
-            </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              See how Samsung Frame TVs transform your living space into an art gallery
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Living Room Frame Install</span>
-              </div>
-              <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Bedroom Art Mode Display</span>
-              </div>
-              <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Zero-Gap Wall Mount</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Samsung Frame TV FAQ
+              Audio Mounting FAQ
             </h2>
 
             <div className="space-y-6">
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    What makes Frame TV installation different?
+                    Where should I mount my soundbar?
                   </h3>
                   <p className="text-gray-600">
-                    Frame TVs require specialized zero-gap mounting to achieve the artwork appearance.
-                    The One Connect Box must be hidden, and Art Mode needs proper calibration for the best experience.
+                    Soundbars should be positioned at ear level when seated, typically 2-3 feet below the TV center.
+                    We can mount above or below the TV depending on your room layout and preferences.
                   </p>
                 </CardContent>
               </Card>
@@ -387,11 +312,11 @@ export default function SamsungFramePage() {
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Can you hide the One Connect Box completely?
+                    Can you install surround sound speakers?
                   </h3>
                   <p className="text-gray-600">
-                    Yes, we specialize in concealing the One Connect Box either in a nearby cabinet,
-                    behind the wall, or in a media closet with the single cable routed invisibly to the TV.
+                    Yes, we install complete surround sound systems including rear speakers, side speakers,
+                    and overhead speakers for Dolby Atmos setups. All wiring is professionally concealed.
                   </p>
                 </CardContent>
               </Card>
@@ -399,11 +324,11 @@ export default function SamsungFramePage() {
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Do you install custom bezels?
+                    Do you provide audio calibration?
                   </h3>
                   <p className="text-gray-600">
-                    Yes, we install Samsung's custom bezels in various styles and colors to match your décor.
-                    Bezels are sold separately by Samsung and can be ordered to match your installation.
+                    Yes, all installations include basic audio calibration to optimize sound quality for your room.
+                    We adjust speaker levels, distances, and EQ settings for balanced audio.
                   </p>
                 </CardContent>
               </Card>
@@ -411,11 +336,11 @@ export default function SamsungFramePage() {
               <Card>
                 <CardContent className="p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    How do you set up Art Mode?
+                    What cables do you recommend for audio connections?
                   </h3>
                   <p className="text-gray-600">
-                    We configure Art Mode with optimal brightness, color settings, and motion sensor sensitivity.
-                    We can also help set up the Samsung Art Store subscription for access to premium artwork.
+                    We recommend HDMI ARC/eARC for soundbars with your TV, and high-quality speaker wire
+                    for traditional speakers. Optical cables are used when HDMI is not available.
                   </p>
                 </CardContent>
               </Card>
@@ -435,7 +360,7 @@ export default function SamsungFramePage() {
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-gray-900 mb-2">Our Approach</h3>
                   <p className="text-gray-600 text-sm">
-                    We begin with a quick assessment of your space, wall type, and device compatibility to ensure a clean, secure Samsung Frame installation
+                    We begin with a quick assessment of your space, wall type, and device compatibility to ensure a clean, secure soundbar mounting
                     that meets building and manufacturer guidelines. Our technicians confirm placement, routing options, and finishing details
                     before any drilling occurs.
                   </p>
@@ -525,11 +450,11 @@ export default function SamsungFramePage() {
 
               <AccordionItem value="q5" className="bg-white border border-gray-200 rounded-lg px-6">
                 <AccordionTrigger className="text-left font-semibold text-gray-900">
-                  How do you optimize Art Mode and One Connect Box setup?
+                  How do you optimize audio positioning and calibration?
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 pb-4 text-sm">
-                  We configure Art Mode with optimal brightness and motion sensitivity, then conceal the One Connect Box
-                  either behind the wall or in a nearby cabinet for a completely invisible, gallery-quality installation.
+                  We position speakers at optimal heights and angles for your room layout, then calibrate audio levels,
+                  distances, and EQ settings to ensure balanced sound quality throughout your listening area.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -538,29 +463,29 @@ export default function SamsungFramePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-indigo-600">
+      <section className="py-16 bg-purple-600">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Transform Your Space with Samsung Frame TV
+              Ready to Upgrade Your Audio Experience?
             </h2>
-            <p className="text-xl text-indigo-100 mb-8">
-              Expert Frame TV installation with zero-gap mounting and complete cable concealment.
-              Book your specialized installation today.
+            <p className="text-xl text-purple-100 mb-8">
+              Professional audio equipment mounting and calibration.
+              Transform your entertainment experience today.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={handleBookOnline}
                 size="lg"
-                className="bg-white text-indigo-600 hover:bg-gray-100 font-semibold px-8 py-4"
+                className="bg-white text-purple-600 hover:bg-gray-100 font-semibold px-8 py-4"
               >
-                Book Frame Installation
+                Book Audio Setup
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white text-indigo-600 border-white hover:bg-indigo-50 hover:text-indigo-700 font-semibold px-8 py-4"
+                className="bg-white text-purple-600 border-white hover:bg-purple-50 hover:text-purple-700 font-semibold px-8 py-4"
                 asChild
               >
                 <a href="tel:(323) 863-8146">

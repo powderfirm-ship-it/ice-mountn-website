@@ -1,4 +1,27 @@
+import type { Metadata } from "next";
+import { canonical, buildTitle, buildDescription } from "@/lib/seo";
 import { SiteLayout } from "@/components/site-layout";
+
+export const metadata: Metadata = {
+  title: buildTitle("Privacy Policy"),
+  description: buildDescription(
+    "Privacy policy for Ice Mount'n TV mounting services. Learn how we protect your personal information."
+  ),
+  alternates: {
+    canonical: canonical("/privacy"),
+  },
+  openGraph: {
+    title: buildTitle("Privacy Policy"),
+    description: "Privacy policy for Ice Mount'n TV mounting services. Learn how we protect your personal information.",
+    url: canonical("/privacy"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: buildTitle("Privacy Policy"),
+    description: "Privacy policy for Ice Mount'n TV mounting services. Learn how we protect your personal information.",
+  },
+};
 
 export default function PrivacyPage() {
   return (
