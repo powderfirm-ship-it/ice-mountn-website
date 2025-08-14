@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CityPageClient } from "./city-page-client";
 import { SERVICES, type ServiceSlug } from "@/data/services";
 import { buildTitle, buildDescription, canonical } from "@/lib/seo";
+import { getCityData } from "@/data/cities";
 import { Metadata } from "next";
 
 interface CityPageProps {
@@ -57,37 +58,41 @@ export default async function CityPage({ params }: CityPageProps) {
   const isCampus = !!campus;
   const cityName = data.name;
 
+  // Get city data for enhanced features
+  const cityData = getCityData(resolvedParams.city);
+  const averageRating = cityData?.averageRating || 4.8;
+
   const services = Object.keys(SERVICES) as ServiceSlug[];
 
   const trustFeatures = [
-    "Licensed & insured technicians",
-    "Same-day service available",
-    "100% renter-friendly mounting",
-    "4.9/5 star customer rating"
+    `Licensed & insured technicians in ${cityName}`,
+    `Same-day service available throughout ${cityName}`,
+    `100% renter-friendly mounting for ${cityName} properties`,
+    `${averageRating}/5 star customer rating from ${cityName} residents`
   ];
 
   const localFaqs = [
     {
       question: `Do you offer TV mounting in ${cityName} apartments and condos?`,
-      answer: `Yes! We specialize in ${cityName} apartment and condo TV mounting with renter-friendly solutions. Our damage-free mounting options protect your security deposit while creating the perfect entertainment setup. We offer same-day TV mounting and can handle standard wall mounts, over-fireplace installations, and in-wall cable concealment.`
+      answer: `Yes! We specialize in ${cityName} apartment and condo TV mounting with renter-friendly solutions. Our damage-free mounting options protect your security deposit while creating the perfect entertainment setup. We offer same-day TV mounting and can handle standard wall mounts, over-fireplace installations, and in-wall cable concealment. We've installed TVs in apartments near local landmarks and understand ${cityName}'s unique building requirements.`
     },
     {
       question: `Is parking available for TV mounting appointments in ${cityName}?`,
-      answer: `Our technicians are familiar with ${cityName} parking regulations and will find appropriate parking for service calls. We handle permit parking and bring compact equipment to navigate narrow ${cityName} streets. Same-day service is available throughout Los Angeles County.`
+      answer: `Our technicians are familiar with ${cityName} parking regulations and will find appropriate parking for service calls. We handle permit parking and bring compact equipment to navigate narrow ${cityName} streets. Same-day service is available throughout ${cityName}, and we coordinate with local property managers for smooth access.`
     },
     {
       question: `Can you work with older buildings and walls in ${cityName}?`,
-      answer: `Absolutely! ${cityName} has many historic and older buildings with unique wall types. Our experienced technicians are skilled in mounting on plaster, concrete, brick, and other materials common in ${cityName} architecture. We use damage-free methods that protect your walls and security deposit.`
+      answer: `Absolutely! ${cityName} has many historic and older buildings with unique wall types. Our experienced technicians are skilled in mounting on plaster, concrete, brick, and other materials common in ${cityName} architecture. We use damage-free methods that protect your walls and security deposit. We've handled installations in historic properties throughout ${cityName} and understand local preservation requirements.`
     },
     ...(isCampus ? [
       {
         question: `Do you provide ${cityName} student housing and dorm TV mounting?`,
-        answer: `Yes! We specialize in student-friendly TV mounting for ${cityName} dorms, apartments, and student housing. Our RA-approved and landlord-safe mounting options comply with housing regulations. We offer same-day TV mounting with clean, damage-free installations.`
+        answer: `Yes! We specialize in student-friendly TV mounting for ${cityName} dorms, apartments, and student housing. Our RA-approved and landlord-safe mounting options comply with housing regulations. We offer same-day TV mounting with clean, damage-free installations. Our team knows ${cityName} campus areas and can work with university housing requirements.`
       }
     ] : [
       {
         question: `Do you handle condo association rules for TV mounting in ${cityName}?`,
-        answer: `Yes, we're experienced with ${cityName} condo and HOA regulations. We can provide documentation for association approval and use mounting methods that comply with building guidelines. Our over-fireplace TV mounting and in-wall cable concealment services meet all building code requirements.`
+        answer: `Yes, we're experienced with ${cityName} condo and HOA regulations. We can provide documentation for association approval and use mounting methods that comply with building guidelines. Our over-fireplace TV mounting and in-wall cable concealment services meet all building code requirements. We work regularly with ${cityName} property managers and understand local association rules.`
       }
     ])
   ];
@@ -135,6 +140,13 @@ export default async function CityPage({ params }: CityPageProps) {
       "https://www.instagram.com/icemountn"
     ],
     serviceType: "TV mounting services",
+    description: `Professional TV mounting services in ${cityName} with licensed technicians, same-day service, and renter-friendly installations. Serving ${cityName} neighborhoods with expertise in local building codes and property requirements.`,
+    address: {
+      "@type": "PostalAddress",
+      "addressLocality": cityName,
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
   };
 
   const serviceSchema = {
@@ -143,6 +155,7 @@ export default async function CityPage({ params }: CityPageProps) {
     name: `TV Mounting in ${cityName}`,
     provider: { "@type": "LocalBusiness", name: "Ice Mount'n" },
     areaServed: cityName,
+    description: `Professional TV mounting services in ${cityName} with same-day availability, licensed technicians, and renter-friendly installations. Expert service for apartments, condos, and homes throughout ${cityName}.`,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "TV Mounting Services",
