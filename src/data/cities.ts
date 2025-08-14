@@ -749,7 +749,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["stadium area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
     jobCount: 145,
     averageRating: 4.7,
-    nearbyCities: ["Hawthorne", "El Segundo", "South Los Angeles"],
+    nearbyCities: ["Hawthorne", "El Segundo", "Manhattan Beach"],
     heroImage: "tv-mounting-los-angeles-02.webp",
     galleryImages: [
       "tv-mounting-los-angeles-04.webp",
@@ -863,7 +863,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["campus area expertise", "student housing knowledge", "parking understanding", "apartment building experience"],
     jobCount: 198,
     averageRating: 4.7,
-    nearbyCities: ["Downtown LA", "South Los Angeles", "Boyle Heights"],
+    nearbyCities: ["Boyle Heights", "Echo Park", "Silver Lake"],
     heroImage: "tv-mounting-los-angeles-17.webp",
     galleryImages: [
       "tv-mounting-los-angeles-16.webp",
@@ -977,7 +977,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["tourist area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
     jobCount: 156,
     averageRating: 4.8,
-    nearbyCities: ["West Hollywood", "Beverly Hills", "Fairfax"],
+    nearbyCities: ["West Hollywood", "Beverly Hills", "West Los Angeles"],
     heroImage: "tv-mounting-los-angeles-20.webp",
     galleryImages: [
       "tv-mounting-los-angeles-19.webp",
@@ -1015,7 +1015,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["historic home expertise", "preservation knowledge", "local landmark understanding", "community navigation"],
     jobCount: 134,
     averageRating: 4.7,
-    nearbyCities: ["Downtown LA", "East Hollywood", "Lincoln Heights"],
+    nearbyCities: ["East Hollywood", "Echo Park", "Silver Lake"],
     heroImage: "tv-mounting-los-angeles-21.webp",
     galleryImages: [
       "tv-mounting-los-angeles-01.webp",
@@ -1091,7 +1091,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["historic home expertise", "preservation knowledge", "tourist area understanding", "local landmark experience"],
     jobCount: 145,
     averageRating: 4.7,
-    nearbyCities: ["Downtown LA", "Echo Park", "Lincoln Heights"],
+    nearbyCities: ["Echo Park", "Silver Lake", "Los Feliz"],
     heroImage: "tv-mounting-los-angeles-11.webp",
     galleryImages: [
       "tv-mounting-los-angeles-16.webp",
@@ -1129,7 +1129,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["historic home expertise", "preservation knowledge", "hillside skills", "local landmark understanding"],
     jobCount: 123,
     averageRating: 4.8,
-    nearbyCities: ["Highland Park", "Glassell Park", "Pasadena"],
+    nearbyCities: ["Pasadena", "Glendale", "Los Feliz"],
     heroImage: "tv-mounting-los-angeles-10.webp",
     galleryImages: [
       "tv-mounting-los-angeles-19.webp",
@@ -1167,7 +1167,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["apartment building experience", "parking knowledge", "tourist area understanding", "community diversity expertise"],
     jobCount: 167,
     averageRating: 4.7,
-    nearbyCities: ["Hollywood", "Los Feliz", "Thai Town"],
+    nearbyCities: ["Hollywood", "Los Feliz", "Silver Lake"],
     heroImage: "tv-mounting-los-angeles-09.webp",
     galleryImages: [
       "tv-mounting-los-angeles-03.webp",
@@ -1205,7 +1205,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["valley area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
     jobCount: 189,
     averageRating: 4.8,
-    nearbyCities: ["Sherman Oaks", "Tarzana", "Van Nuys"],
+    nearbyCities: ["Sherman Oaks", "Van Nuys", "Studio City"],
     heroImage: "tv-mounting-los-angeles-08.webp",
     galleryImages: [
       "tv-mounting-los-angeles-07.webp",
@@ -1243,7 +1243,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["industrial area expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
     jobCount: 134,
     averageRating: 4.7,
-    nearbyCities: ["Torrance", "Hawthorne", "Inglewood"],
+    nearbyCities: ["Hawthorne", "Inglewood", "El Segundo"],
     heroImage: "tv-mounting-los-angeles-07.webp",
     galleryImages: [
       "tv-mounting-los-angeles-10.webp",
@@ -1319,7 +1319,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["hillside expertise", "historic home knowledge", "local street navigation", "community understanding"],
     jobCount: 145,
     averageRating: 4.8,
-    nearbyCities: ["Silver Lake", "East Hollywood", "Griffith Park"],
+    nearbyCities: ["Silver Lake", "East Hollywood", "Echo Park"],
     heroImage: "tv-mounting-los-angeles-05.webp",
     galleryImages: [
       "tv-mounting-los-angeles-16.webp",
@@ -1395,7 +1395,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["beach area expertise", "luxury home knowledge", "canyon navigation", "premium service standards"],
     jobCount: 123,
     averageRating: 4.9,
-    nearbyCities: ["Brentwood", "Malibu", "Santa Monica"],
+    nearbyCities: ["Brentwood", "Santa Monica", "Venice"],
     heroImage: "tv-mounting-los-angeles-03.webp",
     galleryImages: [
       "tv-mounting-los-angeles-01.webp",
@@ -1471,7 +1471,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["beach area expertise", "parking knowledge", "tourist area understanding", "beach community experience"],
     jobCount: 112,
     averageRating: 4.8,
-    nearbyCities: ["Hermosa Beach", "Manhattan Beach", "Torrance"],
+    nearbyCities: ["Hermosa Beach", "Manhattan Beach", "El Segundo"],
     heroImage: "tv-mounting-los-angeles-01.webp",
     galleryImages: [
       "tv-mounting-los-angeles-07.webp",
@@ -1509,7 +1509,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["historic home expertise", "preservation knowledge", "hillside skills", "local landmark understanding"],
     jobCount: 98,
     averageRating: 4.8,
-    nearbyCities: ["Pasadena", "Eagle Rock", "Highland Park"],
+    nearbyCities: ["Pasadena", "Eagle Rock", "Glendale"],
     heroImage: "tv-mounting-los-angeles-16.webp",
     galleryImages: [
       "tv-mounting-los-angeles-19.webp",
@@ -1623,7 +1623,7 @@ export const ADDITIONAL_CITIES: Record<string, CityData> = {
     localBenefits: ["diverse neighborhood expertise", "parking knowledge", "apartment building experience", "commercial property understanding"],
     jobCount: 189,
     averageRating: 4.8,
-    nearbyCities: ["Brentwood", "Sawtelle", "Westwood"],
+    nearbyCities: ["Brentwood", "Westwood", "Santa Monica"],
     heroImage: "tv-mounting-los-angeles-13.webp",
     galleryImages: [
       "tv-mounting-los-angeles-10.webp",
