@@ -8,8 +8,8 @@ import Link from 'next/link';
 import { locations, campusLocations } from '@/data/locations';
 import { openBooking } from '@/utils/housecall-pro';
 import SeoTextBlock from '@/components/seo-text-block';
-import MasonryGallery from '@/components/MasonryGallery';
-import { getLocationImages } from '@/lib/gallery';
+import MasonryGallery from '@/components/masonry-gallery';
+import { getLocationGallery } from '@/lib/gallery-map';
 
 export default function LocationsPageClient() {
   const handleBookOnline = openBooking;
@@ -264,12 +264,13 @@ export default function LocationsPageClient() {
       </section>
 
       {/* Gallery Section */}
-      <MasonryGallery
-        title="Recent Installs Across Los Angeles"
-        subtitle="A few examples from recent Ice Mount'n projects throughout LA"
-        images={getLocationImages("los-angeles", "Los Angeles")}
-        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
-      />
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <MasonryGallery items={getLocationGallery("Los Angeles", 3)} />
+          </div>
+        </div>
+      </section>
 
       {/* SEO Text Block */}
       <SeoTextBlock

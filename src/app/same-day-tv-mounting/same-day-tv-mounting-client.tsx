@@ -7,8 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall, Calendar, Home, Zap } from "lucide-react";
 import { openBooking } from "@/utils/housecall-pro";
-import MasonryGallery from "@/components/MasonryGallery";
-import { getServiceImages } from "@/lib/gallery";
+import MasonryGallery from "@/components/masonry-gallery";
+import { getGallery } from "@/lib/gallery-map";
 
 export default function SameDayTVMountingClient() {
   const handleBookOnline = openBooking;
@@ -200,12 +200,13 @@ export default function SameDayTVMountingClient() {
       </section>
 
       {/* Gallery Section */}
-      <MasonryGallery
-        title="Recent Installs"
-        subtitle="A few examples from recent Ice Mount'n projects"
-        images={getServiceImages("same-day-tv-mounting")}
-        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
-      />
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <MasonryGallery items={getGallery("generic", { limit: 3, context: "Same-Day TV Mounting — Los Angeles" })} />
+          </div>
+        </div>
+      </section>
 
       {/* Renter-Friendly Section */}
       <section className="py-16 bg-blue-50">

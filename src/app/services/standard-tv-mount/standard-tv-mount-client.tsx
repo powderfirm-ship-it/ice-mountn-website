@@ -7,8 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall } from "lucide-react";
 import { openHousecallProModal } from "@/utils/housecall-pro";
-import MasonryGallery from "@/components/MasonryGallery";
-import { getServiceImages } from "@/lib/gallery";
+import MasonryGallery from "@/components/masonry-gallery";
+import { getGallery } from "@/lib/gallery-map";
 import SeoTextBlock from "@/components/seo-text-block";
 
 // schema + urls
@@ -214,13 +214,7 @@ export default function StandardTVMountClient() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <MasonryGallery
-        title="Recent Installs"
-        subtitle="A few examples from recent Ice Mount'n projects"
-        images={getServiceImages("standard-tv-mount")}
-        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
-      />
+
 
       {/* Process Section */}
       <section className="py-16 bg-gray-50">
@@ -263,6 +257,17 @@ export default function StandardTVMountClient() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <MasonryGallery
+              items={getGallery("standard", { limit: 6, context: "Standard TV Wall Mounting — Los Angeles" })}
+            />
           </div>
         </div>
       </section>

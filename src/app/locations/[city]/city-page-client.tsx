@@ -10,8 +10,8 @@ import { openBooking } from "@/utils/housecall-pro";
 import { SERVICES, type ServiceSlug } from "@/data/services";
 import { Tv, Flame, Cable, Speaker, Frame, Zap } from "lucide-react";
 import SeoTextBlock from "@/components/seo-text-block";
-import MasonryGallery from "@/components/MasonryGallery";
-import { getLocationImages } from "@/lib/gallery";
+import MasonryGallery from "@/components/masonry-gallery";
+import { getLocationGallery } from "@/lib/gallery-map";
 
 interface CityPageClientProps {
   cityName: string;
@@ -314,12 +314,13 @@ export function CityPageClient({
       </section>
 
       {/* Gallery Section */}
-      <MasonryGallery
-        title={`Recent Installs in ${cityName}`}
-        subtitle={`A few Ice Mount'n projects completed in ${cityName}`}
-        images={getLocationImages(citySlug, cityName)}
-        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
-      />
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <MasonryGallery items={getLocationGallery(cityName, 3)} />
+          </div>
+        </div>
+      </section>
 
       {/* SEO Text Block */}
       <SeoTextBlock

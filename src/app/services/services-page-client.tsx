@@ -8,8 +8,8 @@ import { ArrowRight, Star, Clock, Shield, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import { openBooking } from '@/utils/housecall-pro';
 import SeoTextBlock from '@/components/seo-text-block';
-import MasonryGallery from '@/components/MasonryGallery';
-import { getServiceImages } from '@/lib/gallery';
+import MasonryGallery from '@/components/masonry-gallery';
+import { getGallery } from '@/lib/gallery-map';
 
 export default function ServicesPageClient() {
   const handleBookOnline = openBooking;
@@ -281,12 +281,13 @@ export default function ServicesPageClient() {
       </section>
 
       {/* Gallery Section */}
-      <MasonryGallery
-        title="Recent Installs"
-        subtitle="A few examples from recent Ice Mount'n projects"
-        images={getServiceImages("standard-tv-mount").slice(0, 6)}
-        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
-      />
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <MasonryGallery items={getGallery("generic", { limit: 6, context: "TV Mounting Services — Los Angeles" })} />
+          </div>
+        </div>
+      </section>
 
       {/* SEO Text Block */}
       <SeoTextBlock

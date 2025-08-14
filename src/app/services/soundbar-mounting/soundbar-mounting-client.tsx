@@ -7,8 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle, Star, Clock, Shield, Volume2, PhoneCall, Speaker } from 'lucide-react';
 import { openBooking } from '@/utils/housecall-pro';
-import MasonryGallery from '@/components/MasonryGallery';
-import { getServiceImages } from '@/lib/gallery';
+import MasonryGallery from '@/components/masonry-gallery';
+import { getGallery } from '@/lib/gallery-map';
 import SeoTextBlock from '@/components/seo-text-block';
 
 export default function SoundbarMountingClient() {
@@ -198,12 +198,13 @@ export default function SoundbarMountingClient() {
       </section>
 
       {/* Gallery Section */}
-      <MasonryGallery
-        title="Recent Installs"
-        subtitle="A few examples from recent Ice Mount'n projects"
-        images={getServiceImages("soundbar-mounting")}
-        cols={{ base: 2, sm: 2, md: 3, lg: 4 }}
-      />
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <MasonryGallery items={getGallery("generic", { limit: 6, context: "Soundbar Mounting — Los Angeles" })} />
+          </div>
+        </div>
+      </section>
 
       {/* Process Section */}
       <section className="py-16 bg-gray-50">
