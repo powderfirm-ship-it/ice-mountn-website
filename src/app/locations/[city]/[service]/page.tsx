@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CITIES } from "@/data/cities";
+import { ALL_CITIES } from "@/data/cities";
 import { SERVICES, type ServiceSlug } from "@/data/services";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, Phone, MapPin, Star } from "lucide-react";
-import { CITIES as CITIES_DATA } from "@/data/cities";
+import { ALL_CITIES as CITIES_DATA } from "@/data/cities";
 import { SERVICES as SERVICES_DATA, type ServiceSlug as ServiceSlugType } from "@/data/services";
 import SiteLayoutServer from "@/components/site-layout-server";
 import Image from "next/image";
@@ -34,7 +34,7 @@ function getIcon(name: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightni
 export async function generateStaticParams() {
   const params: { city: string; service: string }[] = [];
   
-  CITIES.forEach((city) => {
+  Object.values(CITIES_DATA).forEach((city) => {
     Object.keys(SERVICES).forEach((service) => {
       params.push({
         city: city.slug,
@@ -53,8 +53,8 @@ export async function generateMetadata({
   params: Promise<{ city: string; service: string }>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const city = CITIES.find((c) => c.slug === resolvedParams.city);
-  const service = SERVICES[resolvedParams.service as ServiceSlug];
+  const city = Object.values(CITIES_DATA).find((c) => c.slug === resolvedParams.city);
+  const service = SERVICES_DATA[resolvedParams.service as ServiceSlugType];
   
   if (!city || !service) {
     return {
@@ -88,7 +88,7 @@ export default async function CityServicePage({
   params: Promise<{ city: string; service: string }>;
 }) {
   const resolvedParams = await params;
-  const city = CITIES.find((c) => c.slug === resolvedParams.city);
+  const city = Object.values(CITIES_DATA).find((c) => c.slug === resolvedParams.city);
   const service = resolvedParams.service as ServiceSlug;
   
   if (!city || !SERVICES[service]) {

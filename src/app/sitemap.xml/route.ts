@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { CITIES } from '@/data/cities'
+import { ALL_CITIES } from '@/data/cities'
 import { toCanonical } from '@/lib/canonical'
 
 export async function GET() {
@@ -28,14 +28,14 @@ export async function GET() {
   ]
 
   // Location pages
-  const locationPages = CITIES.map(city => ({
+  const locationPages = Object.values(ALL_CITIES).map(city => ({
     path: `/locations/${city.slug}`,
     priority: 0.7,
     changeFreq: 'monthly'
   }))
 
   // Location + service combination pages - use the new canonical service slugs
-  const locationServicePages = CITIES.flatMap(city => [
+  const locationServicePages = Object.values(ALL_CITIES).flatMap(city => [
     { path: `/locations/${city.slug}/standard-tv-mount`, priority: 0.7, changeFreq: 'monthly' },
     { path: `/locations/${city.slug}/over-fireplace-mount`, priority: 0.7, changeFreq: 'monthly' },
     { path: `/locations/${city.slug}/cable-concealment`, priority: 0.7, changeFreq: 'monthly' },

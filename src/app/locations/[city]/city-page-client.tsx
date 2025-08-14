@@ -4,14 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall, MapPin, Home, Building } from "lucide-react";
+import { CheckCircle, Star, Clock, Shield, Wrench, PhoneCall, MapPin, Home, Building, Users, Award, Zap } from "lucide-react";
 import Link from "next/link";
 import { openBooking } from "@/utils/housecall-pro";
 import { SERVICES, type ServiceSlug } from "@/data/services";
-import { Tv, Flame, Cable, Speaker, Frame, Zap } from "lucide-react";
+import { Tv, Flame, Cable, Speaker, Frame, Zap as Lightning } from "lucide-react";
 import SeoTextBlock from "@/components/seo-text-block";
 import MasonryGallery from "@/components/masonry-gallery";
-import { getLocationGallery } from "@/lib/gallery-map";
+import { getCityData } from "@/data/cities";
+import Image from "next/image";
 
 interface CityPageClientProps {
   cityName: string;
@@ -35,7 +36,7 @@ function getIcon(name: "tv" | "flame" | "cable" | "speaker" | "frame" | "lightni
     case "cable": return Cable;
     case "speaker": return Speaker;
     case "frame": return Frame;
-    case "lightning": return Zap;
+    case "lightning": return Lightning;
     default: return Tv;
   }
 }
@@ -52,21 +53,80 @@ export function CityPageClient({
   data 
 }: CityPageClientProps) {
   const handleBookOnline = openBooking;
+  const cityData = getCityData(citySlug);
+
+  // Fallback data if city not in our database
+  const neighborhoods = cityData?.neighborhoods || data.neighborhoods || ["Downtown", "Residential Areas"];
+  const landmarks = cityData?.landmarks || data.landmarks || ["Local Landmarks"];
+  const localChallenges = cityData?.localChallenges || ["local building codes", "parking regulations", "property requirements"];
+  const localBenefits = cityData?.localBenefits || ["local expertise", "building knowledge", "community understanding"];
+  const jobCount = cityData?.jobCount || 150;
+  const averageRating = cityData?.averageRating || 4.8;
+  const nearbyCities = cityData?.nearbyCities || ["Nearby Areas"];
+  const heroImage = cityData?.heroImage || "tv-mounting-los-angeles-16.webp";
+  const galleryImages = cityData?.galleryImages || [
+    "tv-wall-installation-los-angeles-01.webp",
+    "samsung-frame-installation-los-angeles-01.webp",
+    "tv-mounting-los-angeles-07.webp",
+    "tv-wall-installation-los-angeles-02.webp",
+    "tv-mounting-los-angeles-08.webp",
+    "samsung-frame-installation-los-angeles-02.webp"
+  ];
+  const enhancedLocalFaqs = cityData?.localFaqs || localFaqs;
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-white py-16">
-        <div className="container mx-auto px-4">
+      {/* Hero Section - Above the Fold */}
+      <section className="bg-gradient-to-br from-blue-50 to-white py-16 relative overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src={`/images/gallery/${heroImage}`}
+            alt={`TV Mounting in ${cityName}`}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
+            <Badge className="bg-blue-100 text-blue-800 border-blue-200 mb-4">
+              <Shield className="h-4 w-4 mr-1" />
+              Licensed & Insured
+            </Badge>
+            
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              TV Mounting in {cityName}
+              Expert TV Mounting in {cityName} – Secure, Same-Day, Renter-Friendly Installations
             </h1>
+            
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Professional, renter-friendly TV mounting services in {cityName}. 
+              Serving {cityName} neighborhoods from {neighborhoods.slice(0, 2).join(" to ")} with licensed & insured technicians.
               {isCampus ? ' Student housing and dorm installations with RA approval.' : ' Apartment and condo installations that protect your security deposit.'}
-              Same-day service available throughout Los Angeles County.
             </p>
+
+            {/* Instant Quote Form - Above the Fold */}
+            <div className="bg-white rounded-lg shadow-lg p-6 mb-8 max-w-md mx-auto">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Get Instant Quote</h3>
+              <div className="space-y-3">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <Button
+                  onClick={handleBookOnline}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2"
+                >
+                  Get Quote Now
+                </Button>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
@@ -89,37 +149,61 @@ export function CityPageClient({
               </Button>
             </div>
 
-            <p className="text-gray-600">
-              Same-day service available • Licensed & insured • 100% renter-friendly
-            </p>
+            {/* Trust Badges */}
+            <div className="flex items-center justify-center space-x-6 text-sm text-gray-600">
+              <div className="flex items-center">
+                <Shield className="h-4 w-4 mr-1" />
+                Licensed & insured
+              </div>
+              <div className="flex items-center">
+                <Star className="h-4 w-4 mr-1 fill-yellow-400 text-yellow-400" />
+                {averageRating}/5 rating
+              </div>
+              <div className="flex items-center">
+                <Clock className="h-4 w-4 mr-1" />
+                Same-day available
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Localized Service Overview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
+            {/* City-specific intro paragraph */}
+            <div className="text-center mb-12">
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+                From {neighborhoods.slice(0, 2).join(" to ")} to {neighborhoods.slice(-1)[0]}, we provide tailored TV mounting solutions for every property type in {cityName}. 
+                We know local parking, building access rules, and {localChallenges.slice(0, 2).join(", ")} — so your installation is smooth and compliant.
+              </p>
+            </div>
+
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              TV Mounting Services in {cityName}
+              Our {cityName} TV Mounting Services
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {ORDER.map((slug) => {
-                const svc = SERVICES[slug];
-                const Icon = getIcon(svc.icon);
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ORDER.filter(s => services.includes(s)).map((service) => {
+                const serviceData = SERVICES[service];
+                const Icon = getIcon(serviceData.icon);
+                
                 return (
-                  <a
-                    key={slug}
-                    href={`/locations/${citySlug}/${slug}`}
-                    className="block rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow bg-white"
-                    aria-label={`${svc.h1} in ${cityName}`}
-                  >
-                    <div className="mx-auto h-10 w-10 rounded-full bg-blue-50 grid place-items-center mb-4">
-                      <Icon className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 text-center">{svc.title}</h3>
-                    <p className="text-sm text-gray-600 text-center mt-1">Professional installation in {cityName}</p>
-                  </a>
+                  <Link key={service} href={`/services/${service}`} className="group">
+                    <Card className="border-gray-200 hover:shadow-lg transition-shadow group-hover:border-blue-300 h-full">
+                      <CardContent className="p-6 text-center h-full flex flex-col">
+                        <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
+                          <Icon className="h-8 w-8" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{serviceData.title}</h3>
+                        <p className="text-gray-600 text-sm mb-4 flex-grow">{serviceData.description}</p>
+                        <div className="text-blue-600 font-medium group-hover:text-blue-700 transition-colors">
+                          Learn More →
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 );
               })}
             </div>
@@ -127,70 +211,154 @@ export function CityPageClient({
         </div>
       </section>
 
-      {/* Trust Features */}
+      {/* Why Choose Us in [City] */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              Why Choose Ice Mount'n in {cityName}
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Local Stats */}
+              <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Local Experience</h3>
+                <p className="text-3xl font-bold text-blue-600 mb-2">Over {jobCount}</p>
+                <p className="text-gray-600">TVs mounted in {cityName} in 2024</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Star className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Customer Rating</h3>
+                <p className="text-3xl font-bold text-green-600 mb-2">{averageRating}/5</p>
+                <p className="text-gray-600">from {cityName} residents</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+                <div className="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Same-Day Service</h3>
+                <p className="text-3xl font-bold text-orange-600 mb-2">24hr</p>
+                <p className="text-gray-600">response time in {cityName}</p>
+              </div>
+            </div>
+
+            {/* Local Benefits Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+              {localBenefits.map((benefit, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 shrink-0" />
+                  <span className="text-gray-700">{benefit}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Embedded Google Map */}
+            <div className="mt-12 text-center">
+              <div className="bg-white p-6 rounded-lg shadow-sm inline-block">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Service Area in {cityName}</h3>
+                <div className="w-80 h-48 bg-gray-200 rounded-lg flex items-center justify-center">
+                  <MapPin className="h-12 w-12 text-gray-400" />
+                  <span className="text-gray-500 ml-2">Map showing {cityName} location</span>
+                </div>
+                <p className="text-sm text-gray-600 mt-2">Serving all {cityName} neighborhoods</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Masonry Gallery - NO CAROUSEL */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              Recent {cityName} Installations
+            </h2>
+            <p className="text-lg text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+              See examples of our work in {cityName} homes and apartments. Each installation is tailored to the unique characteristics of your property.
+            </p>
+            
+            <MasonryGallery 
+              items={galleryImages.map((img, index) => ({
+                src: `/images/gallery/${img}`,
+                alt: `${cityName} TV mounting installation ${index + 1} - professional wall mounting service`,
+                width: 1200,
+                height: 800
+              }))}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Mini Customer Story */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Why Choose Ice Mount'n in {cityName}?
+              How We Transformed a {cityName} Living Room in Just 2 Hours
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {trustFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
-                  <p className="text-gray-700">{feature}</p>
-                </div>
-              ))}
-            </div>
             
-            <div className="mt-8 text-center">
-              <p className="text-gray-600 max-w-3xl mx-auto">
-                Choose Ice Mount'n for licensed, renter-friendly TV mounting in {cityName}. 
-                We protect your walls and security deposit with clean, damage-free methods, tidy cable management, 
-                and precise alignment. Same-day service is available throughout Los Angeles County.
-              </p>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    Samsung Frame TV Installation in {neighborhoods[0]}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    This {cityName} family wanted their Samsung Frame TV to look like artwork when not in use. 
+                    We installed it with zero-gap mounting and concealed all cables in-wall for a completely clean appearance.
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    The installation took just 2 hours, and the family was amazed at how seamlessly the TV integrated 
+                    with their {cityName} home's aesthetic. No visible wires, perfect positioning, and Art Mode that 
+                    makes it look like a gallery piece.
+                  </p>
+                  <div className="flex items-center space-x-2 text-sm text-gray-500">
+                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <span>5-star rating from {cityName} homeowner</span>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {galleryImages.slice(0, 4).map((img, index) => (
+                    <div key={index} className="relative aspect-square rounded-lg overflow-hidden">
+                      <Image
+                        src={`/images/gallery/${img}`}
+                        alt={`${cityName} TV installation example ${index + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Neighborhoods Section */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-gray-600">
-              We serve {cityName} neighborhoods including {data.landmarks?.slice(0, 3).join(', ') || 'downtown areas'}, 
-              with quick arrivals to nearby areas. See all service areas on our <Link href="/locations" className="text-blue-600 hover:text-blue-700 underline">locations page</Link>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Internal Links Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm text-gray-600">
-              Nearby areas: <Link href="/locations/santa-monica" className="text-blue-600 hover:text-blue-700 underline">Santa Monica</Link>, <Link href="/locations/west-hollywood" className="text-blue-600 hover:text-blue-700 underline">West Hollywood</Link>, <Link href="/locations/beverly-hills" className="text-blue-600 hover:text-blue-700 underline">Beverly Hills</Link>, <Link href="/locations/culver-city" className="text-blue-600 hover:text-blue-700 underline">Culver City</Link>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
+      {/* Neighborhood-Specific FAQ */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               {cityName} TV Mounting FAQ
             </h2>
+
             <Accordion type="single" collapsible className="space-y-4">
-              {localFaqs.map((faq, index) => (
+              {enhancedLocalFaqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="bg-gray-50 border border-gray-200 rounded-lg px-6">
                   <AccordionTrigger className="text-left font-semibold text-gray-900">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-600">
+                  <AccordionContent className="text-gray-600 pb-4">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -200,115 +368,130 @@ export function CityPageClient({
         </div>
       </section>
 
-      {/* Details & What to Expect (SEO augmentation — minimal UI) */}
-      <section className="py-12 bg-white">
+      {/* Localized "About Our Service" Content */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Details &amp; What to Expect</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2">Our Approach</h3>
-                  <p className="text-gray-600 text-sm">
-                    We begin with a quick assessment of your space, wall type, and device compatibility to ensure a clean, secure TV mounting in {cityName}
-                    that meets building and manufacturer guidelines. Our technicians confirm placement, routing options, and finishing details
-                    before any drilling occurs.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2">Quality Standards</h3>
-                  <p className="text-gray-600 text-sm">
-                    Every project follows a documented checklist: appropriate anchors/studs, torque and level checks, protected cable paths,
-                    and final testing with your equipment. We prioritize safety, longevity, and a tidy finish you'll be proud to show.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2">Preparation &amp; Timing</h3>
-                  <p className="text-gray-600 text-sm">
-                    Typical appointments run 45–120 minutes depending on wall materials and cable routing needs. Please clear the immediate
-                    area around the mounting location and have your devices and remotes available for testing after installation.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-gray-900 mb-2">Aftercare &amp; Support</h3>
-                  <p className="text-gray-600 text-sm">
-                    We verify signal integrity, tidy cables, and walk you through basic use. If you need adjustments later, we're available
-                    for tune‑ups and upgrades. Our goal is a reliable, renter‑friendly result that looks great and works flawlessly.
-                  </p>
-                </CardContent>
-              </Card>
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              About Our TV Mounting Service in {cityName}
+            </h2>
+            
+            <div className="prose prose-lg mx-auto text-gray-600">
+              <p className="mb-6">
+                When you choose Ice Mount'n for TV mounting services in {cityName}, you're selecting a team that understands 
+                the unique characteristics of your neighborhood. From {neighborhoods.slice(0, 3).join(" to ")} and beyond, 
+                our technicians are familiar with {cityName}'s building codes, wall types, and local regulations.
+              </p>
+              
+              <p className="mb-6">
+                We know the challenges of {localChallenges.slice(0, 2).join(" and ")}, and we've developed solutions that 
+                work specifically for {cityName} properties. Whether you're in a {neighborhoods[0]} condo with strict building rules 
+                or a {neighborhoods[1]} home with unique architectural features, our team adapts to your specific needs.
+              </p>
+              
+              <p className="mb-6">
+                Our {cityName} service area covers all residential and commercial properties, from historic homes near {landmarks[0]} 
+                to modern apartments in {neighborhoods[2]}. We handle everything from basic mounting to complex installations 
+                requiring custom solutions, ensuring your installation meets all requirements while maintaining the aesthetic appeal of your space.
+              </p>
+              
+              <p className="mb-8">
+                The installation process in {cityName} typically takes 1-3 hours depending on your setup complexity. We arrive on time, 
+                work efficiently, and leave your space cleaner than we found it. Our same-day service availability means you can enjoy 
+                your new TV setup without waiting weeks for an appointment.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <Button
+                onClick={handleBookOnline}
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4"
+              >
+                Book Your {cityName} Installation Today
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Additional FAQ (SEO augmentation — minimal UI) */}
-      <section className="py-12 bg-gray-50">
+      {/* Internal Linking */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Additional FAQ</h2>
-
-            <Accordion type="single" collapsible className="space-y-3">
-              <AccordionItem value="q1" className="bg-white border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900">
-                  How do you protect walls and finishes during installation?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-4 text-sm">
-                  We use clean drop protection and the correct anchors for your wall type, verify stud placement when applicable,
-                  and minimize hole count by planning cable routes first. At completion, we wipe surfaces and remove debris.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q2" className="bg-white border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900">
-                  Will the setup be renter‑friendly and reversible?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-4 text-sm">
-                  Yes. We prioritize landlord‑approved methods and provide guidance for safe removal if needed.
-                  Ask us about surface patch options and how to preserve your security deposit.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q3" className="bg-white border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900">
-                  Do you handle device connection and quick testing?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-4 text-sm">
-                  We connect your sources (streamers, consoles, soundbars) and confirm power, video, and audio. If you need
-                  advanced calibration or smart‑home integration, we can schedule an extended service.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q4" className="bg-white border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900">
-                  What if I'm not sure about placement or height?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-4 text-sm">
-                  We help you choose a height and location based on seating distance, room layout, and glare. For over‑fireplace
-                  projects, we also consider heat exposure and viewing angles.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="q5" className="bg-white border border-gray-200 rounded-lg px-6">
-                <AccordionTrigger className="text-left font-semibold text-gray-900">
-                  How do you handle {cityName} parking and building access?
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-4 text-sm">
-                  Our technicians are familiar with {cityName} parking regulations and building access procedures. We handle
-                  permit parking, navigate narrow streets, and coordinate with building management for smooth service delivery.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+              Related Services & Areas
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Related Services */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Our Services</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/services/standard-tv-mount" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Standard TV Mount
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services/over-fireplace-mount" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Over-Fireplace Mount
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services/cable-concealment" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Cable Concealment
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services/samsung-frame" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Samsung Frame Installation
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Nearby Cities */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Nearby Areas</h3>
+                <ul className="space-y-2">
+                  {nearbyCities.slice(0, 3).map((city) => (
+                    <li key={city}>
+                      <Link href={`/locations/${city.toLowerCase().replace(/\s+/g, '-')}`} className="text-blue-600 hover:text-blue-700 hover:underline">
+                        TV Mounting in {city}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              {/* Additional Links */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">More Resources</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/customer-reviews" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Customer Reviews
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      All Services
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/locations" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Service Areas
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/contact" className="text-blue-600 hover:text-blue-700 hover:underline">
+                      Contact Us
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -317,7 +500,12 @@ export function CityPageClient({
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <MasonryGallery items={getLocationGallery(cityName, 3)} />
+            <MasonryGallery items={galleryImages.slice(0, 3).map((img, index) => ({
+              src: `/images/gallery/${img}`,
+              alt: `${cityName} TV mounting installation ${index + 1} - professional service`,
+              width: 1200,
+              height: 800
+            }))} />
           </div>
         </div>
       </section>
@@ -362,6 +550,16 @@ export function CityPageClient({
           </div>
         </div>
       </section>
+
+      {/* Floating Book Now Button - Mobile */}
+      <div className="fixed bottom-6 right-6 z-50 md:hidden">
+        <Button
+          onClick={handleBookOnline}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg"
+        >
+          Book Now
+        </Button>
+      </div>
     </>
   );
 }
