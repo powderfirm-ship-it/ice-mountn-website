@@ -107,15 +107,28 @@ function splitName(full?: string): { first?: string; last?: string } {
 }
 
 /**
- * HCP's "Total Amount In Cents" field arrives as cents (5300 = $53.00). Convert
- * to dollar units for Meta CAPI `value` field (Meta expects decimal currency
- * units, not cents).
+ * HCP exposes job value as `total_amount_in_cents` (5300 = $53.00). Zapier
+ * operators may also map a dollars field, but in practice HCP's primary
+ * surface is cents. To Meta CAPI we always send dollars.
+ *
+ * Strategy: prefer explicit cents fields. If only an ambiguous `total_amount`
+ * field is present and its value is suspiciously large for a TV-mounting job
+ * (≥ 1000), treat it as cents (HCP behavior) — TV mountings rarely exceed
+ * $1000, so a "5300" value is far more likely cents than dollars.
+ *
+ * Documenting the threshold here so it's obvious if it ever needs tuning.
  */
+const VALUE_CENTS_THRESHOLD = 1000;
+
 function pickValueDollars(payload: unknown): number | undefined {
   const cents = pickNumber(payload, ['total_amount_in_cents', 'totalAmountInCents', 'job.total_amount_in_cents']);
   if (cents !== undefined) return cents / 100;
-  // Fallback for jobs where Zapier mapped the dollar field directly.
-  return pickNumber(payload, ['job.total_amount', 'total_amount', 'job_total', 'amount', 'total']);
+
+  const ambiguous = pickNumber(payload, ['job.total_amount', 'total_amount', 'job_total', 'amount', 'total']);
+  if (ambiguous === undefined) return undefined;
+  // Guard against the Zap accidentally sending the cents field via a dollar-named key.
+  if (ambiguous >= VALUE_CENTS_THRESHOLD) return ambiguous / 100;
+  return ambiguous;
 }
 
 export async function POST(request: Request) {
