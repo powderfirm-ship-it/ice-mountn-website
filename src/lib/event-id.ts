@@ -21,7 +21,20 @@
  * HCP `id` field format: `{job_id}-{unix_ts_seconds}`. Example: `475691461-1779741000`.
  */
 
-const BUCKET_SECONDS = 60;
+/**
+ * 5-min bucket. Wide enough to absorb Zapier polling lag on Professional plan
+ * (every 2 min poll) plus webhook + CAPI processing time. Browser-side and
+ * server-side timestamps within 5 min of each other will hash to the same
+ * bucket, so Meta dedups the events.
+ *
+ * Collision risk: two bookings completed in the same 5-min window collapse
+ * into one Meta conversion. Tolerable at Phase 1 volume (~1–3 bookings/day):
+ * probability per booking ≈ (5min / 1440min) × bookings_per_day ≈ 1% at 3/day.
+ *
+ * The earlier 60s bucket was too tight — even Pro-plan Zapier polling can
+ * add 2 min latency, blowing past the bucket boundary and breaking dedup.
+ */
+const BUCKET_SECONDS = 300;
 const EVENT_ID_PREFIX = 'bkg_';
 
 /** Compute the event_id for an event happening at the given Unix epoch seconds. */

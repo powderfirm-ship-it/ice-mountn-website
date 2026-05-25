@@ -10,10 +10,15 @@
  *    bookingEventIdNow() (1-minute time bucket).
  * 3. ~1–15 min later, Zapier "New Scheduled Job" trigger fires and POSTs
  *    here with the full HCP job + customer payload.
- * 4. We extract HCP's job-creation Unix timestamp from the `id` field
- *    (format: `{job_id}-{unix_seconds}`), compute event_id from the same
- *    1-min-bucket formula, and fire CAPI `Schedule` with hashed customer
- *    PII for high EMQ.
+ * 4. We compute event_id from the webhook's arrival time using the same
+ *    bucket formula the browser side uses. Webhook arrival is typically
+ *    <2 min after the redirect on Pro-plan Zapier polling; with a 5-min
+ *    bucket (src/lib/event-id.ts) the two reliably hash to the same value.
+ *    Then we fire CAPI `Schedule` with hashed customer PII for high EMQ.
+ *
+ *    (Originally tried to parse HCP's `id` field for a creation timestamp,
+ *    but the suffix turned out to be the SCHEDULED APPOINTMENT time, not
+ *    creation time — could be days in the future, breaking dedup.)
  * 5. Meta sees both events with matching event_ids → dedups → ONE conversion
  *    with combined high-EMQ signal (PII from CAPI + fbc/fbp/UA from Pixel).
  *
@@ -40,7 +45,7 @@ import { NextResponse } from 'next/server';
 import { timingSafeEqual } from 'node:crypto';
 import { sendCapiEvent } from '@/lib/meta-capi';
 import { sendGa4Event } from '@/lib/ga4';
-import { bookingEventIdForUnixSeconds, parseHcpIdTimestamp, bookingEventIdNow } from '@/lib/event-id';
+import { bookingEventIdNow, parseHcpIdTimestamp } from '@/lib/event-id';
 
 // This route must run on the Node.js runtime — uses node:crypto and is a
 // fire-and-forget integration, not edge-latency-sensitive.
@@ -152,14 +157,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: 'invalid JSON body' }, { status: 400 });
   }
 
-  // 3. Extract HCP's job-creation timestamp from the `id` field and compute
-  //    the matching event_id. Falls back to now() if parsing fails — better
-  //    to fire a possibly-undeduped event than to drop a conversion.
+  // 3. Compute event_id from WEBHOOK ARRIVAL TIME, not from any field in the
+  //    HCP payload. We originally tried to parse HCP's `id` field (format
+  //    `{job_id}-{unix_ts}`) thinking the timestamp was job creation time —
+  //    but live testing (2026-05-24) showed it's actually the SCHEDULED
+  //    APPOINTMENT time (potentially days in the future), which made
+  //    eventIds drift hundreds of buckets apart from the browser side.
+  //
+  //    Webhook arrival is typically <2 min after the browser /booking-complete
+  //    redirect on Pro-plan Zapier polling. With a 5-min bucket (see
+  //    src/lib/event-id.ts), these reliably hash to the same value and Meta
+  //    dedups the conversion. We still log hcpFullId for debugging.
   const hcpFullId = pickString(payload, ['id', 'ID']);
-  const hcpCreatedTs = parseHcpIdTimestamp(hcpFullId);
-  const eventId = hcpCreatedTs
-    ? bookingEventIdForUnixSeconds(hcpCreatedTs)
-    : bookingEventIdNow();
+  const hcpScheduledTs = parseHcpIdTimestamp(hcpFullId); // Logged for audit; not used for event_id.
+  const eventId = bookingEventIdNow();
 
   // 4. Extract customer + job fields. Accept several Zapier field-name shapes.
   const email = pickString(payload, ['customer.email', 'email', 'customer_email']);
@@ -242,7 +253,7 @@ export async function POST(request: Request) {
       tag: 'hcp-webhook-fired',
       eventId,
       hcpFullId,
-      hcpCreatedTs,
+      hcpScheduledTs,
       hasEmail: Boolean(email),
       hasPhone: Boolean(phone),
       value,
