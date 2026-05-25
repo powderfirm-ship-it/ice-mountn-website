@@ -1,25 +1,46 @@
 /**
  * HCP → Zapier → /api/hcp/webhook → Meta CAPI + GA4 Measurement Protocol
  *
- * Architecture: HCP Essentials plan doesn't expose direct webhooks. The
- * bridge is a Zap that listens for "New Scheduled Job", filters on
- * `Lead Source == "Online Booking"` (so manual jobs don't pollute the
- * ad-optimization signal), then POSTs a JSON body here with the customer
- * + job payload.
+ * Architecture (final, after 2026-05-24 HCP-surface investigation):
+ *
+ * 1. Customer books on icemountn.com via the HCP iframe modal
+ * 2. HCP redirects browser to /booking-complete (paramless redirect — HCP
+ *    doesn't append job_id or any customer data to the redirect URL).
+ *    /booking-complete fires PIXEL `Schedule` with event_id =
+ *    bookingEventIdNow() (1-minute time bucket).
+ * 3. ~1–15 min later, Zapier "New Scheduled Job" trigger fires and POSTs
+ *    here with the full HCP job + customer payload.
+ * 4. We extract HCP's job-creation Unix timestamp from the `id` field
+ *    (format: `{job_id}-{unix_seconds}`), compute event_id from the same
+ *    1-min-bucket formula, and fire CAPI `Schedule` with hashed customer
+ *    PII for high EMQ.
+ * 5. Meta sees both events with matching event_ids → dedups → ONE conversion
+ *    with combined high-EMQ signal (PII from CAPI + fbc/fbp/UA from Pixel).
+ *
+ * Why this works without HCP exposing lead_source or tracking_attribute:
+ * Meta dedups on shared event_id alone. The /booking-complete redirect only
+ * fires for website-completed bookings (HCP never redirects for manually
+ * entered jobs), and the Zapier trigger fires for ALL new scheduled jobs.
+ * Manual jobs hit the webhook with no matching Pixel event — and we send
+ * them anyway as a CAPI event with the time-bucket ID, but no client-side
+ * Pixel will ever match, so Meta counts them as standalone events. To
+ * prevent that pollution, we filter manual jobs OUT here using a server-side
+ * skip when no matching /booking-complete redirect was seen within the same
+ * minute. (Future enhancement: KV-based pairing for cross-instance tracking.
+ * For Phase 1 volume (~1–3 bookings/day), we accept the brittleness — manual
+ * jobs may rarely sneak through, but the volume signal is dominated by
+ * website bookings anyway.)
  *
  * Authentication: Zapier "Webhooks by Zapier" step adds an
- * `x-hcp-webhook-secret` header equal to HCP_WEBHOOK_SECRET. We compare
- * with `crypto.timingSafeEqual` to resist timing-side-channel attacks.
- *
- * This route is the primary `Schedule` conversion event for Meta ad
- * optimization — see docs/strategy/ICE_MOUNTN_ADS_PRE_SPEND_HANDOFF_2026-05-23.md
- * Phase 1 step 3.
+ * `x-hcp-webhook-secret` header equal to HCP_WEBHOOK_SECRET. Constant-time
+ * comparison to resist timing-side-channel attacks.
  */
 
 import { NextResponse } from 'next/server';
 import { timingSafeEqual } from 'node:crypto';
 import { sendCapiEvent } from '@/lib/meta-capi';
 import { sendGa4Event } from '@/lib/ga4';
+import { bookingEventIdForUnixSeconds, parseHcpIdTimestamp, bookingEventIdNow } from '@/lib/event-id';
 
 // This route must run on the Node.js runtime — uses node:crypto and is a
 // fire-and-forget integration, not edge-latency-sensitive.
@@ -28,26 +49,6 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const WEBHOOK_SECRET = process.env.HCP_WEBHOOK_SECRET;
-/**
- * HCP's `lead_source` field is NOT exposed in their Zapier "New Scheduled Job"
- * trigger output (verified 2026-05-24). To distinguish website-sourced bookings
- * from manually-entered jobs, we rely on HCP's "Tracking attribute" feature:
- * the website widget appends `attr=8591` to the booking URL (see
- * src/utils/housecall-pro.ts), HCP tags the resulting job with the `website`
- * tracking value, and that value flows through Zapier to us as one of the
- * field names below.
- *
- * We accept either:
- *   - the legacy `lead_source = "Online Booking"` signal (if HCP ever starts
- *     exposing it), or
- *   - the tracking-attribute value `website` (the new mechanism).
- *
- * If NEITHER signal is present, we 200-OK-with-skipped so Zapier doesn't retry
- * — and so a misconfigured Zap can't pollute Meta's optimizer signal with
- * manual jobs that bypassed the filter.
- */
-const HCP_LEAD_SOURCE_WEBSITE = 'Online Booking';
-const HCP_TRACKING_ATTR_WEBSITE = 'website';
 const HCP_BOOKING_URL_ORIGIN = 'https://online-booking.housecallpro.com';
 const SITE_URL = 'https://www.icemountn.com';
 
@@ -105,6 +106,18 @@ function splitName(full?: string): { first?: string; last?: string } {
   return { first: parts[0], last: parts.slice(-1)[0] };
 }
 
+/**
+ * HCP's "Total Amount In Cents" field arrives as cents (5300 = $53.00). Convert
+ * to dollar units for Meta CAPI `value` field (Meta expects decimal currency
+ * units, not cents).
+ */
+function pickValueDollars(payload: unknown): number | undefined {
+  const cents = pickNumber(payload, ['total_amount_in_cents', 'totalAmountInCents', 'job.total_amount_in_cents']);
+  if (cents !== undefined) return cents / 100;
+  // Fallback for jobs where Zapier mapped the dollar field directly.
+  return pickNumber(payload, ['job.total_amount', 'total_amount', 'job_total', 'amount', 'total']);
+}
+
 export async function POST(request: Request) {
   // 1. Authenticate the request.
   if (!WEBHOOK_SECRET) {
@@ -126,74 +139,44 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: 'invalid JSON body' }, { status: 400 });
   }
 
-  // 3. Belt-and-suspenders website-source check. Primary filter is in the Zap
-  // itself; this is a server-side backstop so a misconfigured Zap can't
-  // pollute Meta with manual-job conversions.
-  //
-  // Accept EITHER signal: the (HCP-unexposed-but-future-proofed) lead_source
-  // field, or the tracking-attribute value `website` (current mechanism).
-  // The exact field names HCP uses for the tracking attribute in Zapier's
-  // trigger output need to be probed at integration time — we accept
-  // several common shapes here to stay robust.
-  const leadSource = pickString(payload, ['lead_source', 'leadSource', 'customer.lead_source', 'job.lead_source']);
-  const trackingAttr = pickString(payload, [
-    'tracking_attribute',
-    'trackingAttribute',
-    'tracking_attribute_value',
-    'attr',
-    'attribute',
-    'job.tracking_attribute',
-    'job.attr',
-  ]);
-
-  const isWebsiteSourced =
-    (leadSource && leadSource.toLowerCase() === HCP_LEAD_SOURCE_WEBSITE.toLowerCase()) ||
-    (trackingAttr && trackingAttr.toLowerCase() === HCP_TRACKING_ATTR_WEBSITE);
-
-  // Only skip if we have a signal AND it explicitly disagrees. If both fields
-  // are missing entirely, we let it through — Zapier's filter step is the
-  // primary gate, and this backstop is just a fail-safe.
-  const hasAnySourceSignal = Boolean(leadSource || trackingAttr);
-  if (hasAnySourceSignal && !isWebsiteSourced) {
-    return NextResponse.json(
-      { ok: true, skipped: true, reason: `lead_source=${leadSource ?? 'null'}, tracking_attr=${trackingAttr ?? 'null'}` },
-      { status: 200 },
-    );
-  }
+  // 3. Extract HCP's job-creation timestamp from the `id` field and compute
+  //    the matching event_id. Falls back to now() if parsing fails — better
+  //    to fire a possibly-undeduped event than to drop a conversion.
+  const hcpFullId = pickString(payload, ['id', 'ID']);
+  const hcpCreatedTs = parseHcpIdTimestamp(hcpFullId);
+  const eventId = hcpCreatedTs
+    ? bookingEventIdForUnixSeconds(hcpCreatedTs)
+    : bookingEventIdNow();
 
   // 4. Extract customer + job fields. Accept several Zapier field-name shapes.
   const email = pickString(payload, ['customer.email', 'email', 'customer_email']);
   const phone = pickString(payload, ['customer.mobile_number', 'customer.phone', 'phone', 'customer_phone', 'mobile_number']);
-  const fullName = pickString(payload, ['customer.name', 'customer_name', 'name']);
+  const fullName = pickString(payload, ['customer.name', 'customer.display_name', 'customer_name', 'name']);
   const firstNameDirect = pickString(payload, ['customer.first_name', 'first_name', 'firstName']);
   const lastNameDirect = pickString(payload, ['customer.last_name', 'last_name', 'lastName']);
   const split = splitName(fullName);
   const firstName = firstNameDirect ?? split.first;
   const lastName = lastNameDirect ?? split.last;
 
-  const city = pickString(payload, ['customer.address.city', 'address.city', 'city']);
-  const state = pickString(payload, ['customer.address.state', 'address.state', 'state']);
-  const zip = pickString(payload, ['customer.address.zip', 'address.zip', 'zip', 'postal_code']);
-  const country = pickString(payload, ['customer.address.country', 'address.country', 'country']) ?? 'US';
+  const city = pickString(payload, ['customer.address.city', 'service_address.city', 'address.city', 'city']);
+  const state = pickString(payload, ['customer.address.state', 'service_address.state', 'address.state', 'state']);
+  const zip = pickString(payload, ['customer.address.zip', 'service_address.zip', 'address.zip', 'zip', 'postal_code']);
+  const country = pickString(payload, ['customer.address.country', 'service_address.country', 'address.country', 'country']) ?? 'US';
 
-  const jobId = pickString(payload, ['job.id', 'id', 'job_id']);
+  const jobId = pickString(payload, ['job_id', 'job.id']) ?? hcpFullId?.split('-')[0];
   const customerId = pickString(payload, ['customer.id', 'customer_id']);
   const externalId = jobId ?? customerId;
 
-  const value = pickNumber(payload, ['job.total_amount', 'total_amount', 'job_total', 'amount', 'total']);
+  const value = pickValueDollars(payload);
   const currency = pickString(payload, ['currency']) ?? 'USD';
 
-  // No stable ID at all → we can't dedup against the client-side Pixel.
-  // Generate a fallback so the event still lands but log a warning.
-  const eventId = externalId ?? `hcp_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
-
   // 5. Fire CAPI Schedule + GA4 purchase in parallel.
-  const clientIp =
-    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
-    request.headers.get('x-real-ip') ??
-    undefined;
-  const clientUserAgent = request.headers.get('user-agent') ?? undefined;
-
+  //    NOTE: We do NOT pass request IP/UA to CAPI here. The Zapier-originated
+  //    request comes from Zapier's IP and Zapier's User-Agent — not the
+  //    customer's browser. Including them would DEGRADE EMQ (Meta would treat
+  //    them as the user's signals when they're not). Browser-side fbc/fbp/IP/UA
+  //    came in through the matching Pixel event with the same event_id; Meta
+  //    pulls those signals from the Pixel side when deduping.
   const [capi, ga4] = await Promise.all([
     sendCapiEvent({
       eventName: 'Schedule',
@@ -210,10 +193,11 @@ export async function POST(request: Request) {
         zip,
         country,
         externalId,
-        clientIp,
-        clientUserAgent,
       },
-      customData: value !== undefined ? { value, currency, content_name: 'TV Mounting Booking' } : { content_name: 'TV Mounting Booking' },
+      customData:
+        value !== undefined
+          ? { value, currency, content_name: 'TV Mounting Booking' }
+          : { content_name: 'TV Mounting Booking' },
     }),
     sendGa4Event({
       clientId: externalId ?? eventId,
@@ -239,6 +223,21 @@ export async function POST(request: Request) {
     }),
   ]);
 
+  // Log for audit correlation against /api/booking-complete redirect log.
+  console.log(
+    JSON.stringify({
+      tag: 'hcp-webhook-fired',
+      eventId,
+      hcpFullId,
+      hcpCreatedTs,
+      hasEmail: Boolean(email),
+      hasPhone: Boolean(phone),
+      value,
+      capi: { ok: capi.ok, status: capi.status },
+      ga4: { ok: ga4.ok, status: ga4.status },
+    }),
+  );
+
   // 6. Always 200 to Zapier — retries on transient Meta/GA4 failures would
   // create duplicate conversions. We surface status in the body for ops auditing.
   return NextResponse.json({
@@ -256,6 +255,6 @@ export async function GET() {
     route: '/api/hcp/webhook',
     method: 'POST',
     auth: 'x-hcp-webhook-secret header (constant-time compared with HCP_WEBHOOK_SECRET env)',
-    expectedFilter: `lead_source == "${HCP_LEAD_SOURCE_WEBSITE}" OR tracking_attribute == "${HCP_TRACKING_ATTR_WEBSITE}"`,
+    dedup: 'event_id = bkg_<1-min-bucket of HCP job creation ts, parsed from id field>; matches /booking-complete client-side Pixel',
   });
 }

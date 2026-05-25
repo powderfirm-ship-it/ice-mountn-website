@@ -6,9 +6,14 @@
  * only for browser-fired training-signal events like `Lead` (modal open).
  */
 
+interface FbqOptions {
+  /** Stable ID for Pixel ↔ CAPI dedup. Meta's docs use lowercase `eventID` (camel-case with capital ID). */
+  eventID?: string;
+}
+
 type FbqFn = ((command: 'init', pixelId: string) => void) &
-  ((command: 'track', eventName: string, params?: Record<string, unknown>) => void) &
-  ((command: 'trackCustom', eventName: string, params?: Record<string, unknown>) => void) & {
+  ((command: 'track', eventName: string, params?: Record<string, unknown>, options?: FbqOptions) => void) &
+  ((command: 'trackCustom', eventName: string, params?: Record<string, unknown>, options?: FbqOptions) => void) & {
     queue?: unknown[];
   };
 
