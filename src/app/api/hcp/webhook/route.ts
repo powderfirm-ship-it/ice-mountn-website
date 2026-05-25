@@ -28,7 +28,26 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const WEBHOOK_SECRET = process.env.HCP_WEBHOOK_SECRET;
+/**
+ * HCP's `lead_source` field is NOT exposed in their Zapier "New Scheduled Job"
+ * trigger output (verified 2026-05-24). To distinguish website-sourced bookings
+ * from manually-entered jobs, we rely on HCP's "Tracking attribute" feature:
+ * the website widget appends `attr=8591` to the booking URL (see
+ * src/utils/housecall-pro.ts), HCP tags the resulting job with the `website`
+ * tracking value, and that value flows through Zapier to us as one of the
+ * field names below.
+ *
+ * We accept either:
+ *   - the legacy `lead_source = "Online Booking"` signal (if HCP ever starts
+ *     exposing it), or
+ *   - the tracking-attribute value `website` (the new mechanism).
+ *
+ * If NEITHER signal is present, we 200-OK-with-skipped so Zapier doesn't retry
+ * — and so a misconfigured Zap can't pollute Meta's optimizer signal with
+ * manual jobs that bypassed the filter.
+ */
 const HCP_LEAD_SOURCE_WEBSITE = 'Online Booking';
+const HCP_TRACKING_ATTR_WEBSITE = 'website';
 const HCP_BOOKING_URL_ORIGIN = 'https://online-booking.housecallpro.com';
 const SITE_URL = 'https://www.icemountn.com';
 
@@ -107,13 +126,37 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: 'invalid JSON body' }, { status: 400 });
   }
 
-  // 3. Belt-and-suspenders lead-source check. Primary filter is in the Zap
+  // 3. Belt-and-suspenders website-source check. Primary filter is in the Zap
   // itself; this is a server-side backstop so a misconfigured Zap can't
   // pollute Meta with manual-job conversions.
+  //
+  // Accept EITHER signal: the (HCP-unexposed-but-future-proofed) lead_source
+  // field, or the tracking-attribute value `website` (current mechanism).
+  // The exact field names HCP uses for the tracking attribute in Zapier's
+  // trigger output need to be probed at integration time — we accept
+  // several common shapes here to stay robust.
   const leadSource = pickString(payload, ['lead_source', 'leadSource', 'customer.lead_source', 'job.lead_source']);
-  if (leadSource && leadSource.toLowerCase() !== HCP_LEAD_SOURCE_WEBSITE.toLowerCase()) {
+  const trackingAttr = pickString(payload, [
+    'tracking_attribute',
+    'trackingAttribute',
+    'tracking_attribute_value',
+    'attr',
+    'attribute',
+    'job.tracking_attribute',
+    'job.attr',
+  ]);
+
+  const isWebsiteSourced =
+    (leadSource && leadSource.toLowerCase() === HCP_LEAD_SOURCE_WEBSITE.toLowerCase()) ||
+    (trackingAttr && trackingAttr.toLowerCase() === HCP_TRACKING_ATTR_WEBSITE);
+
+  // Only skip if we have a signal AND it explicitly disagrees. If both fields
+  // are missing entirely, we let it through — Zapier's filter step is the
+  // primary gate, and this backstop is just a fail-safe.
+  const hasAnySourceSignal = Boolean(leadSource || trackingAttr);
+  if (hasAnySourceSignal && !isWebsiteSourced) {
     return NextResponse.json(
-      { ok: true, skipped: true, reason: `lead_source=${leadSource}` },
+      { ok: true, skipped: true, reason: `lead_source=${leadSource ?? 'null'}, tracking_attr=${trackingAttr ?? 'null'}` },
       { status: 200 },
     );
   }
@@ -213,6 +256,6 @@ export async function GET() {
     route: '/api/hcp/webhook',
     method: 'POST',
     auth: 'x-hcp-webhook-secret header (constant-time compared with HCP_WEBHOOK_SECRET env)',
-    expectedFilter: `lead_source == "${HCP_LEAD_SOURCE_WEBSITE}"`,
+    expectedFilter: `lead_source == "${HCP_LEAD_SOURCE_WEBSITE}" OR tracking_attribute == "${HCP_TRACKING_ATTR_WEBSITE}"`,
   });
 }

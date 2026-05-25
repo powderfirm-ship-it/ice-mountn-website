@@ -13,7 +13,19 @@ declare global {
 let isHousecallProLoaded = false;
 let isLoading = false;
 const SCRIPT_ID = 'hcp-widget-script';
-const FALLBACK_URL = 'https://online-booking.housecallpro.com/Ice-Mountn/573582';
+
+/**
+ * HCP "Tracking attribute" ID for the value `website`. Configured in
+ * HCP → Settings → Booking → Online Booking → Tracking attribute.
+ * HCP appends this as `?attr=<ID>` to the booking URL; jobs created through
+ * a tracked URL get the attribute value attached to the job record, which
+ * surfaces in the Zapier "New Scheduled Job" trigger output. Used by the
+ * /api/hcp/webhook route to distinguish website-sourced jobs from manually
+ * entered ones — without this, every HCP job would look identical and we'd
+ * pollute Meta's ad-optimization signal with non-conversion jobs.
+ */
+const HCP_TRACKING_ATTR_WEBSITE = '8591';
+const FALLBACK_URL = `https://book.housecallpro.com/book/Ice-Mountn/b89a8095e38d4b95a43f864fca45ad5c?v2=true&attr=${HCP_TRACKING_ATTR_WEBSITE}`;
 
 export const loadHcpWidget = (): Promise<void> => {
   return new Promise((resolve, reject) => {
@@ -56,7 +68,10 @@ export const loadHcpWidget = (): Promise<void> => {
 
     const script = document.createElement('script');
     script.id = SCRIPT_ID;
-    script.src = 'https://online-booking.housecallpro.com/script.js?token=b89a8095e38d4b95a43f864fca45ad5c&orgName=Ice-Mountn';
+    // Append HCP tracking attribute ID so widget-initiated bookings get tagged
+    // with the `website` attribute (HCP attribute ID 8591). The downstream Zap
+    // filter and /api/hcp/webhook backstop both gate on this.
+    script.src = `https://online-booking.housecallpro.com/script.js?token=b89a8095e38d4b95a43f864fca45ad5c&orgName=Ice-Mountn&attr=${HCP_TRACKING_ATTR_WEBSITE}`;
     script.async = true;
 
     script.onload = () => {
