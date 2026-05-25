@@ -7,6 +7,7 @@ import { SchemaMarkup } from "@/components/schema-markup";
 import HcpProvider from "@/components/HcpProvider";
 import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { PageViewTracker } from "@/components/page-view-tracker";
+import { AttributionCapture } from "@/components/attribution-capture";
 import { Suspense } from "react";
 
 const inter = Inter({
@@ -105,6 +106,11 @@ export default function RootLayout({
             because useSearchParams() bails to client rendering — Suspense satisfies that. */}
         <Suspense fallback={null}>
           <PageViewTracker />
+        </Suspense>
+        {/* Persists utm tags, gclid, and fbclid into the im_attr cookie on every
+            navigation so /booking-complete can attach them to Pixel + GA4 events. */}
+        <Suspense fallback={null}>
+          <AttributionCapture />
         </Suspense>
         {children}
       </body>

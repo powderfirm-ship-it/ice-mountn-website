@@ -194,6 +194,17 @@ export async function POST(request: Request) {
   const value = pickValueDollars(payload);
   const currency = pickString(payload, ['currency']) ?? 'USD';
 
+  // Defensive UTM passthrough. HCP doesn't currently expose UTM custom fields
+  // to Zapier (verified 2026-05-24), so these will be undefined in practice.
+  // Wired here so that IF a future Zap mapping adds them, or HCP exposes a
+  // tracking_attribute-like channel for UTMs, they'll flow into CAPI
+  // custom_data without further code changes.
+  const utm_source = pickString(payload, ['utm_source', 'utmSource', 'customer.utm_source']);
+  const utm_medium = pickString(payload, ['utm_medium', 'utmMedium', 'customer.utm_medium']);
+  const utm_campaign = pickString(payload, ['utm_campaign', 'utmCampaign', 'customer.utm_campaign']);
+  const utm_term = pickString(payload, ['utm_term', 'utmTerm']);
+  const utm_content = pickString(payload, ['utm_content', 'utmContent']);
+
   // 5. Fire CAPI Schedule + GA4 purchase in parallel.
   //    NOTE: We do NOT pass request IP/UA to CAPI here. The Zapier-originated
   //    request comes from Zapier's IP and Zapier's User-Agent — not the
@@ -218,10 +229,15 @@ export async function POST(request: Request) {
         country,
         externalId,
       },
-      customData:
-        value !== undefined
-          ? { value, currency, content_name: 'TV Mounting Booking' }
-          : { content_name: 'TV Mounting Booking' },
+      customData: {
+        content_name: 'TV Mounting Booking',
+        ...(value !== undefined ? { value, currency } : {}),
+        ...(utm_source ? { utm_source } : {}),
+        ...(utm_medium ? { utm_medium } : {}),
+        ...(utm_campaign ? { utm_campaign } : {}),
+        ...(utm_term ? { utm_term } : {}),
+        ...(utm_content ? { utm_content } : {}),
+      },
     }),
     sendGa4Event({
       clientId: externalId ?? eventId,

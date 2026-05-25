@@ -21,6 +21,7 @@ export const dynamic = 'force-dynamic';
 
 interface BookingCompleteBody {
   eventId?: string;
+  attribution?: Record<string, unknown> | null;
 }
 
 export async function POST(request: Request) {
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
     JSON.stringify({
       tag: 'booking-complete-redirect',
       eventId: body.eventId ?? null,
+      attribution: body.attribution ?? null,
       ip,
       ua,
       ts: Date.now(),

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { bookingEventIdNow } from '@/lib/event-id';
+import { readAttribution } from '@/lib/attribution';
 
 /**
  * Client component for /booking-complete. On mount:
@@ -24,14 +25,33 @@ export function BookingCompleteClient() {
     const id = bookingEventIdNow();
     setEventId(id);
 
+    // Read attribution cookie BEFORE firing events so utm_*/gclid/fbclid
+    // can be attached to both Pixel and GA4 events. Cookie is set on every
+    // page load by <AttributionCapture/> in the root layout.
+    const attr = readAttribution();
+
     // Fire client-side Pixel Schedule. Wrapped in try/catch — analytics
     // failures must never block the confirmation UI.
     try {
       if (typeof window !== 'undefined' && window.fbq) {
-        window.fbq('track', 'Schedule', {
-          content_name: 'TV Mounting Booking',
-          currency: 'USD',
-        }, { eventID: id });
+        window.fbq(
+          'track',
+          'Schedule',
+          {
+            content_name: 'TV Mounting Booking',
+            currency: 'USD',
+            // Pass UTMs as custom_data so Meta can correlate to the right campaign
+            // even when the click happened on a session/device where the gclid/fbclid
+            // expired before the conversion fired. Undefined values are dropped by
+            // Pixel's fbq serializer.
+            utm_source: attr?.utm_source,
+            utm_medium: attr?.utm_medium,
+            utm_campaign: attr?.utm_campaign,
+            utm_term: attr?.utm_term,
+            utm_content: attr?.utm_content,
+          },
+          { eventID: id },
+        );
       }
     } catch {
       // swallow
@@ -46,6 +66,12 @@ export function BookingCompleteClient() {
           transaction_id: id,
           currency: 'USD',
           value: 0,
+          // GA4 auto-captures gclid from the URL on landing — re-passing here
+          // covers the case where the user arrived via fbclid + GA4 didn't pick
+          // up a campaign source.
+          source: attr?.utm_source,
+          medium: attr?.utm_medium,
+          campaign: attr?.utm_campaign,
         });
       }
     } catch {
@@ -53,11 +79,12 @@ export function BookingCompleteClient() {
     }
 
     // Server-side audit ping (fire-and-forget). Doesn't fire CAPI — that's
-    // the webhook's job — but logs the redirect so we can correlate later.
+    // the webhook's job — but logs the redirect with attribution so we can
+    // correlate later when reviewing why a conversion did/didn't dedup.
     fetch('/api/booking-complete', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId: id }),
+      body: JSON.stringify({ eventId: id, attribution: attr ?? null }),
       keepalive: true,
     }).catch(() => {
       // swallow — confirmation UI must render either way
