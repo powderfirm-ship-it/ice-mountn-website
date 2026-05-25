@@ -83,9 +83,21 @@ export const loadHcpWidget = (): Promise<void> => {
 };
 
 export const openBooking = async (): Promise<void> => {
+  // Fire Lead event BEFORE any await so it lands on Meta/GA4 even if the
+  // modal load fails and we fall back to the new-tab path. Modal-open intent
+  // is the trackable signal — actual modal render is best-effort.
+  // Dynamic import keeps this util tree-shakable and avoids pulling the
+  // analytics module into bundles that import housecall-pro for unrelated reasons.
+  try {
+    const { trackLeadModalOpen } = await import('@/lib/analytics-client');
+    trackLeadModalOpen();
+  } catch {
+    // Analytics must never block the booking flow.
+  }
+
   try {
     await loadHcpWidget();
-    
+
     // Try to open the modal with a timeout
     const openPromise = new Promise<void>((resolve, reject) => {
       if (window.HCPWidget?.openModal) {

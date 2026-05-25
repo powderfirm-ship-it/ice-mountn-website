@@ -5,6 +5,9 @@ import "./globals.css";
 
 import { SchemaMarkup } from "@/components/schema-markup";
 import HcpProvider from "@/components/HcpProvider";
+import { AnalyticsScripts } from "@/components/analytics-scripts";
+import { PageViewTracker } from "@/components/page-view-tracker";
+import { Suspense } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -93,9 +96,16 @@ export default function RootLayout({
         />
         {/* JSON-LD Schema Markup for SEO */}
         <SchemaMarkup />
+        {/* Meta Pixel + GA4 + Microsoft Clarity — afterInteractive so they don't block LCP */}
+        <AnalyticsScripts />
       </head>
       <body className={`${inter.className} antialiased`}>
         <HcpProvider />
+        {/* Fires PageView on every Next.js client-side route change. Wrapped in Suspense
+            because useSearchParams() bails to client rendering — Suspense satisfies that. */}
+        <Suspense fallback={null}>
+          <PageViewTracker />
+        </Suspense>
         {children}
       </body>
     </html>
